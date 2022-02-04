@@ -1,0 +1,21 @@
+{
+	"name": "e-commerce",
+	"version": "1.0.0",
+	"description": "Ecommerce PERN application",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"api": "nodemon server/index.js"
+	},
+	"author": "Isaiah Petrichor",
+	"license": "ISC",
+	"dependencies": {
+		"express": "^4.17.2",
+		"node-postgres": "^0.6.2"
+	},
+	"devDependencies": {
+		"dotenv": "^16.0.0",
+		"nodemon": "^2.0.15"
+	}
+}
