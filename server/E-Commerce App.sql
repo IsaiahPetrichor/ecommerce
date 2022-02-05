@@ -27,17 +27,6 @@ CREATE TABLE user_payment (
   expires date NOT NULL
 );
 
-CREATE TABLE product (
-  id integer PRIMARY KEY,
-  name varchar NOT NULL,
-  description text NOT NULL,
-  SKU varchar(40) NOT NULL,
-  category_id integer REFERENCES product_category(id) NOT NULL,
-  inventory_id integer REFERENCES product_inventory(id) NOT NULL,
-  price decimal NOT NULL,
-  created_on timestamp NOT NULL
-);
-
 CREATE TABLE product_category (
   id integer PRIMARY KEY,
   name varchar NOT NULL,
@@ -49,6 +38,19 @@ CREATE TABLE product_inventory (
   quantity integer NOT NULL,
   updated timestamp NOT NULL
 );
+
+CREATE TABLE product (
+  id integer PRIMARY KEY,
+  name varchar NOT NULL,
+  description text NOT NULL,
+  SKU varchar(40) NOT NULL,
+  category_id integer REFERENCES product_category(id) NOT NULL,
+  inventory_id integer REFERENCES product_inventory(id) NOT NULL,
+  price decimal NOT NULL,
+  created_on timestamp NOT NULL
+);
+
+
 
 CREATE TABLE order_details (
   id integer PRIMARY KEY,
