@@ -50,8 +50,6 @@ CREATE TABLE product (
   created_on timestamp NOT NULL
 );
 
-
-
 CREATE TABLE order_details (
   id integer PRIMARY KEY,
   user_id integer REFERENCES users(id) NOT NULL,
