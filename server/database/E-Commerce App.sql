@@ -4,7 +4,7 @@ CREATE TABLE users(
   last_name varchar(32) NOT NULL,
   email varchar(60) NOT NULL,
   password varchar(40) NOT NULL,
-  phone integer,
+  phone varchar(10),
   created_on timestamp,
   UNIQUE(email)
 );
