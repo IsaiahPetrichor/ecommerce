@@ -1,5 +1,6 @@
 import express from 'express';
 const app = express();
+import bodyParser from 'body-parser';
 const PORT = process.env.port || 5000;
 
 const timeMiddleware = (req, res, next) => {
@@ -7,6 +8,7 @@ const timeMiddleware = (req, res, next) => {
 	next();
 };
 app.use(timeMiddleware);
+app.use(bodyParser.urlencoded({ extended: false }));
 
 import userRouter from './api/user.js';
 app.use('/api/users', userRouter);

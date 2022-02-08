@@ -1,5 +1,5 @@
 CREATE TABLE users(
-	id integer PRIMARY KEY,
+	id uuid PRIMARY KEY,
   first_name varchar(32) NOT NULL,
   last_name varchar(32) NOT NULL,
   email varchar(60) NOT NULL,
@@ -10,7 +10,7 @@ CREATE TABLE users(
 );
 
 CREATE TABLE user_address (
-  user_id integer PRIMARY KEY REFERENCES users(id),
+  user_id uuid PRIMARY KEY REFERENCES users(id),
   line_1 varchar NOT NULL,
   line_2 varchar,
   city varchar NOT NULL,
@@ -19,7 +19,7 @@ CREATE TABLE user_address (
 );
 
 CREATE TABLE user_payment (
-  id integer PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   user_id integer REFERENCES users(id) NOT NULL,
   type varchar NOT NULL,
   provider varchar NOT NULL,
@@ -28,19 +28,19 @@ CREATE TABLE user_payment (
 );
 
 CREATE TABLE product_category (
-  id integer PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   name varchar NOT NULL,
   description text NOT NULL
 );
 
 CREATE TABLE product_inventory (
-  id integer PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   quantity integer NOT NULL,
   updated timestamp NOT NULL
 );
 
 CREATE TABLE product (
-  id integer PRIMARY KEY,
+  id uuid PRIMARY KEY,
   name varchar NOT NULL,
   description text NOT NULL,
   SKU varchar(40) NOT NULL,
@@ -51,8 +51,8 @@ CREATE TABLE product (
 );
 
 CREATE TABLE order_details (
-  id integer PRIMARY KEY,
-  user_id integer REFERENCES users(id) NOT NULL,
+  id uuid PRIMARY KEY,
+  user_id uuid REFERENCES users(id) NOT NULL,
   payment_id integer REFERENCES user_payment(id) NOT NULL,
   payment_status varchar NOT NULL,
   total decimal NOT NULL,
@@ -60,21 +60,21 @@ CREATE TABLE order_details (
 );
 
 CREATE TABLE order_items (
-  id integer PRIMARY KEY,
-  order_id integer REFERENCES order_details(id) NOT NULL,
-  product_id integer REFERENCES product(id) NOT NULL,
+  id uuid PRIMARY KEY,
+  order_id uuid REFERENCES order_details(id) NOT NULL,
+  product_id uuid REFERENCES product(id) NOT NULL,
   quantity integer NOT NULL
 );
 
 CREATE TABLE cart_session (
-  id integer PRIMARY KEY,
-  user_id integer REFERENCES users(id) NOT NULL,
+  id uuid PRIMARY KEY,
+  user_id uuid REFERENCES users(id) NOT NULL,
   total decimal NOT NULL
 );
 
 CREATE TABLE cart_item (
-  id integer PRIMARY KEY,
-  cart_session_id integer REFERENCES cart_session(id) NOT NULL,
-  product_id integer REFERENCES product(id) NOT NULL,
+  id uuid PRIMARY KEY,
+  cart_session_id uuid REFERENCES cart_session(id) NOT NULL,
+  product_id uuid REFERENCES product(id) NOT NULL,
   quantity integer NOT NULL
 );
