@@ -22,6 +22,12 @@ app.use('/api/orders', orderRouter);
 import cartRouter from './api/cart.js';
 app.use('/api/cart', cartRouter);
 
+import categoryRouter from './api/category.js';
+app.use('/api/categories', categoryRouter);
+
+import inventoryRouter from './api/inventory.js';
+app.use('/api/inventory', inventoryRouter);
+
 app.listen(PORT, () => {
 	console.log(`Server running on port ${PORT}...`);
 });
