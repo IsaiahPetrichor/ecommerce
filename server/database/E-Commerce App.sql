@@ -19,8 +19,8 @@ CREATE TABLE user_address (
 );
 
 CREATE TABLE user_payment (
-  id SERIAL PRIMARY KEY,
-  user_id integer REFERENCES users(id) NOT NULL,
+  id uuid PRIMARY KEY,
+  user_id uuid REFERENCES users(id) NOT NULL,
   type varchar NOT NULL,
   provider varchar NOT NULL,
   card_number integer NOT NULL,
@@ -28,15 +28,9 @@ CREATE TABLE user_payment (
 );
 
 CREATE TABLE product_category (
-  id SERIAL PRIMARY KEY,
+  id uuid PRIMARY KEY,
   name varchar NOT NULL,
   description text NOT NULL
-);
-
-CREATE TABLE product_inventory (
-  id SERIAL PRIMARY KEY,
-  quantity integer NOT NULL,
-  updated timestamp NOT NULL
 );
 
 CREATE TABLE product (
@@ -44,22 +38,27 @@ CREATE TABLE product (
   name varchar NOT NULL,
   description text NOT NULL,
   SKU varchar(40) NOT NULL,
-  category_id integer REFERENCES product_category(id) NOT NULL,
-  inventory_id integer REFERENCES product_inventory(id) NOT NULL,
+  category_id uuid REFERENCES product_category(id) NOT NULL,
   price decimal NOT NULL,
   created_on timestamp NOT NULL
+);
+
+CREATE TABLE product_inventory (
+  product_id uuid PRIMARY KEY REFERENCES product(id),
+  quantity integer NOT NULL,
+  updated timestamp NOT NULL
 );
 
 CREATE TABLE order_details (
   id uuid PRIMARY KEY,
   user_id uuid REFERENCES users(id) NOT NULL,
-  payment_id integer REFERENCES user_payment(id) NOT NULL,
+  payment_id uuid REFERENCES user_payment(id) NOT NULL,
   payment_status varchar NOT NULL,
   total decimal NOT NULL,
   date date NOT NULL
 );
 
-CREATE TABLE order_items (
+CREATE TABLE order_item (
   id uuid PRIMARY KEY,
   order_id uuid REFERENCES order_details(id) NOT NULL,
   product_id uuid REFERENCES product(id) NOT NULL,

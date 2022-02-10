@@ -34,8 +34,8 @@ userPayment.get('/:id', async (req, res, next) => {
 userPayment.post('/', async (req, res, next) => {
 	const { type, provider, card_number, expiration, user_id } = req.body;
 	const newPayment = await pool.query(
-		'INSERT INTO user_payment VALUES ($1, $2, $3, $4, $5, $6) RETURNING *',
-		[type, provider, card_number, expiration, user_id, uuidv4()]
+		'INSERT INTO user_payment VALUES ($1, $2, $3, $4, $5) RETURNING *',
+		[uuidv4(), user_id, type, provider, card_number, expiration]
 	);
 	res.status(201).json(newPayment.rows[0]);
 });

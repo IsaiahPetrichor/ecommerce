@@ -25,7 +25,7 @@ user.post('/', async (req, res, next) => {
 	const { first_name, last_name, email, password, phone } = req.body;
 	const newUser = await pool.query(
 		'INSERT INTO users VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
-		[first_name, last_name, email, password, req.date, phone, uuidv4()]
+		[uuidv4(), first_name, last_name, email, password, req.date, phone]
 	);
 	res.status(201).json(newUser.rows[0]);
 });
