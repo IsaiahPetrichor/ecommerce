@@ -38,7 +38,7 @@ product.post('/', async (req, res, next) => {
 		const { name, description, sku, category_id, price } = req.body;
 		const newProduct = await pool.query(
 			'INSERT INTO product VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
-			[name, description, sku, price, req.date, uuidv4(), category_id]
+			[uuidv4(), name, description, sku, category_id, price, req.date]
 		);
 		res.status(201).json(newProduct.rows[0]);
 	} catch (e) {

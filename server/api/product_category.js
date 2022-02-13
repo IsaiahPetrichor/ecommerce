@@ -39,7 +39,7 @@ category.post('/', async (req, res, next) => {
 		const { name, description } = req.body;
 		const newcategory = await pool.query(
 			'INSERT INTO product_category VALUES ($1, $2, $3) RETURNING *',
-			[name, description, uuidv4()]
+			[uuidv4(), name, description]
 		);
 		res.status(201).json(newcategory.rows[0]);
 	} catch (e) {

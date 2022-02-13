@@ -15,7 +15,7 @@ inventory.get('/', async (req, res, next) => {
 	}
 });
 
-// get a single inventory by uuid
+// get product inventory by uuid
 inventory.get('/:id', async (req, res, next) => {
 	try {
 		const { id } = req.params;
@@ -39,7 +39,7 @@ inventory.post('/', async (req, res, next) => {
 		const { quantity, product_id } = req.body;
 		const newInventory = await pool.query(
 			'INSERT INTO product_inventory VALUES ($1, $2, $3) RETURNING *',
-			[quantity, req.date, product_id]
+			[product_id, quantity, req.date]
 		);
 		res.status(201).json(newInventory.rows[0]);
 	} catch (e) {
