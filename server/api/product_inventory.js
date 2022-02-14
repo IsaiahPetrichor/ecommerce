@@ -1,5 +1,4 @@
 import pool from '../database/pool.js';
-import { v4 as uuidv4 } from 'uuid';
 import format from 'pg-format';
 import { Router } from 'express';
 const inventory = Router();
