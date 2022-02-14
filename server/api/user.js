@@ -28,7 +28,7 @@ user.post('/', async (req, res, next) => {
 	await bcrypt.hash(password, saltRounds, async (err, hash) => {
 		const newUser = await pool.query(
 			'INSERT INTO users VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
-			[uuidv4(), first_name, last_name, email, hash, req.date, phone]
+			[uuidv4(), first_name, last_name, email, hash, phone, req.date]
 		);
 		res.status(201).json(newUser.rows[0]);
 	});
@@ -50,8 +50,13 @@ user.put('/:id', async (req, res, next) => {
 
 user.delete('/:id', async (req, res, next) => {
 	const { id } = req.params;
-	pool.query('DELETE FROM users WHERE id = $1', [id]);
-	res.sendStatus(204);
+	pool.query('DELETE FROM users WHERE id = $1', [id], (err, result) => {
+		if (err) {
+			console.log(err.message);
+		} else {
+			res.send(result);
+		}
+	});
 });
 
 export default user;
