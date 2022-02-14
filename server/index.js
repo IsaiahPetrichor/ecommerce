@@ -6,20 +6,9 @@ import { timeMiddleware } from './custom_middleware.js';
 
 const PORT = process.env.port || 5000;
 
-// middleware for timestamps
 app.use(timeMiddleware);
-// body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
-// error handler middleware
-app.use(errorHandler({ log: errorNotification }));
-function errorNotification(err, str, req) {
-	let title = 'Error in ' + req.method + ' ' + req.url;
-
-	notifier.notify({
-		title: title,
-		message: str,
-	});
-}
+//app.use(errorHandler);
 
 // User Routes
 import userRouter from './api/user.js';
