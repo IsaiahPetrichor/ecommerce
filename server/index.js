@@ -1,7 +1,8 @@
 import express from 'express';
 const app = express();
 import bodyParser from 'body-parser';
-import { timeMiddleware, errorHandler } from './custom_middleware.js';
+import errorHandler from 'errorhandler';
+import { timeMiddleware } from './custom_middleware.js';
 
 const PORT = process.env.port || 5000;
 
@@ -10,7 +11,15 @@ app.use(timeMiddleware);
 // body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 // error handler middleware
-app.use(errorHandler);
+app.use(errorHandler({ log: errorNotification }));
+function errorNotification(err, str, req) {
+	let title = 'Error in ' + req.method + ' ' + req.url;
+
+	notifier.notify({
+		title: title,
+		message: str,
+	});
+}
 
 // User Routes
 import userRouter from './api/user.js';
