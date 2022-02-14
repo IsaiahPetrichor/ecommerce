@@ -1,6 +1,8 @@
 import pool from '../database/pool.js';
 import { v4 as uuidv4 } from 'uuid';
 import format from 'pg-format';
+import bcrypt from 'bcrypt';
+const saltRounds = 10;
 import { Router } from 'express';
 const user = Router();
 
@@ -23,11 +25,13 @@ user.get('/:id', async (req, res, next) => {
 
 user.post('/', async (req, res, next) => {
 	const { first_name, last_name, email, password, phone } = req.body;
-	const newUser = await pool.query(
-		'INSERT INTO users VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
-		[uuidv4(), first_name, last_name, email, password, req.date, phone]
-	);
-	res.status(201).json(newUser.rows[0]);
+	await bcrypt.hash(password, saltRounds, async (err, hash) => {
+		const newUser = await pool.query(
+			'INSERT INTO users VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
+			[uuidv4(), first_name, last_name, email, hash, req.date, phone]
+		);
+		res.status(201).json(newUser.rows[0]);
+	});
 });
 
 user.put('/:id', async (req, res, next) => {
