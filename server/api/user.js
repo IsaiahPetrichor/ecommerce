@@ -7,30 +7,33 @@ import { Router } from 'express';
 const user = Router();
 
 // get all users
-user.get('/', async (req, res, next) => {
-	try {
-		const users = await pool.query('SELECT * FROM users');
-		res.send(users.rows);
-	} catch (e) {
-		console.log(e.stack);
-		res.sendStatus(500);
-	}
+user.get('/', (req, res, next) => {
+	pool.query('SELECT * FROM users', (err, result) => {
+		if (err) {
+			res.status(500).send('Database Error!');
+			console.log(err.message);
+			next();
+		} else {
+			res.send(result.rows);
+		}
+	});
 });
 
 // get a single user by uuid
 user.get('/:id', async (req, res, next) => {
-	try {
-		const { id } = req.params;
-		const user = await pool.query('SELECT * FROM users WHERE id = $1', [id]);
-		if (user.rows[0]) {
-			res.send(user.rows[0]);
+	const { id } = req.params;
+	pool.query('SELECT * FROM users WHERE id = $1', [id], (err, result) => {
+		if (err) {
+			res.status(500).send('Database Error!');
+			console.log(err.message);
+			next();
+		}
+		if (result.rows[0]) {
+			res.send(result.rows[0]);
 		} else {
 			res.status(404).send();
 		}
-	} catch (e) {
-		console.log(e.stack);
-		res.sendStatus(500);
-	}
+	});
 });
 
 user.post('/', async (req, res, next) => {
@@ -54,20 +57,43 @@ user.post('/', async (req, res, next) => {
 user.put('/:id', async (req, res, next) => {
 	const { id } = req.params;
 	const body = req.body;
-	// for loop to only send updates for the filled parameters
-	for (let key in body) {
-		if (body[key] !== '') {
-			// uses pg-format in order to allow dynamic queries without risk of SQL injection
-			const sql = format('UPDATE users SET %I = $1 WHERE id = $2', key);
-			await pool.query(sql, [body[key], id], (err, result) => {
-				if (err) {
-					res.status(500).send('Database Error');
-					console.log(err.message);
+
+	const user = await pool.query('SELECT * FROM users WHERE id = $1', [id]);
+	if (user.rows[0]) {
+		// for loop to only send updates for the filled parameters
+		for (let key in body) {
+			if (body[key] !== '') {
+				if (key === 'password') {
+					await bcrypt.hash(body[key], saltRounds, (err, hash) => {
+						pool.query(
+							'UPDATE users SET password = $1 WHERE id = $2',
+							[hash, id],
+							(err, result) => {
+								if (err) {
+									res.status(500).send('Database Error');
+									console.log(err.message);
+									next();
+								}
+							}
+						);
+					});
+				} else {
+					// uses pg-format in order to allow dynamic queries without risk of SQL injection
+					const sql = format('UPDATE users SET %I = $1 WHERE id = $2', key);
+					await pool.query(sql, [body[key], id], (err, result) => {
+						if (err) {
+							res.status(500).send('Database Error');
+							console.log(err.message);
+							next();
+						}
+					});
 				}
-			});
+			}
 		}
+		res.status(201).send('User updated...');
+	} else {
+		res.status(404).send();
 	}
-	res.status(201).send('User updated');
 });
 
 user.delete('/:id', async (req, res, next) => {
@@ -76,7 +102,7 @@ user.delete('/:id', async (req, res, next) => {
 		if (err) {
 			console.log(err.message);
 		} else {
-			res.send(result);
+			res.sendStatus(204);
 		}
 	});
 });
