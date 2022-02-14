@@ -47,7 +47,11 @@ user.post('/', async (req, res, next) => {
 					console.log(err.message);
 					res.status(400).send('Bad request...');
 				} else {
-					res.status(201).json(result.rows[0]);
+					res
+						.status(201)
+						.send(
+							`User created: ${result.rows[0].first_name}\n Email: ${result.rows[0].email}`
+						);
 				}
 			}
 		);

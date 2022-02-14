@@ -8,12 +8,20 @@ const userPayment = Router();
 userPayment.use(authMiddleware);
 
 // get all payments for a user
-userPayment.get('/', async (req, res, next) => {
-	const payments = await pool.query(
+userPayment.get('/', (req, res, next) => {
+	pool.query(
 		'SELECT * FROM user_payment WHERE user_id = $1',
-		[user_id]
+		[user_id],
+		(err, result) => {
+			if (err) {
+				res.status(500).send('Database Error!');
+				console.log(err.message);
+				next();
+			} else {
+				res.send(result.rows);
+			}
+		}
 	);
-	res.send(payments.rows);
 });
 
 // get a single payment for a user
