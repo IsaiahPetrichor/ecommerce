@@ -1,14 +1,15 @@
 import express from 'express';
 const app = express();
 import bodyParser from 'body-parser';
-import errorHandler from 'errorhandler';
 import { timeMiddleware } from './custom_middleware.js';
+import swaggerUi from 'swagger-ui-express';
+import swaggerDocument from './swagger.js';
 
 const PORT = process.env.port || 5000;
 
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use(timeMiddleware);
 app.use(bodyParser.urlencoded({ extended: false }));
-//app.use(errorHandler);
 
 // User Routes
 import userRouter from './api/user.js';
