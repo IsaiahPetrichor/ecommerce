@@ -11,6 +11,14 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use(timeMiddleware);
 app.use(bodyParser.urlencoded({ extended: false }));
 
+// Registration Route
+import registerRouter from './api/register.js';
+app.use('/api/register', registerRouter);
+
+// Login Route
+import loginRouter from './api/login.js';
+app.use('/api/login', loginRouter);
+
 // User Routes
 import userRouter from './api/user.js';
 app.use('/api/users', userRouter);

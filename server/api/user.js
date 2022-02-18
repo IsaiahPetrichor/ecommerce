@@ -1,12 +1,11 @@
 import pool from '../database/pool.js';
-import { v4 as uuidv4 } from 'uuid';
 import format from 'pg-format';
 import bcrypt from 'bcrypt';
 const saltRounds = 10;
 import { Router } from 'express';
 const user = Router();
 
-// get all users
+// get all users (admin only)
 user.get('/', (req, res, next) => {
 	pool.query('SELECT * FROM users', (err, result) => {
 		if (err) {
@@ -19,7 +18,7 @@ user.get('/', (req, res, next) => {
 	});
 });
 
-// get a single user by uuid
+// get a single user by uuid (if user, only some of their own data)
 user.get('/:id', async (req, res, next) => {
 	const { id } = req.params;
 	pool.query('SELECT * FROM users WHERE id = $1', [id], (err, result) => {
@@ -36,28 +35,7 @@ user.get('/:id', async (req, res, next) => {
 	});
 });
 
-user.post('/', async (req, res, next) => {
-	const { first_name, last_name, email, password, phone } = req.body;
-	await bcrypt.hash(password, saltRounds, (err, hash) => {
-		pool.query(
-			'INSERT INTO users VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
-			[uuidv4(), first_name, last_name, email, hash, phone, req.date],
-			(err, result) => {
-				if (err) {
-					console.log(err.message);
-					res.status(400).send('Bad request...');
-				} else {
-					res
-						.status(201)
-						.send(
-							`User created: ${result.rows[0].first_name}\n Email: ${result.rows[0].email}`
-						);
-				}
-			}
-		);
-	});
-});
-
+// update user (user only)
 user.put('/:id', async (req, res, next) => {
 	const { id } = req.params;
 	const body = req.body;
@@ -100,6 +78,7 @@ user.put('/:id', async (req, res, next) => {
 	}
 });
 
+// delete user (admin / user for own account)
 user.delete('/:id', async (req, res, next) => {
 	const { id } = req.params;
 	pool.query('DELETE FROM users WHERE id = $1', [id], (err, result) => {
