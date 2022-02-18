@@ -11,6 +11,8 @@ export default {
 		},
 	],
 	paths: {
+		'/api/login': {},
+		'/api/register': {},
 		'/api/users': {},
 		'/api/users/address': {},
 		'/api/users/payment': {},
