@@ -1,14 +1,14 @@
 import express from 'express';
 const app = express();
 import bodyParser from 'body-parser';
-import { timeMiddleware } from './custom_middleware.js';
+import { time } from './util/time.js';
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from './swagger.js';
 
 const PORT = process.env.port || 5000;
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-app.use(timeMiddleware);
+app.use(time);
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Registration Route

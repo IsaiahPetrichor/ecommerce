@@ -1,11 +1,8 @@
 import pool from '../database/pool.js';
 import { v4 as uuidv4 } from 'uuid';
 import format from 'pg-format';
-import { authMiddleware } from '../custom_middleware.js';
 import { Router } from 'express';
 const userPayment = Router();
-
-userPayment.use(authMiddleware);
 
 // get all payments for a user
 userPayment.get('/', (req, res, next) => {
