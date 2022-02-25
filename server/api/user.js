@@ -1,9 +1,10 @@
 import pool from '../database/pool.js';
 import format from 'pg-format';
 import bcrypt from 'bcrypt';
-const saltRounds = 10;
+import auth from '../util/auth.js';
 import { Router } from 'express';
 const user = Router();
+const saltRounds = 10;
 
 // get all users (admin only)
 user.get('/', (req, res, next) => {
@@ -36,7 +37,7 @@ user.get('/:id', async (req, res, next) => {
 });
 
 // update user (user only)
-user.put('/:id', async (req, res, next) => {
+user.put('/:id', auth, async (req, res, next) => {
 	const { id } = req.params;
 	const body = req.body;
 
@@ -79,7 +80,7 @@ user.put('/:id', async (req, res, next) => {
 });
 
 // delete user (admin / user for own account)
-user.delete('/:id', async (req, res, next) => {
+user.delete('/:id', auth, async (req, res, next) => {
 	const { id } = req.params;
 	pool.query('DELETE FROM users WHERE id = $1', [id], (err, result) => {
 		if (err) {

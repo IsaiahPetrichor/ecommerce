@@ -4,8 +4,10 @@ import bcrypt from 'bcrypt';
 const saltRounds = 10;
 import { Router } from 'express';
 const register = Router();
+import { registerValidator } from '../util/validator.js';
+import jwtGenerator from '../util/generator.js';
 
-register.post('/', async (req, res, next) => {
+register.post('/', registerValidator, async (req, res, next) => {
 	const { first_name, last_name, email, password, phone } = req.body;
 
 	try {
@@ -37,11 +39,9 @@ register.post('/', async (req, res, next) => {
 					console.log(err.message);
 					res.status(400).send('Bad request...');
 				} else {
-					res
-						.status(201)
-						.send(
-							`User created: ${result.rows[0].first_name}\nEmail: ${result.rows[0].email}`
-						);
+					const jwtToken = jwtGenerator(result.rows[0].id);
+
+					res.status(201).json({ jwtToken });
 				}
 			}
 		);
