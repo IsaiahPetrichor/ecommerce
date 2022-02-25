@@ -111,7 +111,10 @@ export default {
 						description: 'JSON Web Token',
 						content: {
 							'application/json': {
-								example: { jwtToken: 'jwtToken' },
+								example: {
+									jwtToken:
+										'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiMDJhNmUwYWQtNGU5NC00MTJiLWJhOWItYjc3MTUxZTQ0MmJjIn0sImlhdCI6MTY0NTc2NjE4NCwiZXhwIjoxNjQ1NzY5Nzg0fQ.LasSvIgSY3pD_dWOYhOAa2GaSdAsdYWVUwNpZqHum0w',
+								},
 							},
 						},
 					},
