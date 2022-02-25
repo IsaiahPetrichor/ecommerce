@@ -4,24 +4,150 @@ export default {
 		title: 'Sample E-Commerce Application API',
 		description: 'Alpha version of an e-commerce server',
 		version: '1.0.0',
+		contact: {
+			name: 'Isaiah Petrichor',
+			email: 'petrichorwebdev@gmail.com',
+		},
 	},
 	servers: [
 		{
 			url: '/api',
+			description: 'Localhost development server',
 		},
 	],
 	paths: {
-		'/api/login': {},
-		'/api/register': {},
-		'/api/users': {},
-		'/api/users/address': {},
-		'/api/users/payment': {},
-		'/api/products': {},
-		'/api/categories': {},
-		'/api/inventory': {},
-		'/api/cart': {},
-		'/api/cart/items': {},
-		'/api/orders': {},
-		'/api/orders/items': {},
+		'/api/login': {
+			post: {
+				summary: 'Login to the website/api',
+				description: 'Returns json web token for later authentication',
+				requestBody: {
+					description: 'Takes users email and password',
+					content: {
+						'application/x-www-form-urlencoded': {
+							schema: {
+								type: 'object',
+								properties: {
+									email: {
+										description: 'User email',
+										type: 'string',
+									},
+									password: {
+										description: 'User password',
+										type: 'string',
+									},
+								},
+							},
+						},
+					},
+					required: true,
+				},
+				responses: {
+					200: {
+						description: 'JSON Web Token',
+						content: {
+							'application/json': {
+								example: { jwtToken: 'jwtToken' },
+							},
+						},
+					},
+					401: {
+						description: 'Invalid credentials given',
+						content: {
+							'text/plain': {
+								example: 'Invalid Email or Password',
+							},
+						},
+					},
+					500: {
+						description: 'Returns if there is a server error',
+						content: {
+							'text/plain': {
+								example: 'Server error',
+							},
+						},
+					},
+				},
+			},
+		},
+		'/api/register': {
+			post: {
+				summary: 'Register to the website/api',
+				description: 'Adds user to the database and returns JSON Web Token',
+				requestBody: {
+					description: 'Takes user info',
+					content: {
+						'application/x-www-form-urlencoded': {
+							schema: {
+								type: 'object',
+								properties: {
+									first_name: {
+										description: 'User first name',
+										type: 'string',
+									},
+									last_name: {
+										description: 'User last name',
+										type: 'string',
+									},
+									email: {
+										description: 'User email',
+										type: 'string',
+									},
+									password: {
+										description: 'User password',
+										type: 'string',
+									},
+									phone: {
+										description: 'User phone number',
+										type: 'string',
+									},
+								},
+							},
+						},
+					},
+					required: true,
+				},
+				responses: {
+					201: {
+						description: 'JSON Web Token',
+						content: {
+							'application/json': {
+								example: { jwtToken: 'jwtToken' },
+							},
+						},
+					},
+					400: {
+						description: 'Bad request sent',
+						content: {
+							'text/plain': {
+								examples: {
+									'Bad password': {
+										value: 'Password too short!',
+									},
+									'Database error': {
+										value: 'Bad request...',
+									},
+								},
+							},
+						},
+					},
+					401: {
+						description: 'Returns if email input is already used',
+						content: {
+							'text/plain': {
+								example: 'Email already in use!',
+							},
+						},
+					},
+					500: {
+						description: 'Returns if there is a server error',
+						content: {
+							'text/plain': {
+								example: 'Server error',
+							},
+						},
+					},
+				},
+			},
+		},
 	},
 };
