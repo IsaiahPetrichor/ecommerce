@@ -6,6 +6,7 @@ import App from './App';
 import Cart from './order/cart';
 import Products from './products/products';
 import Profile from './profile/profile';
+import Login from './profile/login';
 
 ReactDOM.render(
 	<React.StrictMode>
@@ -15,6 +16,7 @@ ReactDOM.render(
 					<Route path="products" element={<Products />} />
 					<Route path="cart" element={<Cart />} />
 					<Route path="profile" element={<Profile />} />
+					<Route path="login" element={<Login />} />
 					<Route
 						path="*"
 						element={

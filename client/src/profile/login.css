@@ -1,0 +1,31 @@
+main {
+	margin: 20px;
+}
+
+h2 {
+	width: 100%;
+	text-align: center;
+}
+
+hr {
+	width: 80%;
+	margin: 10px auto;
+	height: min-content;
+	text-align: center;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+}
+
+input,
+label {
+	width: 200px;
+	margin: 2px auto;
+}
+
+button {
+	width: fit-content;
+	margin: 10px auto;
+}
