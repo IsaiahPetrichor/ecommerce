@@ -1,5 +1,10 @@
 main {
-	margin: 20px;
+	margin: 20px auto;
+	background-color: #e6e6e6;
+	border-radius: 5px;
+	box-shadow: 2px 2px 4px rgb(117, 117, 117);
+	max-width: 600px;
+	justify-self: center;
 }
 
 h2 {
@@ -17,6 +22,7 @@ hr {
 form {
 	display: flex;
 	flex-direction: column;
+	padding-top: 20px;
 }
 
 input,
@@ -28,4 +34,25 @@ label {
 button {
 	width: fit-content;
 	margin: 10px auto;
+	padding: 5px 10px;
+	font-size: 1.25rem;
+	background-color: #5a9bd8;
+	border-radius: 3px;
+	border: 1px solid grey;
+}
+
+button:hover {
+	background-color: #c7e4ff;
+	cursor: pointer;
+	border: 1px solid rgb(206, 206, 206);
+}
+
+button:active {
+	background-color: #617d97;
+	color: #1d2022;
+}
+
+.register {
+	text-align: center;
+	padding: 5px;
 }

@@ -1,8 +1,9 @@
 import React, { FC, useState } from 'react';
+import { Link } from 'react-router-dom';
 import './login.css';
 
 const Login: FC = () => {
-	const [username, setUsername] = useState('');
+	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 
 	const handleSubmit = (e: React.SyntheticEvent) => {
@@ -14,13 +15,13 @@ const Login: FC = () => {
 			<h2>Login</h2>
 			<hr />
 			<form onSubmit={handleSubmit}>
-				<label htmlFor="username">Username: </label>
+				<label htmlFor="email">Email: </label>
 				<input
-					type="username"
-					name="username"
-					value={username}
-					onChange={(e) => setUsername(e.currentTarget.value)}
-					placeholder="username"
+					type="email"
+					name="email"
+					value={email}
+					onChange={(e) => setEmail(e.currentTarget.value)}
+					placeholder="email"
 				/>
 				<label htmlFor="password">Password: </label>
 				<input
@@ -32,6 +33,9 @@ const Login: FC = () => {
 				/>
 				<button type="submit">Submit</button>
 			</form>
+			<p className="register">
+				<Link to="/sign-up">Don't have an account? Sign Up here!</Link>
+			</p>
 		</main>
 	);
 };

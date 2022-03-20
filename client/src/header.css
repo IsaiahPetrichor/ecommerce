@@ -2,20 +2,24 @@ header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 0px 10px;
+	padding: 5px 10px;
 	font-family: Arial, Helvetica, sans-serif;
-	background-color: #ddd;
+	box-shadow: 1px 1px 3px rgb(172, 172, 172);
 }
 
-a {
+h1 {
+	color: #358;
+}
+
+header a {
 	color: black;
 	text-decoration: none;
 	font-size: 1.25rem;
 	padding: 5px 8px;
 }
 
-a:hover {
-	color: #cc2200;
+header a:hover {
+	color: #006bb3;
 	background-color: #00000044;
 	border-radius: 2px;
 }

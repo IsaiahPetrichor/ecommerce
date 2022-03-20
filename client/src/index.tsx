@@ -7,6 +7,7 @@ import Cart from './order/cart';
 import Products from './products/products';
 import Profile from './profile/profile';
 import Login from './profile/login';
+import Signup from './profile/signup';
 
 ReactDOM.render(
 	<React.StrictMode>
@@ -17,6 +18,7 @@ ReactDOM.render(
 					<Route path="cart" element={<Cart />} />
 					<Route path="profile" element={<Profile />} />
 					<Route path="login" element={<Login />} />
+					<Route path="sign-up" element={<Signup />} />
 					<Route
 						path="*"
 						element={
