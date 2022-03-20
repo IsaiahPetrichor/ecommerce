@@ -36,6 +36,27 @@ user.get('/:id', async (req, res, next) => {
 	});
 });
 
+// get user by email
+user.get('/email/:email', (req, res, next) => {
+	const { email } = req.params;
+	pool.query(
+		'SELECT email FROM users WHERE email = $1',
+		[email],
+		(err, result) => {
+			if (err) {
+				res.status(500).send('Server Error...');
+				console.log(err.message);
+				next();
+			}
+			if (result.rows[0]) {
+				res.json({ exists: true });
+			} else {
+				res.json({ exists: false });
+			}
+		}
+	);
+});
+
 // update user (user only)
 user.put('/:id', auth, async (req, res, next) => {
 	const { id } = req.params;
