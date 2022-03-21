@@ -16,20 +16,20 @@ register.post('/', registerValidator, async (req, res, next) => {
 		]);
 
 		if (user.rows.length > 0) {
-			return res.status(401).send('Email already in use!');
+			return res.status(401).json('Email already in use!');
 		}
 	} catch (e) {
 		console.log(err.message);
-		res.status(500).send('Server error');
+		res.status(500).json('Server error');
 	}
 
 	if (password.length < 5) {
-		return res.status(400).send('Password too short!');
+		return res.status(400).json('Password too short!');
 	}
 
 	bcrypt.hash(password, saltRounds, (err, hash) => {
 		if (err) {
-			return res.status(500).send('Server error');
+			return res.status(500).json('Server error');
 		}
 		pool.query(
 			'INSERT INTO users VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
@@ -37,7 +37,7 @@ register.post('/', registerValidator, async (req, res, next) => {
 			(err, result) => {
 				if (err) {
 					console.log(err.message);
-					res.status(400).send('Bad request...');
+					res.status(400).json('Bad request...');
 				} else {
 					const jwtToken = jwtGenerator(result.rows[0].id);
 

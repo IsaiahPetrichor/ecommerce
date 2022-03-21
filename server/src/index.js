@@ -4,12 +4,14 @@ import bodyParser from 'body-parser';
 import { time } from './util/time.js';
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from './swagger.js';
+import cors from 'cors';
 
 const PORT = process.env.port || 5000;
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use(time);
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(cors());
 
 // Registration Route
 import registerRouter from './api/register.js';
