@@ -1,5 +1,6 @@
-import { FC, useState } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import './signup.css';
 
 const Signup: FC = () => {
 	const [email, setEmail] = useState('');
@@ -7,15 +8,62 @@ const Signup: FC = () => {
 	const [last, setLast] = useState('');
 	const [password, setPassword] = useState('');
 	const [verifyPass, setVerifyPass] = useState('');
+	const [passMatch, setPassMatch] = useState(false);
+	const [error, setError] = useState('');
+
+	useEffect(() => {
+		setError('');
+
+		if (password === verifyPass) {
+			setPassMatch(true);
+		} else {
+			setPassMatch(false);
+		}
+	}, [email, first, last, password, verifyPass]);
 
 	const handleSubmit = (e: React.SyntheticEvent) => {
 		e.preventDefault();
+
+		if (!passMatch) {
+			setError('Passwords do not match!');
+			return;
+		}
+
+		const url = 'http://localhost:5000/api/register/';
+		const options = {
+			method: 'POST',
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				email: email,
+				first_name: first,
+				last_name: last,
+				password: password,
+			}),
+		};
+
+		fetch(url, options)
+			.then((response) => response.json())
+			.then((data) => {
+				if (typeof data === 'string') {
+					setError(data);
+				} else {
+					setError('');
+				}
+				console.log(data);
+			})
+			.catch((err) => {
+				console.log(err.message);
+			});
 	};
 
 	return (
-		<main>
+		<main className="register">
 			<h2>Sign Up</h2>
 			<hr />
+			{error && <p className="error">{error}</p>}
 			<form onSubmit={handleSubmit}>
 				<label htmlFor="email">Email: </label>
 				<input
@@ -49,7 +97,10 @@ const Signup: FC = () => {
 					type="password"
 					name="password"
 					value={password}
-					onChange={(e) => setPassword(e.currentTarget.value)}
+					onChange={(e) => {
+						setPassword(e.currentTarget.value);
+						if (password.length < 6) return;
+					}}
 					placeholder="password"
 					required
 				/>
@@ -64,7 +115,7 @@ const Signup: FC = () => {
 				/>
 				<button type="submit">Submit</button>
 			</form>
-			<p className="register">
+			<p className="register-login">
 				<Link to="/login">Already have an account? Log in here!</Link>
 			</p>
 		</main>

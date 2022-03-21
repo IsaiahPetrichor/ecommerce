@@ -11,7 +11,7 @@ const Login: FC = () => {
 	};
 
 	return (
-		<main>
+		<main className="login">
 			<h2>Login</h2>
 			<hr />
 			<form onSubmit={handleSubmit}>
@@ -33,7 +33,7 @@ const Login: FC = () => {
 				/>
 				<button type="submit">Submit</button>
 			</form>
-			<p className="register">
+			<p className="login-register">
 				<Link to="/sign-up">Don't have an account? Sign Up here!</Link>
 			</p>
 		</main>

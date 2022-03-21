@@ -1,4 +1,4 @@
-.login {
+.register {
 	margin: 20px auto;
 	padding: 10px;
 	background-color: #e6e6e6;
@@ -8,31 +8,42 @@
 	justify-self: center;
 }
 
-.login h2 {
+.register h2 {
 	width: 100%;
 	text-align: center;
 }
 
-.login hr {
+.register hr {
 	width: 80%;
 	margin: 10px auto;
 	height: min-content;
 	text-align: center;
 }
 
-.login form {
+.error {
+	position: absolute;
+	left: 56.5%;
+	padding: 5px 10px;
+	border-radius: 5px;
+	box-shadow: 1px 2px 5px #aaa;
+	background-color: rgba(175, 23, 0, 0.85);
+	font-size: 1.2rem;
+	color: white;
+}
+
+.register form {
 	display: flex;
 	flex-direction: column;
 	padding-top: 20px;
 }
 
-.login input,
-.login label {
+.register input,
+.register label {
 	width: 200px;
 	margin: 2px auto;
 }
 
-.login button {
+.register button {
 	width: fit-content;
 	margin: 10px auto;
 	padding: 5px 10px;
@@ -42,18 +53,18 @@
 	border: 1px solid grey;
 }
 
-.login button:hover {
+.register button:hover {
 	background-color: #c7e4ff;
 	cursor: pointer;
 	border: 1px solid rgb(206, 206, 206);
 }
 
-.login button:active {
+.register button:active {
 	background-color: #617d97;
 	color: #1d2022;
 }
 
-.login-register {
+.register-login {
 	text-align: center;
 	padding: 5px;
 }
