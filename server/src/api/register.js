@@ -40,8 +40,9 @@ register.post('/', registerValidator, async (req, res, next) => {
 					res.status(400).json('Bad request...');
 				} else {
 					const jwtToken = jwtGenerator(result.rows[0].id);
+					const firstName = result.rows[0].first_name;
 
-					res.status(201).json({ jwtToken });
+					res.status(201).json({ firstName, jwtToken });
 				}
 			}
 		);
