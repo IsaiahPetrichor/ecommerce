@@ -1,12 +1,11 @@
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './header.css';
+import UserContext from './utils/user-context';
 
-interface auth {
-	loggedIn: boolean;
-}
+const Header: FC = () => {
+	const loggedIn = useContext(UserContext).user;
 
-const Header: FC<auth> = ({ loggedIn }) => {
 	return (
 		<header>
 			<h1>Ecommmerce Website</h1>

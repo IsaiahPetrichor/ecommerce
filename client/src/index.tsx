@@ -8,12 +8,14 @@ import Products from './products/products';
 import Profile from './profile/profile';
 import Login from './profile/login';
 import Signup from './profile/signup';
+import Home from './home/home';
 
 ReactDOM.render(
 	<React.StrictMode>
 		<BrowserRouter>
 			<Routes>
 				<Route path="/" element={<App />}>
+					<Route index element={<Home />} />
 					<Route path="products" element={<Products />} />
 					<Route path="cart" element={<Cart />} />
 					<Route path="profile" element={<Profile />} />

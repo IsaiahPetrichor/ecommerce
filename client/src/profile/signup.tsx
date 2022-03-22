@@ -1,5 +1,6 @@
-import { FC, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { FC, useState, useEffect, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import UserContext from '../utils/user-context';
 import './signup.css';
 
 const Signup: FC = () => {
@@ -10,6 +11,9 @@ const Signup: FC = () => {
 	const [verifyPass, setVerifyPass] = useState('');
 	const [passMatch, setPassMatch] = useState(false);
 	const [error, setError] = useState('');
+
+	const context = useContext(UserContext);
+	let navigate = useNavigate();
 
 	useEffect(() => {
 		setError('');
@@ -49,10 +53,12 @@ const Signup: FC = () => {
 			.then((data) => {
 				if (typeof data === 'string') {
 					setError(data);
+					context.updateUser(false, '', '');
 				} else {
 					setError('');
+					context.updateUser(true, data.firstName, data.jwtToken);
+					navigate('/');
 				}
-				console.log(data);
 			})
 			.catch((err) => {
 				console.log(err.message);
