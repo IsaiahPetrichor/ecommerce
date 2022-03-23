@@ -3,7 +3,7 @@
 	padding: 10px;
 	background-color: #e6e6e6;
 	border-radius: 5px;
-	box-shadow: 2px 2px 4px rgb(117, 117, 117);
+	box-shadow: 0px 2px 6px rgb(129, 129, 129);
 	max-width: 600px;
 	justify-self: center;
 }
@@ -30,6 +30,7 @@
 .login label {
 	width: 200px;
 	margin: 2px auto;
+	font-size: 1rem;
 }
 
 .login button {
@@ -44,6 +45,7 @@
 
 .login button:hover {
 	background-color: #c7e4ff;
+	color: #444;
 	cursor: pointer;
 	border: 1px solid rgb(206, 206, 206);
 }
@@ -56,4 +58,14 @@
 .login-register {
 	text-align: center;
 	padding: 5px;
+}
+
+.login-register a {
+	color: #202a33;
+	text-decoration: none;
+	font-size: 1.1rem;
+}
+
+.login-register a:hover {
+	color: #617d97;
 }

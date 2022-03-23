@@ -1,10 +1,10 @@
 import { createContext } from 'react';
 
 const UserContext = createContext({
-	user: false,
+	user_id: '',
 	firstName: '',
 	jwt: '',
-	updateUser: (loggedIn: boolean, newFirst: string, newJWT: string) => {},
+	updateUser: (id: string, newFirst: string, newJWT: string) => {},
 });
 
 export default UserContext;

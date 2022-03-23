@@ -4,7 +4,8 @@ import './header.css';
 import UserContext from './utils/user-context';
 
 const Header: FC = () => {
-	const loggedIn = useContext(UserContext).user;
+	const context = useContext(UserContext);
+	const loggedIn: string = context.user_id;
 
 	return (
 		<header>
@@ -13,8 +14,8 @@ const Header: FC = () => {
 				<Link to="/">Home</Link>
 				<Link to="/products">Products</Link>
 				<Link to="/cart">Cart</Link>
-				{loggedIn ? (
-					<Link to="/profile">Profile</Link>
+				{loggedIn !== '' ? (
+					<Link to="/profile">{context.firstName}</Link>
 				) : (
 					<Link to="/login">Login</Link>
 				)}

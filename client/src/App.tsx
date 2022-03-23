@@ -5,16 +5,16 @@ import Header from './header';
 import { useState } from 'react';
 
 function App() {
-	const [user, setUser] = useState(false);
+	const [user, setUser] = useState('');
 	const [first, setFirst] = useState('');
 	const [jwt, setJwt] = useState('');
 
 	const userState = {
-		user: user,
+		user_id: user,
 		firstName: first,
 		jwt: jwt,
-		updateUser: (loggedIn: boolean, newFirst: string, newJWT: string) => {
-			setUser(loggedIn);
+		updateUser: (user_id: string, newFirst: string, newJWT: string) => {
+			setUser(user_id);
 			setFirst(newFirst);
 			setJwt(newJWT);
 		},

@@ -1,0 +1,46 @@
+.profile {
+	margin: 20px;
+}
+
+.flex {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	max-width: 1400px;
+	margin: 0 auto;
+}
+
+.profile h2 {
+	width: 100%;
+	margin-bottom: 15px;
+	font-family: 'Roboto', sans-serif;
+	font-size: 2rem;
+	font-weight: 400;
+}
+
+.profile a {
+	width: fit-content;
+	text-decoration: none;
+	border-radius: 5px;
+	padding: 10px;
+	color: black;
+}
+
+.profile a:hover {
+	background-color: rgba(152, 188, 219, 0.747);
+}
+
+.logout {
+	padding: 5px 10px;
+	margin: 10px 0px 0px 10px;
+	font-size: 1rem;
+	font-family: Helvetica, sans-serif;
+	background-color: white;
+	border-radius: 3px;
+	border: 1px solid #aaa;
+}
+
+.logout:hover {
+	cursor: pointer;
+	background-color: #cdf;
+}

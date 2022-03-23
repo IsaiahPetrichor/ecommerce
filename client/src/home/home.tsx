@@ -7,7 +7,11 @@ const Home: FC = () => {
 	return (
 		<>
 			<h2>Home</h2>
-			{context.user ? <p>Welcome {context.firstName}!</p> : <p>Welcome!</p>}
+			{context.user_id !== '' ? (
+				<p>Welcome {context.firstName}!</p>
+			) : (
+				<p>Welcome!</p>
+			)}
 		</>
 	);
 };

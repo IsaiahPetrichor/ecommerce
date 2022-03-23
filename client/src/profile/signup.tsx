@@ -53,10 +53,10 @@ const Signup: FC = () => {
 			.then((data) => {
 				if (typeof data === 'string') {
 					setError(data);
-					context.updateUser(false, '', '');
+					context.updateUser('', '', '');
 				} else {
 					setError('');
-					context.updateUser(true, data.firstName, data.jwtToken);
+					context.updateUser(data.user_id, data.firstName, data.jwtToken);
 					navigate('/');
 				}
 			})
@@ -105,7 +105,6 @@ const Signup: FC = () => {
 					value={password}
 					onChange={(e) => {
 						setPassword(e.currentTarget.value);
-						if (password.length < 6) return;
 					}}
 					placeholder="password"
 					required

@@ -32,10 +32,10 @@ const Login: FC = () => {
 			.then((data) => {
 				if (typeof data === 'string') {
 					setError(data);
-					context.updateUser(false, '', '');
+					context.updateUser('', '', '');
 				} else {
 					setError('');
-					context.updateUser(true, data.firstName, data.jwtToken);
+					context.updateUser(data.user_id, data.firstName, data.jwtToken);
 					navigate('/');
 				}
 			})
