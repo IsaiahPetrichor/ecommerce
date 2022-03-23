@@ -17,7 +17,7 @@ login.post('/', loginValidator, (req, res) => {
 				res.status(500).json('Server error');
 			} else {
 				if (response.rows.length === 0) {
-					return res.status(401).json('Invalid Email or Password');
+					return res.status(401).json('Wrong Email or Password');
 				}
 
 				const validPassword = await bcrypt.compare(
@@ -26,12 +26,13 @@ login.post('/', loginValidator, (req, res) => {
 				);
 
 				if (!validPassword) {
-					return res.status(401).json('Invalid Email or Password');
+					return res.status(401).json('Wrong Email or Password');
 				}
 
 				const jwtToken = jwtGenerator(response.rows[0].id);
 				const firstName = response.rows[0].first_name;
-				return res.json({ firstName, jwtToken });
+				const user_id = response.rows[0].id;
+				return res.json({ user_id, firstName, jwtToken });
 			}
 		}
 	);

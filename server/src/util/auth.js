@@ -11,7 +11,6 @@ export default function (req, res, next) {
 
 	try {
 		const verify = jwt.verify(token, process.env.JWTSECRET);
-
 		req.user = verify.user;
 		next();
 	} catch (e) {

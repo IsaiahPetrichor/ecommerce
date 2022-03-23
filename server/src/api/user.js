@@ -7,7 +7,7 @@ const user = Router();
 const saltRounds = 10;
 
 // get all users (admin only)
-user.get('/', (req, res, next) => {
+/* user.get('/', (req, res, next) => {
 	pool.query('SELECT * FROM users', (err, result) => {
 		if (err) {
 			res.status(500).send('Database Error!');
@@ -17,23 +17,27 @@ user.get('/', (req, res, next) => {
 			res.send(result.rows);
 		}
 	});
-});
+}); */
 
 // get a single user by uuid (if user, only some of their own data)
-user.get('/:id', async (req, res, next) => {
+user.get('/:id', auth, (req, res, next) => {
 	const { id } = req.params;
-	pool.query('SELECT * FROM users WHERE id = $1', [id], (err, result) => {
-		if (err) {
-			res.status(500).send('Database Error!');
-			console.log(err.message);
-			next();
+	pool.query(
+		'SELECT first_name, last_name, email FROM users WHERE id = $1',
+		[id],
+		(err, result) => {
+			if (err) {
+				res.status(500).send('Database Error!');
+				console.log(err.message);
+				next();
+			}
+			if (result.rows[0]) {
+				res.send({ id, ...result.rows[0] });
+			} else {
+				res.status(404).send();
+			}
 		}
-		if (result.rows[0]) {
-			res.send(result.rows[0]);
-		} else {
-			res.status(404).send();
-		}
-	});
+	);
 });
 
 // get user by email
