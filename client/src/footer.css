@@ -1,0 +1,26 @@
+footer {
+	display: flex;
+	justify-content: space-between;
+	align-content: center;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	padding: 15px;
+	background-color: #2b2b2b;
+	color: white;
+}
+
+footer a {
+	color: white;
+	text-decoration: none;
+	padding: 2px;
+	border-radius: 2px;
+}
+
+footer a:hover {
+	background-color: #00000022;
+}
+
+footer p {
+	font-family: Arial, Helvetica, sans-serif;
+}

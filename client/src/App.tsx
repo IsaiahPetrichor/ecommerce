@@ -3,6 +3,7 @@ import './App.css';
 import UserContext from './utils/user-context';
 import Header from './header';
 import { useState } from 'react';
+import Footer from './footer';
 
 function App() {
 	const [user, setUser] = useState('');
@@ -24,6 +25,7 @@ function App() {
 		<UserContext.Provider value={userState}>
 			<Header />
 			<Outlet />
+			<Footer />
 		</UserContext.Provider>
 	);
 }

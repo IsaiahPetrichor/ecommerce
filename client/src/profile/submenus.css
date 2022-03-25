@@ -1,0 +1,30 @@
+.sub-user {
+	margin: 20px;
+}
+
+.sub-user a {
+	padding: 12px 0px;
+}
+
+.back-arrow i {
+	height: 50px;
+	width: 50px;
+	padding-top: 10px;
+	border-radius: 4px;
+	text-align: center;
+	font-size: 28px;
+	color: black;
+}
+
+.back-arrow i:hover {
+	background-color: #00000022;
+}
+
+.user-details {
+	margin: 20px auto;
+}
+
+p {
+	font-size: 18px;
+	font-family: Arial, Helvetica, sans-serif;
+}

@@ -5,6 +5,9 @@
 .flex {
 	display: flex;
 	flex-wrap: wrap;
+}
+
+.user-buttons {
 	justify-content: space-evenly;
 	max-width: 1400px;
 	margin: 0 auto;
@@ -32,12 +35,13 @@
 
 .logout {
 	padding: 5px 10px;
-	margin: 10px 0px 0px 10px;
+	margin: 100px 50px 0px auto;
 	font-size: 1rem;
 	font-family: Helvetica, sans-serif;
 	background-color: white;
 	border-radius: 3px;
 	border: 1px solid #aaa;
+	justify-self: end;
 }
 
 .logout:hover {

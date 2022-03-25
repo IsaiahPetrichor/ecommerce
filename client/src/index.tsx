@@ -9,6 +9,9 @@ import Profile from './profile/profile';
 import Login from './auth/login';
 import Signup from './auth/signup';
 import Home from './home/home';
+import EditUser from './profile/editUser';
+import Orders from './profile/orders';
+import Payments from './profile/payments';
 
 ReactDOM.render(
 	<React.StrictMode>
@@ -21,6 +24,9 @@ ReactDOM.render(
 					<Route path="profile" element={<Profile />} />
 					<Route path="login" element={<Login />} />
 					<Route path="sign-up" element={<Signup />} />
+					<Route path="profile/edit-user" element={<EditUser />} />
+					<Route path="profile/orders" element={<Orders />} />
+					<Route path="profile/payments" element={<Payments />} />
 					<Route
 						path="*"
 						element={
