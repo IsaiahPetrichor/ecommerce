@@ -6,8 +6,8 @@ import App from './App';
 import Cart from './order/cart';
 import Products from './products/products';
 import Profile from './profile/profile';
-import Login from './profile/login';
-import Signup from './profile/signup';
+import Login from './auth/login';
+import Signup from './auth/signup';
 import Home from './home/home';
 
 ReactDOM.render(
