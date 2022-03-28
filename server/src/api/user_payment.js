@@ -5,35 +5,39 @@ import { Router } from 'express';
 const userPayment = Router();
 
 // get all payments for a user
-userPayment.get('/', (req, res, next) => {
+userPayment.get('/:id', (req, res, next) => {
+	const { id } = req.params;
+
 	pool.query(
 		'SELECT * FROM user_payment WHERE user_id = $1',
-		[user_id],
+		[id],
 		(err, result) => {
 			if (err) {
-				res.status(500).send('Database Error!');
+				res.status(500).json('Database Error!');
 				console.log(err.message);
 				next();
 			} else {
-				res.send(result.rows);
+				res.json(result.rows);
 			}
 		}
 	);
 });
 
-// get a single payment for a user
+/* // get a single payment for a user
 userPayment.get('/:id', async (req, res, next) => {
-	const { payment_id } = req.params;
+	const { id } = req.params;
+	const {payment_id} = req.body;
+
 	const payment = await pool.query(
 		'SELECT * FROM user_payment WHERE id = $1 AND user_id = $2',
-		[payment_id, user_id]
+		[payment_id, id]
 	);
 	if (payment.rows[0]) {
 		res.send(payment.rows[0]);
 	} else {
 		res.status(404).send();
 	}
-});
+}); */
 
 // add a new payment
 userPayment.post('/', async (req, res, next) => {

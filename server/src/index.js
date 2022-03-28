@@ -26,10 +26,10 @@ import userRouter from './api/user.js';
 app.use('/api/users', userRouter);
 
 import userAddress from './api/user_address.js';
-app.use('/api/users/address', userAddress);
+app.use('/api/user_address', userAddress);
 
 import userPayment from './api/user_payment.js';
-app.use('/api/users/payment', userPayment);
+app.use('/api/user_payment', userPayment);
 
 // Product Routes
 import productRouter from './api/product.js';
