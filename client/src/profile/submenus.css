@@ -1,3 +1,5 @@
+/* Global User Menu Styles */
+
 .sub-user {
 	margin: 20px;
 }
@@ -20,11 +22,87 @@
 	background-color: #00000022;
 }
 
+p {
+	font-size: 18px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Edit User Page */
+
 .user-details {
 	margin: 20px auto;
 }
 
-p {
-	font-size: 18px;
-	font-family: Arial, Helvetica, sans-serif;
+/* Payments Page */
+
+.payments-title {
+	text-transform: uppercase;
+	font-weight: 400;
+	font-size: 1.8rem;
+}
+
+.payments-list {
+	display: grid;
+	grid-template-columns: repeat(3, 300px);
+	grid-auto-flow: row;
+	grid-gap: 5px;
+	width: fit-content;
+	margin: 20px auto;
+}
+
+.payment-option {
+	width: 300px;
+	height: 130px;
+	padding: 10px;
+	border: 1px solid #999;
+	border-radius: 2px;
+	background-color: #f9f9f9;
+}
+
+.payment-type {
+	font-size: 1.2rem;
+}
+
+.card-number {
+	font-size: 1.4rem;
+}
+
+.card-buttons {
+	position: relative;
+	float: right;
+	margin-top: 10px;
+}
+
+.card-buttons button {
+	margin-left: 5px;
+	padding: 5px 10px;
+	cursor: pointer;
+	border: 1px solid #999;
+	border-radius: 4px;
+	background-color: transparent;
+	text-transform: uppercase;
+}
+.card-buttons button:hover {
+	transition: 100ms;
+	background-color: #00000022;
+	color: #07f;
+}
+
+.add-card {
+	width: 300px;
+	height: 130px;
+	background-color: #f9f9f9;
+	border: 1px solid #999;
+	border-radius: 2px;
+	font-size: 1.3rem;
+	color: #222;
+}
+
+.add-card-plus {
+	line-height: 20px;
+	font-size: 2rem;
+}
+
+.add-card:hover {
+	cursor: pointer;
 }
