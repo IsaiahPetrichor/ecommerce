@@ -2,6 +2,7 @@ import pool from '../database/pool.js';
 import { v4 as uuidv4 } from 'uuid';
 import format from 'pg-format';
 import { Router } from 'express';
+import auth from '../util/auth.js';
 const userPayment = Router();
 
 // get all payments for a user
@@ -40,35 +41,56 @@ userPayment.get('/:id', async (req, res, next) => {
 }); */
 
 // add a new payment
-userPayment.post('/', async (req, res, next) => {
-	const { type, provider, card_number, expiration, user_id } = req.body;
-	const newPayment = await pool.query(
-		'INSERT INTO user_payment VALUES ($1, $2, $3, $4, $5) RETURNING *',
-		[uuidv4(), user_id, type, provider, card_number, expiration]
+userPayment.post('/', auth, async (req, res, next) => {
+	const { type, provider, card_number, expiration, user_id, card_name } =
+		req.body;
+	pool.query(
+		'INSERT INTO user_payment VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
+		[uuidv4(), user_id, type, provider, card_number, expiration, card_name],
+		(err, response) => {
+			if (err) {
+				res.status(500).json('Server Error...');
+			} else {
+				res.status(201).json(response.rows[0]);
+			}
+		}
 	);
-	res.status(201).json(newPayment.rows[0]);
 });
 
 // update a payment
-userPayment.put('/:id', async (req, res, next) => {
-	const { payment_id } = req.params;
+userPayment.put('/:id', auth, (req, res, next) => {
+	const { id } = req.params;
 	const body = req.body;
 	// for loop to only send updates for the filled parameters
 	for (let key in body) {
 		if (body[key] !== '') {
 			// uses pg-format in order to allow dynamic queries without risk of SQL injection
 			const sql = format('UPDATE user_payment SET %I = $1 WHERE id = $2', key);
-			await pool.query(sql, [body[key], payment_id]);
+			pool.query(sql, [body[key], id], (err, result) => {
+				if (err) {
+					res.status(500).json('Server Error...');
+				} else {
+					res.status(201).json('User updated');
+				}
+			});
 		}
 	}
-	res.status(201).send('User updated');
 });
 
 // delete a payment
-userPayment.delete('/:id', async (req, res, next) => {
-	const { payment_id } = req.params;
-	pool.query('DELETE FROM user_payment WHERE id = $1', [payment_id]);
-	res.sendStatus(204);
+userPayment.delete('/:id', auth, (req, res, next) => {
+	const { id } = req.params;
+	pool.query(
+		'DELETE FROM user_payment WHERE id = $1',
+		[id],
+		(err, response) => {
+			if (err) {
+				res.status(500).json('Server Error...');
+			} else {
+				res.status(200).json('Card Deleted.');
+			}
+		}
+	);
 });
 
 export default userPayment;
