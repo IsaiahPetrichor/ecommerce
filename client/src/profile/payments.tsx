@@ -2,6 +2,7 @@ import { FC, useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import UserContext from '../utils/user-context';
 import { displayCard, capitalize } from '../utils/util';
+import { AddCard, DeleteCard, EditCard } from './card-actions';
 import './submenus.css';
 
 interface Payment {
@@ -16,6 +17,11 @@ interface Payment {
 
 const Payments: FC = () => {
 	const [payments, setPayments] = useState<Payment[]>([]);
+	const [addCard, setAddCard] = useState(false);
+	const [deleteCard, setDeleteCard] = useState(false);
+	const [editCard, setEditCard] = useState(false);
+
+	const [selectedCard, setSelectedCard] = useState('');
 
 	const context = useContext(UserContext);
 
@@ -44,7 +50,7 @@ const Payments: FC = () => {
 		}
 
 		getUserPayments();
-	}, [context]);
+	}, [context, addCard, deleteCard, editCard]);
 
 	return (
 		<main className="sub-user">
@@ -60,23 +66,42 @@ const Payments: FC = () => {
 					<div className="payment-option" key={payment.id}>
 						<h3>{payment.card_name}</h3>
 						<p className="payment-type">
-							{capitalize(payment.provider)} {capitalize(payment.type)}
+							{capitalize(payment.provider)} - {capitalize(payment.type)}
 						</p>
 						<p className="card-number">{displayCard(payment.card_number)}</p>
 						<div className="card-buttons">
-							<button className="edit-card">Edit</button>
-							<button className="remove-card">Remove</button>
+							<button
+								className="edit-card"
+								onClick={() => {
+									setEditCard(true);
+									setSelectedCard(payment.id);
+								}}>
+								Edit
+							</button>
+							<button
+								className="remove-card"
+								onClick={() => {
+									setDeleteCard(true);
+									setSelectedCard(payment.id);
+								}}>
+								Remove
+							</button>
 						</div>
 					</div>
 				))}
 
-				<button className="add-card">
+				<button className="add-card" onClick={() => setAddCard(true)}>
 					<p>
 						<i className="bx bx-plus bx-flashing add-card-plus"></i>
 					</p>
 					ADD NEW CARD
 				</button>
 			</div>
+			{addCard && <AddCard props={{ setAddCard }} />}
+			{editCard && <EditCard props={{ setEditCard }} />}
+			{deleteCard && (
+				<DeleteCard props={{ setDeleteCard, selectedCard, setSelectedCard }} />
+			)}
 		</main>
 	);
 };

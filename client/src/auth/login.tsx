@@ -57,6 +57,7 @@ const Login: FC = () => {
 					value={email}
 					onChange={(e) => setEmail(e.currentTarget.value)}
 					placeholder="email"
+					required
 				/>
 				<label htmlFor="password">Password: </label>
 				<input
@@ -65,6 +66,7 @@ const Login: FC = () => {
 					value={password}
 					onChange={(e) => setPassword(e.currentTarget.value)}
 					placeholder="password"
+					required
 				/>
 				<button type="submit">Submit</button>
 			</form>
