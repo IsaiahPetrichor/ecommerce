@@ -3,17 +3,17 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 export default function (req, res, next) {
-	const token = req.header('jwt_token');
+	const authHeader = req.headers['authorization'];
+	const token = authHeader && authHeader.split(' ')[1];
 
-	if (!token) {
-		return res.status(403).json({ msg: 'Not Authorized' });
-	}
+	if (token == null) return res.sendStatus(401);
 
-	try {
-		const verify = jwt.verify(token, process.env.JWTSECRET);
-		req.user = verify.user;
-		next();
-	} catch (e) {
-		res.status(401).json({ msg: 'Invalid Token' });
-	}
+	jwt.verify(token, process.env.JWTSECRET, (err, user) => {
+		if (err) {
+			res.sendStatus(403);
+		} else {
+			req.user = user;
+			next();
+		}
+	});
 }

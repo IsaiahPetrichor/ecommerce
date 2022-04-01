@@ -13,9 +13,13 @@
 	"dependencies": {
 		"bcrypt": "^5.0.1",
 		"body-parser": "^1.19.1",
+		"cookie-parser": "^1.4.6",
 		"cors": "^2.8.5",
 		"errorhandler": "^1.5.1",
 		"express": "^4.17.2",
+		"express-jwt": "^6.1.1",
+		"express-session-jwt": "^0.2.2",
+		"helmet": "^5.0.2",
 		"jsonwebtoken": "^8.5.1",
 		"pg": "^8.7.3",
 		"pg-format": "^1.0.4",

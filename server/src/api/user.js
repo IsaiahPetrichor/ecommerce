@@ -20,11 +20,11 @@ const saltRounds = 10;
 }); */
 
 // get a single user by uuid (if user, only some of their own data)
-user.get('/:id', auth, (req, res, next) => {
-	const { id } = req.params;
+user.get('/', auth, (req, res, next) => {
+	const { user_id } = req.user;
 	pool.query(
 		'SELECT first_name, last_name, email FROM users WHERE id = $1',
-		[id],
+		[user_id],
 		(err, result) => {
 			if (err) {
 				res.status(500).send('Database Error!');
@@ -32,7 +32,7 @@ user.get('/:id', auth, (req, res, next) => {
 				next();
 			}
 			if (result.rows[0]) {
-				res.send({ id, ...result.rows[0] });
+				res.send({ user_id, ...result.rows[0] });
 			} else {
 				res.status(404).send();
 			}

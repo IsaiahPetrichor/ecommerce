@@ -7,21 +7,19 @@ const register = Router();
 import { registerValidator } from '../util/validator.js';
 import jwtGenerator from '../util/generator.js';
 
-register.post('/', registerValidator, async (req, res, next) => {
+register.post('/', registerValidator, (req, res, next) => {
 	const { first_name, last_name, email, password, phone } = req.body;
 
-	try {
-		const user = await pool.query('SELECT email FROM users WHERE email = $1', [
-			email,
-		]);
-
-		if (user.rows.length > 0) {
-			return res.status(401).json('Email already in use!');
+	pool.query(
+		'SELECT email FROM users WHERE email = $1',
+		[email],
+		(err, result) => {
+			if (err) return res.sendStatus(500);
+			if (result.rows.length > 0) {
+				return res.status(401).json('Email already in use!');
+			}
 		}
-	} catch (e) {
-		console.log(err.message);
-		res.status(500).json('Server error');
-	}
+	);
 
 	if (password.length < 5) {
 		return res.status(400).json('Password too short!');

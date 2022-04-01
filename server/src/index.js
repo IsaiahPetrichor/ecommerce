@@ -1,11 +1,13 @@
 import express from 'express';
-const app = express();
 import bodyParser from 'body-parser';
 import { time } from './util/time.js';
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from './swagger.js';
 import cors from 'cors';
+import dotenv from 'dotenv';
+dotenv.config();
 
+const app = express();
 const PORT = process.env.port || 5000;
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
