@@ -6,12 +6,12 @@ import auth from '../util/auth.js';
 const userPayment = Router();
 
 // get all payments for a user
-userPayment.get('/:id', (req, res, next) => {
-	const { id } = req.params;
+userPayment.get('/', auth, (req, res, next) => {
+	const { user_id } = req.user;
 
 	pool.query(
 		'SELECT * FROM user_payment WHERE user_id = $1',
-		[id],
+		[user_id],
 		(err, result) => {
 			if (err) {
 				res.status(500).json('Database Error!');
