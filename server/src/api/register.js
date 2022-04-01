@@ -37,10 +37,13 @@ register.post('/', registerValidator, (req, res, next) => {
 					console.log(err.message);
 					res.status(400).json('Bad request...');
 				} else {
-					const jwtToken = jwtGenerator(result.rows[0].id);
-					const firstName = result.rows[0].first_name;
+					const jwt_token = jwtGenerator({
+						name: response.rows[0].first_name,
+						user_id: response.rows[0].id,
+					});
+					const first_name = result.rows[0].first_name;
 
-					res.status(201).json({ firstName, jwtToken });
+					res.status(201).json({ first_name, jwt_token });
 				}
 			}
 		);

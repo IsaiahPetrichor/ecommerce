@@ -62,11 +62,11 @@ user.get('/email/:email', (req, res, next) => {
 });
 
 // update user (user only)
-user.put('/:id', auth, async (req, res, next) => {
-	const { id } = req.params;
+user.put('/', auth, async (req, res, next) => {
+	const { user_id } = req.user;
 	const body = req.body;
 
-	const user = await pool.query('SELECT * FROM users WHERE id = $1', [id]);
+	const user = await pool.query('SELECT * FROM users WHERE id = $1', [user_id]);
 	if (user.rows[0]) {
 		// for loop to only send updates for the filled parameters
 		for (let key in body) {
@@ -75,7 +75,7 @@ user.put('/:id', auth, async (req, res, next) => {
 					await bcrypt.hash(body[key], saltRounds, (err, hash) => {
 						pool.query(
 							'UPDATE users SET password = $1 WHERE id = $2',
-							[hash, id],
+							[hash, user_id],
 							(err, result) => {
 								if (err) {
 									res.status(500).send('Database Error');
@@ -88,7 +88,7 @@ user.put('/:id', auth, async (req, res, next) => {
 				} else {
 					// uses pg-format in order to allow dynamic queries without risk of SQL injection
 					const sql = format('UPDATE users SET %I = $1 WHERE id = $2', key);
-					await pool.query(sql, [body[key], id], (err, result) => {
+					await pool.query(sql, [body[key], user_id], (err, result) => {
 						if (err) {
 							res.status(500).send('Database Error');
 							console.log(err.message);
@@ -98,16 +98,16 @@ user.put('/:id', auth, async (req, res, next) => {
 				}
 			}
 		}
-		res.status(201).send('User updated...');
+		res.status(201).json('User updated...');
 	} else {
-		res.status(404).send();
+		res.sendStatus(404);
 	}
 });
 
 // delete user (admin / user for own account)
-user.delete('/:id', auth, async (req, res, next) => {
-	const { id } = req.params;
-	pool.query('DELETE FROM users WHERE id = $1', [id], (err, result) => {
+user.delete('/', auth, async (req, res, next) => {
+	const { user_id } = req.user;
+	pool.query('DELETE FROM users WHERE id = $1', [user_id], (err, result) => {
 		if (err) {
 			console.log(err.message);
 		} else {
