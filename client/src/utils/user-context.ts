@@ -2,9 +2,8 @@ import { createContext } from 'react';
 
 const UserContext = createContext({
 	user_id: '',
-	firstName: '',
-	jwt: '',
-	updateUser: (id: string, newFirst: string, newJWT: string) => {},
+	first_name: '',
+	updateUser: (id: string, newFirst: string) => {},
 });
 
 export default UserContext;

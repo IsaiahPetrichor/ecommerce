@@ -50,3 +50,13 @@ export const verifyCard = (cardNumber: string) => {
 	// return false if it isnt 0
 	return false;
 };
+
+export const getJwtToken = () => {
+	const token = sessionStorage.getItem('jwtToken');
+	if (token === null) return '';
+	return token;
+};
+
+export const setJwtToken = (token: string) => {
+	sessionStorage.setItem('jwtToken', token);
+};

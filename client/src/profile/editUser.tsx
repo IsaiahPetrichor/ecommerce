@@ -1,10 +1,10 @@
-import { FC, useEffect, useState, useContext } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import UserContext from '../utils/user-context';
+import { getJwtToken } from '../utils/util';
 import './submenus.css';
 
 const EditUser: FC = () => {
-	const context = useContext(UserContext);
+	const jwtToken = getJwtToken();
 
 	const [userData, setUserData] = useState({
 		id: '',
@@ -15,17 +15,14 @@ const EditUser: FC = () => {
 
 	useEffect(() => {
 		async function getUserData() {
-			const user = await fetch(
-				`http://localhost:5000/api/users/${context.user_id}`,
-				{
-					method: 'GET',
-					headers: {
-						Accept: 'application/json',
-						'content-type': 'application/json',
-						jwt_token: context.jwt,
-					},
-				}
-			)
+			const user = await fetch(`/api/users/`, {
+				method: 'GET',
+				headers: {
+					Accept: 'application/json',
+					'content-type': 'application/json',
+					Authorization: `Bearer ${jwtToken}`,
+				},
+			})
 				.then((response) => response.json())
 				.then((data) => {
 					return data;
@@ -38,7 +35,7 @@ const EditUser: FC = () => {
 		}
 
 		getUserData();
-	}, [context]);
+	}, [jwtToken]);
 
 	return (
 		<main className="sub-user">

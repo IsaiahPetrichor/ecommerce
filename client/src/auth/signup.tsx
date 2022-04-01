@@ -1,6 +1,7 @@
 import { FC, useState, useEffect, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import UserContext from '../utils/user-context';
+import { getJwtToken, setJwtToken } from '../utils/util';
 import './signup.css';
 
 const Signup: FC = () => {
@@ -12,10 +13,16 @@ const Signup: FC = () => {
 	const [passMatch, setPassMatch] = useState(false);
 	const [error, setError] = useState('');
 
+	const jwtToken = getJwtToken();
+
 	const context = useContext(UserContext);
 	let navigate = useNavigate();
 
 	useEffect(() => {
+		if (jwtToken !== '') {
+			navigate('/');
+		}
+
 		setError('');
 
 		if (password === verifyPass) {
@@ -23,7 +30,7 @@ const Signup: FC = () => {
 		} else {
 			setPassMatch(false);
 		}
-	}, [email, first, last, password, verifyPass]);
+	}, [email, first, last, password, verifyPass, navigate, jwtToken]);
 
 	const handleSubmit = (e: React.SyntheticEvent) => {
 		e.preventDefault();
@@ -33,8 +40,8 @@ const Signup: FC = () => {
 			return;
 		}
 
-		const url = 'http://localhost:5000/api/register/';
-		const options = {
+		const url = '/api/register/';
+		const options: RequestInit = {
 			method: 'POST',
 			headers: {
 				Accept: 'application/json',
@@ -46,6 +53,7 @@ const Signup: FC = () => {
 				last_name: last,
 				password: password,
 			}),
+			credentials: 'include',
 		};
 
 		fetch(url, options)
@@ -53,10 +61,11 @@ const Signup: FC = () => {
 			.then((data) => {
 				if (typeof data === 'string') {
 					setError(data);
-					context.updateUser('', '', '');
+					context.updateUser('', '');
 				} else {
 					setError('');
-					context.updateUser(data.user_id, data.firstName, data.jwtToken);
+					context.updateUser(data.user_id, data.first_name);
+					setJwtToken(data.jwt_token);
 					navigate('/');
 				}
 			})

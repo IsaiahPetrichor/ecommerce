@@ -1,21 +1,26 @@
-import React, { FC, useState, useContext } from 'react';
+import React, { FC, useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import './login.css';
 import UserContext from '../utils/user-context';
+import './login.css';
+import { getJwtToken, setJwtToken } from '../utils/util';
 
 const Login: FC = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [error, setError] = useState('');
 
-	const context = useContext(UserContext);
 	let navigate = useNavigate();
+	const context = useContext(UserContext);
+
+	useEffect(() => {
+		if (getJwtToken() !== '') navigate('/');
+	}, [navigate]);
 
 	const handleSubmit = (e: React.SyntheticEvent) => {
 		e.preventDefault();
 
-		const url = 'http://localhost:5000/api/login/';
-		const options = {
+		const url = '/api/login/';
+		const options: RequestInit = {
 			method: 'POST',
 			headers: {
 				Accept: 'application/json',
@@ -25,6 +30,7 @@ const Login: FC = () => {
 				email: email,
 				password: password,
 			}),
+			credentials: 'include',
 		};
 
 		fetch(url, options)
@@ -32,10 +38,10 @@ const Login: FC = () => {
 			.then((data) => {
 				if (typeof data === 'string') {
 					setError(data);
-					context.updateUser('', '', '');
 				} else {
 					setError('');
-					context.updateUser(data.user_id, data.firstName, data.jwtToken);
+					context.updateUser(data.user_id, data.first_name);
+					setJwtToken(data.jwt_token);
 					navigate('/');
 				}
 			})

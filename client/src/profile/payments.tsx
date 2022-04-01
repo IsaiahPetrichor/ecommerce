@@ -1,7 +1,7 @@
 import { FC, useState, useEffect, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import UserContext from '../utils/user-context';
-import { displayCard, capitalize } from '../utils/util';
+import { displayCard, capitalize, getJwtToken } from '../utils/util';
 import { AddCard, DeleteCard, EditCard } from './card-actions';
 import './submenus.css';
 
@@ -20,24 +20,25 @@ const Payments: FC = () => {
 	const [addCard, setAddCard] = useState(false);
 	const [deleteCard, setDeleteCard] = useState(false);
 	const [editCard, setEditCard] = useState(false);
-
 	const [selectedCard, setSelectedCard] = useState('');
+
+	const navigate = useNavigate();
+
+	const jwtToken = getJwtToken();
+	if (jwtToken === '') navigate('/login');
 
 	const context = useContext(UserContext);
 
 	useEffect(() => {
 		async function getUserPayments() {
-			const userPayments = await fetch(
-				`http://localhost:5000/api/user_payment/${context.user_id}`,
-				{
-					method: 'GET',
-					headers: {
-						Accept: 'application/json',
-						'content-type': 'application/json',
-						jwt_token: context.jwt,
-					},
-				}
-			)
+			const userPayments: Payment[] = await fetch(`/api/user_payment/`, {
+				method: 'GET',
+				headers: {
+					Accept: 'application/json',
+					'content-type': 'application/json',
+					Authorization: `Bearer ${jwtToken}`,
+				},
+			})
 				.then((response) => response.json())
 				.then((data) => {
 					return data;
@@ -48,9 +49,8 @@ const Payments: FC = () => {
 
 			setPayments(userPayments);
 		}
-
 		getUserPayments();
-	}, [context, addCard, deleteCard, editCard]);
+	}, [context, addCard, deleteCard, editCard, jwtToken]);
 
 	return (
 		<main className="sub-user">

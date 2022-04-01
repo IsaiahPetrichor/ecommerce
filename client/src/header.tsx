@@ -1,11 +1,29 @@
-import { FC, useContext } from 'react';
+import { FC, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './header.css';
 import UserContext from './utils/user-context';
+import { getJwtToken } from './utils/util';
 
 const Header: FC = () => {
 	const context = useContext(UserContext);
-	const loggedIn: string = context.user_id;
+	const jwtToken = getJwtToken();
+
+	useEffect(() => {
+		if (jwtToken !== '') {
+			fetch('/api/users/', {
+				headers: {
+					Authorization: `Bearer ${jwtToken}`,
+				},
+				credentials: 'include',
+			})
+				.then((response) => {
+					return response.json();
+				})
+				.then((data) => {
+					context.updateUser(data.user_id, data.first_name);
+				});
+		}
+	}, [jwtToken, context]);
 
 	return (
 		<header>
@@ -14,8 +32,8 @@ const Header: FC = () => {
 				<Link to="/">Home</Link>
 				<Link to="/products">Products</Link>
 				<Link to="/cart">Cart</Link>
-				{loggedIn !== '' ? (
-					<Link to="/profile">{context.firstName}</Link>
+				{jwtToken !== '' ? (
+					<Link to="/profile">{context.first_name}</Link>
 				) : (
 					<Link to="/login">Login</Link>
 				)}

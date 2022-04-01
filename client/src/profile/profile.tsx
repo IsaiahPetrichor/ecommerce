@@ -1,14 +1,21 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import UserContext from '../utils/user-context';
 import './profile.css';
+import { getJwtToken, setJwtToken } from '../utils/util';
 
 export default function Profile() {
 	const context = useContext(UserContext);
 	const navigate = useNavigate();
 
+	const jwtToken = getJwtToken();
+	if (jwtToken === '') navigate('/login');
+
+	useEffect(() => {}, []);
+
 	const signOut = () => {
-		context.updateUser('', '', '');
+		setJwtToken('');
+		context.updateUser('', '');
 		navigate('/');
 	};
 

@@ -6,18 +6,15 @@ import { useState } from 'react';
 import Footer from './footer';
 
 function App() {
-	const [user, setUser] = useState('');
 	const [first, setFirst] = useState('');
-	const [jwt, setJwt] = useState('');
+	const [userId, setUserId] = useState('');
 
 	const userState = {
-		user_id: user,
-		firstName: first,
-		jwt: jwt,
-		updateUser: (user_id: string, newFirst: string, newJWT: string) => {
-			setUser(user_id);
+		user_id: userId,
+		first_name: first,
+		updateUser: (id: string, newFirst: string) => {
+			setUserId(id);
 			setFirst(newFirst);
-			setJwt(newJWT);
 		},
 	};
 

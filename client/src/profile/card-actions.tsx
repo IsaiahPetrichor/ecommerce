@@ -1,6 +1,5 @@
-import React, { FC, useContext, useState } from 'react';
-import UserContext from '../utils/user-context';
-import { verifyCard } from '../utils/util';
+import React, { FC, useState } from 'react';
+import { getJwtToken, verifyCard } from '../utils/util';
 import './card-actions.css';
 
 // Add Component
@@ -14,7 +13,7 @@ interface AddProps {
 }
 
 export const AddCard: FC<AddProps> = ({ props }) => {
-	const context = useContext(UserContext);
+	const jwtToken = getJwtToken();
 
 	const [error, setError] = useState('');
 
@@ -33,16 +32,15 @@ export const AddCard: FC<AddProps> = ({ props }) => {
 			return;
 		}
 
-		const url = 'http://localhost:5000/api/user_payment/';
+		const url = '/api/user_payment/';
 		const options = {
 			method: 'POST',
 			headers: {
 				Accept: 'application/json',
 				'Content-Type': 'application/json',
-				jwt_token: context.jwt,
+				Authorization: `Bearer ${jwtToken}`,
 			},
 			body: JSON.stringify({
-				user_id: context.user_id,
 				card_name: cardName,
 				card_number: cardNumber,
 				type: type,
@@ -52,9 +50,8 @@ export const AddCard: FC<AddProps> = ({ props }) => {
 		};
 
 		fetch(url, options)
-			.then((response) => response.json())
-			.then((data) => {
-				if (data.msg === 'Not Authorized') {
+			.then((response) => {
+				if ([401, 403, 500].includes(response.status)) {
 					setError('Auth Failure');
 				} else {
 					props.setAddCard(false);
@@ -151,16 +148,16 @@ interface DeleteProps {
 export const DeleteCard: FC<DeleteProps> = ({ props }) => {
 	const [error, setError] = useState('');
 
-	const context = useContext(UserContext);
+	const jwtToken = getJwtToken();
 
 	const handleDelete = () => {
-		const url = `http://localhost:5000/api/user_payment/${props.selectedCard}`;
+		const url = `/api/user_payment/${props.selectedCard}`;
 		const options = {
 			method: 'DELETE',
 			headers: {
 				Accept: 'application/json',
 				'Content-Type': 'application/json',
-				jwt_token: context.jwt,
+				Authorization: `Bearer ${jwtToken}`,
 			},
 		};
 
@@ -204,8 +201,6 @@ interface EditProps {
 }
 
 export const EditCard: FC<EditProps> = ({ props }) => {
-	const context = useContext(UserContext);
-
 	return (
 		<div className="background">
 			<div className="popup edit-card-popup">
