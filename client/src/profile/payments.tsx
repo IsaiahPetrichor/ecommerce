@@ -4,6 +4,7 @@ import UserContext from '../utils/user-context';
 import { displayCard, capitalize, getJwtToken } from '../utils/util';
 import { AddCard, DeleteCard, EditCard } from './card-actions';
 import './submenus.css';
+import './payments.css';
 
 interface Payment {
 	id: string;

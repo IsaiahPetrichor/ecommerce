@@ -9,7 +9,7 @@ export default function Profile() {
 	const navigate = useNavigate();
 
 	const jwtToken = getJwtToken();
-	if (jwtToken === '') navigate('/login');
+	if (!jwtToken) navigate('/login');
 
 	useEffect(() => {}, []);
 

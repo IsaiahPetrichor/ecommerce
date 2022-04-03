@@ -1,6 +1,7 @@
 import React, { FC, useState } from 'react';
 import { getJwtToken, verifyCard } from '../utils/util';
-import './card-actions.css';
+import './submenus.css';
+import './popup.css';
 
 // Add Component
 
@@ -126,8 +127,10 @@ export const AddCard: FC<AddProps> = ({ props }) => {
 						}}
 						required
 					/>
-					<button type="submit">Submit</button>
-					<button onClick={handleCancel}>Cancel</button>
+					<div className="buttons">
+						<button type="submit">Submit</button>
+						<button onClick={handleCancel}>Cancel</button>
+					</div>
 				</form>
 			</div>
 		</div>
@@ -329,20 +332,22 @@ export const EditCard: FC<EditProps> = ({ props }) => {
 						}}
 						required
 					/>
-					<button type="submit">Save</button>
-					<button
-						onClick={() => {
-							props.setEditCard(false);
-							props.setSelectedCard({
-								id: '',
-								card_name: '',
-								card_number: '',
-								type: '',
-								expires: '',
-							});
-						}}>
-						Cancel
-					</button>
+					<div className="buttons">
+						<button type="submit">Save</button>
+						<button
+							onClick={() => {
+								props.setEditCard(false);
+								props.setSelectedCard({
+									id: '',
+									card_name: '',
+									card_number: '',
+									type: '',
+									expires: '',
+								});
+							}}>
+							Cancel
+						</button>
+					</div>
 				</form>
 			</div>
 		</div>
