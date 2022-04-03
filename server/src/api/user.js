@@ -6,6 +6,15 @@ import { Router } from 'express';
 const user = Router();
 const saltRounds = 10;
 
+const comparePassword = async (pass, hash) => {
+	try {
+		return await bcrypt.compare(pass, hash);
+	} catch (e) {
+		console.log(e.message);
+	}
+	return false;
+};
+
 // get all users (admin only)
 /* user.get('/', (req, res, next) => {
 	pool.query('SELECT * FROM users', (err, result) => {
@@ -71,28 +80,34 @@ user.put('/', auth, async (req, res, next) => {
 		// for loop to only send updates for the filled parameters
 		for (let key in body) {
 			if (body[key] !== '') {
-				if (key === 'password') {
-					await bcrypt.hash(body[key], saltRounds, (err, hash) => {
-						pool.query(
-							'UPDATE users SET password = $1 WHERE id = $2',
-							[hash, user_id],
-							(err, result) => {
-								if (err) {
-									res.status(500).send('Database Error');
-									console.log(err.message);
-									next();
+				if (key === 'newPassword' || key === 'currentPassword') {
+					const passMatch = await comparePassword(
+						body.currentPassword,
+						user.rows[0].password
+					);
+					if (passMatch) {
+						bcrypt.hash(body[key], saltRounds, (err, hash) => {
+							pool.query(
+								'UPDATE users SET password = $1 WHERE id = $2',
+								[hash, user_id],
+								(err, result) => {
+									if (err) {
+										console.log(err.message);
+										return err;
+									}
 								}
-							}
-						);
-					});
+							);
+						});
+					} else {
+						return res.sendStatus(401);
+					}
 				} else {
 					// uses pg-format in order to allow dynamic queries without risk of SQL injection
 					const sql = format('UPDATE users SET %I = $1 WHERE id = $2', key);
-					await pool.query(sql, [body[key], user_id], (err, result) => {
+					pool.query(sql, [body[key], user_id], (err, result) => {
 						if (err) {
-							res.status(500).send('Database Error');
 							console.log(err.message);
-							next();
+							return res.status(500).send('Database Error');
 						}
 					});
 				}

@@ -60,21 +60,18 @@ userPayment.post('/', auth, async (req, res, next) => {
 // update a payment
 userPayment.put('/:id', auth, (req, res, next) => {
 	const { id } = req.params;
-	const body = req.body;
-	// for loop to only send updates for the filled parameters
-	for (let key in body) {
-		if (body[key] !== '') {
-			// uses pg-format in order to allow dynamic queries without risk of SQL injection
-			const sql = format('UPDATE user_payment SET %I = $1 WHERE id = $2', key);
-			pool.query(sql, [body[key], id], (err, result) => {
-				if (err) {
-					res.status(500).json('Server Error...');
-				} else {
-					res.status(201).json('User updated');
-				}
-			});
+	const { type, card_number, expiration, card_name } = req.body;
+	pool.query(
+		'UPDATE user_payment SET type = $2, card_number = $3, expires = $4, card_name = $5 WHERE id = $1',
+		[id, type, card_number, expiration, card_name],
+		(err, response) => {
+			if (err) {
+				res.status(500).json('Server Error...');
+			} else {
+				res.status(201).json(response.rows[0]);
+			}
 		}
-	}
+	);
 });
 
 // delete a payment

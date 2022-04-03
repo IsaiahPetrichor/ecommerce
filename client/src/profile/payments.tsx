@@ -20,7 +20,13 @@ const Payments: FC = () => {
 	const [addCard, setAddCard] = useState(false);
 	const [deleteCard, setDeleteCard] = useState(false);
 	const [editCard, setEditCard] = useState(false);
-	const [selectedCard, setSelectedCard] = useState('');
+	const [selectedCard, setSelectedCard] = useState({
+		id: '',
+		card_name: '',
+		card_number: '',
+		type: '',
+		expires: '',
+	});
 
 	const navigate = useNavigate();
 
@@ -74,7 +80,13 @@ const Payments: FC = () => {
 								className="edit-card"
 								onClick={() => {
 									setEditCard(true);
-									setSelectedCard(payment.id);
+									setSelectedCard({
+										id: payment.id,
+										card_name: payment.card_name,
+										card_number: payment.card_number.toString(),
+										type: payment.type,
+										expires: payment.expires,
+									});
 								}}>
 								Edit
 							</button>
@@ -82,7 +94,13 @@ const Payments: FC = () => {
 								className="remove-card"
 								onClick={() => {
 									setDeleteCard(true);
-									setSelectedCard(payment.id);
+									setSelectedCard({
+										id: payment.id,
+										card_name: payment.card_name,
+										card_number: payment.card_number.toString(),
+										type: payment.type,
+										expires: payment.expires,
+									});
 								}}>
 								Remove
 							</button>
@@ -98,9 +116,17 @@ const Payments: FC = () => {
 				</button>
 			</div>
 			{addCard && <AddCard props={{ setAddCard }} />}
-			{editCard && <EditCard props={{ setEditCard }} />}
+			{editCard && (
+				<EditCard props={{ setEditCard, selectedCard, setSelectedCard }} />
+			)}
 			{deleteCard && (
-				<DeleteCard props={{ setDeleteCard, selectedCard, setSelectedCard }} />
+				<DeleteCard
+					props={{
+						setDeleteCard,
+						selectedCard: selectedCard.id,
+						setSelectedCard,
+					}}
+				/>
 			)}
 		</main>
 	);
