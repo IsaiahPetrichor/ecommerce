@@ -23,7 +23,7 @@ export default {
 				requestBody: {
 					description: 'Takes users email and password',
 					content: {
-						'application/x-www-form-urlencoded': {
+						'application/json': {
 							schema: {
 								type: 'object',
 								properties: {
@@ -79,7 +79,7 @@ export default {
 				requestBody: {
 					description: 'Takes user info',
 					content: {
-						'application/x-www-form-urlencoded': {
+						'application/json': {
 							schema: {
 								type: 'object',
 								properties: {
