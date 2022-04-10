@@ -12,6 +12,7 @@ import Home from './home/home';
 import EditUser from './profile/editUser';
 import Orders from './profile/orders';
 import Payments from './profile/payments';
+import AddressBook from './profile/address-book';
 
 ReactDOM.render(
 	<React.StrictMode>
@@ -27,6 +28,7 @@ ReactDOM.render(
 					<Route path="profile/edit-user" element={<EditUser />} />
 					<Route path="profile/orders" element={<Orders />} />
 					<Route path="profile/payments" element={<Payments />} />
+					<Route path="profile/addresses" element={<AddressBook />} />
 					<Route
 						path="*"
 						element={

@@ -1,31 +1,33 @@
 .profile {
+	position: relative;
 	margin: 20px;
 }
 
 .flex {
-	display: flex;
-	flex-wrap: wrap;
+	display: grid;
+	grid-template-columns: repeat(2, 500px);
+	justify-content: center;
 }
 
 .user-buttons {
-	justify-content: space-evenly;
-	max-width: 1400px;
+	position: relative;
 	margin: 0 auto;
 }
 
 .profile h2 {
 	width: 100%;
-	margin-bottom: 15px;
+	margin: 15px 0px;
 	font-family: 'Roboto', sans-serif;
 	font-size: 2rem;
 	font-weight: 400;
+	text-transform: uppercase;
 }
 
 .profile a {
 	width: fit-content;
 	text-decoration: none;
 	border-radius: 5px;
-	padding: 10px;
+	padding: 20px;
 	color: black;
 }
 
@@ -34,14 +36,15 @@
 }
 
 .logout {
+	display: flex;
+	justify-content: center;
 	padding: 5px 10px;
-	margin: 100px 50px 0px auto;
+	margin: 50px auto;
 	font-size: 1rem;
 	font-family: Helvetica, sans-serif;
 	background-color: white;
 	border-radius: 3px;
 	border: 1px solid #aaa;
-	justify-self: end;
 }
 
 .logout:hover {
