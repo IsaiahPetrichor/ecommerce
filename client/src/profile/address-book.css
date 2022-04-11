@@ -3,3 +3,99 @@
 	font-weight: 400;
 	font-size: 1.8rem;
 }
+
+.address-list {
+	display: grid;
+	grid-template-columns: repeat(3, 300px);
+	grid-auto-flow: row;
+	grid-gap: 5px;
+	width: fit-content;
+	margin: 20px auto;
+}
+
+.address {
+	width: 300px;
+	height: 160px;
+	padding: 10px;
+	border: 1px solid #999;
+	border-radius: 2px;
+	background-color: #f9f9f9;
+}
+
+.address h3 {
+	font-family: 'Roboto';
+	font-weight: 400;
+	text-transform: uppercase;
+	margin-bottom: 10px;
+}
+
+.address-names {
+	font-weight: 700;
+}
+
+.address p {
+	font-size: 16px;
+}
+
+.address-buttons {
+	position: relative;
+	float: right;
+	margin-top: 10px;
+}
+
+.address-buttons button {
+	margin-left: 5px;
+	padding: 5px 10px;
+	cursor: pointer;
+	border: 1px solid #999;
+	border-radius: 4px;
+	background-color: transparent;
+	text-transform: uppercase;
+}
+.address-buttons button:hover {
+	transition: 100ms;
+	background-color: #00000022;
+	color: #07f;
+}
+
+.add-address {
+	height: 160px;
+	font-size: 1.2rem;
+	cursor: pointer;
+	border: 1px solid #999;
+	border-radius: 2px;
+	background-color: #f9f9f9;
+}
+
+.add-address:hover {
+	background-color: rgba(152, 188, 219, 0.747);
+}
+
+.address-details {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	padding: 10px;
+	border: 1px solid #999;
+	border-radius: 3px;
+	width: 100%;
+}
+
+.address-details label {
+	margin: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: fit-content;
+}
+
+.address-details input {
+	margin: 0;
+	width: fit-content;
+	max-width: 60%;
+	margin: auto 5px;
+}
+
+.is-default-input {
+	cursor: pointer;
+}

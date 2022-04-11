@@ -15,11 +15,19 @@
 
 .payment-option {
 	width: 300px;
-	height: 130px;
+	height: 135px;
 	padding: 10px;
 	border: 1px solid #999;
 	border-radius: 2px;
 	background-color: #f9f9f9;
+}
+
+.payment-option h3 {
+	font-family: 'Roboto';
+	font-weight: 400;
+	font-size: 1.3rem;
+	text-transform: uppercase;
+	margin-bottom: 5px;
 }
 
 .payment-type {
@@ -53,7 +61,7 @@
 
 .add-card {
 	width: 300px;
-	height: 130px;
+	height: 135px;
 	background-color: #f9f9f9;
 	border: 1px solid #999;
 	border-radius: 2px;
@@ -68,4 +76,5 @@
 
 .add-card:hover {
 	cursor: pointer;
+	background-color: rgba(152, 188, 219, 0.747);
 }

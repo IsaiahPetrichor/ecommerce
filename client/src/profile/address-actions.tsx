@@ -1,8 +1,9 @@
 import React, { FC, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { getJwtToken } from '../utils/util';
 import './submenus.css';
 import './popup.css';
-import { useNavigate } from 'react-router-dom';
+import './address-book.css';
 
 type AddType = {
 	setAddAddress: React.Dispatch<React.SetStateAction<boolean>>;
@@ -22,7 +23,6 @@ export const AddAddress: FC<AddProps> = ({ props }) => {
 	const [city, setCity] = useState('');
 	const [state, setState] = useState('');
 	const [postal, setPostal] = useState('');
-	const [country, setCountry] = useState('');
 	const [addressName, setAddressName] = useState('');
 	const [isDefault, setIsDefault] = useState(false);
 
@@ -31,15 +31,7 @@ export const AddAddress: FC<AddProps> = ({ props }) => {
 
 	if (!jwtToken) navigate('/login');
 
-	const handleSubmit = (e: React.SyntheticEvent) => {
-		e.preventDefault();
-
-		if (error) return;
-	};
-
-	const handleCancel = (e: React.SyntheticEvent) => {
-		e.preventDefault();
-
+	const wipeData = () => {
 		setError('');
 		setFirst('');
 		setLast('');
@@ -48,8 +40,46 @@ export const AddAddress: FC<AddProps> = ({ props }) => {
 		setCity('');
 		setState('');
 		setPostal('');
-		setCountry('');
 		setAddressName('');
+	};
+
+	const handleSubmit = (e: React.SyntheticEvent) => {
+		e.preventDefault();
+		if (error) return;
+
+		const options: RequestInit = {
+			method: 'POST',
+			headers: {
+				Accept: 'application/json',
+				'content-type': 'application/json',
+				Authorization: `Bearer ${jwtToken}`,
+			},
+			body: JSON.stringify({
+				address_name: addressName,
+				first_name: first,
+				last_name: last,
+				line_1: line1,
+				line_2: line2,
+				city: city,
+				state: state,
+				postal: postal,
+				is_default: isDefault,
+			}),
+		};
+
+		fetch('/api/user_address', options)
+			.then((res) => res.json())
+			.then((json) => {
+				wipeData();
+				props.setAddAddress(false);
+			})
+			.catch((err) => setError(err.message));
+	};
+
+	const handleCancel = (e: React.SyntheticEvent) => {
+		e.preventDefault();
+
+		wipeData();
 		props.setAddAddress(false);
 	};
 
@@ -155,33 +185,31 @@ export const AddAddress: FC<AddProps> = ({ props }) => {
 						required
 					/>
 					<div className="address-details">
-						<label className="address-name" htmlFor="address-name">
+						<label className="address-name">
 							Save As:
+							<input
+								aria-label="Address Name"
+								name="AddressName"
+								type="text"
+								value={addressName}
+								onChange={(e) => {
+									setAddressName(e.currentTarget.value);
+									setError('');
+								}}
+								required
+							/>
 						</label>
-						<input
-							aria-label="Address Name"
-							id="address-name"
-							name="AddressName"
-							type="text"
-							value={addressName}
-							onChange={(e) => {
-								setAddressName(e.currentTarget.value);
-								setError('');
-							}}
-							required
-						/>
-						<label className="is-default-input" htmlFor="default">
+						<label className="is-default-input">
+							<input
+								aria-label="Make Default"
+								className="is-default-input"
+								name="MakeDefault"
+								type="checkbox"
+								checked={isDefault}
+								onChange={handleChange}
+							/>
 							default?
 						</label>
-						<input
-							aria-label="Make Default"
-							id="default"
-							className="is-default-input"
-							name="MakeDefault"
-							type="checkbox"
-							checked={isDefault}
-							onChange={handleChange}
-						/>
 					</div>
 					<div className="buttons">
 						<button type="submit">Submit</button>

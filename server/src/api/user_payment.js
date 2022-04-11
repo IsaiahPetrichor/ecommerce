@@ -1,6 +1,5 @@
 import pool from '../database/pool.js';
 import { v4 as uuidv4 } from 'uuid';
-import format from 'pg-format';
 import { Router } from 'express';
 import auth from '../util/auth.js';
 const userPayment = Router();
@@ -41,7 +40,7 @@ userPayment.get('/:id', async (req, res, next) => {
 }); */
 
 // add a new payment
-userPayment.post('/', auth, async (req, res, next) => {
+userPayment.post('/', auth, (req, res, next) => {
 	const { user_id } = req.user;
 	const { type, provider, card_number, expiration, card_name } = req.body;
 	pool.query(

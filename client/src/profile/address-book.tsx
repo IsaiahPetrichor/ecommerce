@@ -7,15 +7,15 @@ import './address-book.css';
 
 interface Address {
 	id: string;
-	addressName: string;
-	firstName: string;
-	lastName: string;
-	line1: string;
-	line2: string;
+	address_name: string;
+	first_name: string;
+	last_name: string;
+	line_1: string;
+	line_2: string;
 	city: string;
 	state: string;
 	postal: string;
-	isDefault: boolean;
+	is_default: boolean;
 }
 
 const AddressBook: FC = () => {
@@ -37,8 +37,10 @@ const AddressBook: FC = () => {
 			},
 		})
 			.then((res) => res.json())
-			.then((json) => setAddresses(json));
-	}, [jwtToken]);
+			.then((json) => {
+				setAddresses(json);
+			});
+	}, [jwtToken, addAddress]);
 
 	return (
 		<main className="sub-user">
@@ -51,7 +53,19 @@ const AddressBook: FC = () => {
 			<div className="address-list">
 				{addresses.map((address) => (
 					<div className="address" key={address.id}>
-						<h3>{address.addressName}</h3>
+						<h3>{address.address_name}</h3>
+						<p className="address-names">
+							{address.first_name} {address.last_name}
+						</p>
+						<p>{address.line_1}</p>
+						<p>{address.line_2}</p>
+						<p>
+							{address.city}, {address.state} {address.postal}
+						</p>
+						<div className="address-buttons">
+							<button>Edit</button>
+							<button>Remove</button>
+						</div>
 					</div>
 				))}
 
