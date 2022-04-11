@@ -12,6 +12,7 @@
 
 # misc
 /server/.ENV
+/client/.ENV
 /client/.DS_Store
 /client/.env.local
 /client/.env.development.local

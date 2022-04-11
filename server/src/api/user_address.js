@@ -4,7 +4,7 @@ import auth from '../util/auth.js';
 const userAddress = Router();
 
 // get user addresses
-userAddress.get('/', auth, (req, res, next) => {
+userAddress.get('/', auth, (req, res) => {
 	const { user_id } = req.user;
 
 	pool.query(
@@ -15,8 +15,6 @@ userAddress.get('/', auth, (req, res, next) => {
 			res.status(200).json(result.rows);
 		}
 	);
-
-	next();
 });
 
 // post new address

@@ -1,17 +1,21 @@
 import { FC, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { getJwtToken } from '../utils/util';
+import { AddAddress } from './address-actions';
 import './submenus.css';
 import './address-book.css';
-import './popup.css';
-import { getJwtToken } from '../utils/util';
 
 interface Address {
 	id: string;
+	addressName: string;
+	firstName: string;
+	lastName: string;
 	line1: string;
 	line2: string;
 	city: string;
+	state: string;
 	postal: string;
-	country: string;
+	isDefault: boolean;
 }
 
 const AddressBook: FC = () => {
@@ -47,7 +51,7 @@ const AddressBook: FC = () => {
 			<div className="address-list">
 				{addresses.map((address) => (
 					<div className="address" key={address.id}>
-						<h3>Address {address.city}</h3>
+						<h3>{address.addressName}</h3>
 					</div>
 				))}
 
@@ -58,6 +62,7 @@ const AddressBook: FC = () => {
 					ADD NEW ADDRESS
 				</button>
 			</div>
+			{addAddress && <AddAddress props={{ setAddAddress }} />}
 		</main>
 	);
 };

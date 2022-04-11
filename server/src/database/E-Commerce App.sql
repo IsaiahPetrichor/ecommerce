@@ -9,13 +9,18 @@ CREATE TABLE users(
   UNIQUE(email)
 );
 
-CREATE TABLE user_address (
-  user_id uuid PRIMARY KEY REFERENCES users(id),
-  line_1 varchar NOT NULL,
-  line_2 varchar,
-  city varchar NOT NULL,
-  postal varchar NOT NULL,
-  country varchar NOT NULL
+CREATE TABLE user_address(
+  id uuid PRIMARY KEY,
+  user_id uuid REFERENCES users(id) NOT NULL,
+  address_name varchar(60) NOT NULL,
+  first_name varchar(60) NOT NULL,
+  last_name varchar(80) NOT NULL,
+  line_1 varchar(100) NOT NULL,
+  line_2 varchar(100),
+  city varchar(80) NOT NULL,
+  state varchar(2) NOT NULL,
+  postal varchar(5) NOT NULL,
+  is_default boolean NOT NULL
 );
 
 CREATE TABLE user_payment (
