@@ -101,7 +101,7 @@
 }
 
 .default-address {
-	border-radius: 2px;
-	padding: 2px;
-	background-color: #0066ff55;
+	border-radius: 4px;
+	padding: 2px 5px;
+	background-color: #0077ff55;
 }

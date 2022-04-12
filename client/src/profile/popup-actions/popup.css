@@ -28,7 +28,8 @@
 .popup label {
 	width: 40%;
 }
-.popup input {
+.popup input,
+.popup select {
 	width: 60%;
 	margin-bottom: 5px;
 }
