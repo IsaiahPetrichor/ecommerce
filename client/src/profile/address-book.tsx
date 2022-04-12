@@ -1,7 +1,11 @@
 import { FC, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getJwtToken } from '../utils/util';
-import { AddAddress, DeleteAddress, EditAddress } from './address-actions';
+import {
+	AddAddress,
+	DeleteAddress,
+	EditAddress,
+} from './popup-actions/address-actions';
 import './submenus.css';
 import './address-book.css';
 

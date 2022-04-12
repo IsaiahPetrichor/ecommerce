@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { getJwtToken } from '../utils/util';
 import './submenus.css';
 import './editUser.css';
-import './popup.css';
 
 const EditUser: FC = () => {
 	const jwtToken = getJwtToken();

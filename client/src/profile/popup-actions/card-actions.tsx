@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
-import { getJwtToken, verifyCard } from '../utils/util';
-import './submenus.css';
+import { getJwtToken, verifyCard } from '../../utils/util';
+import '../submenus.css';
 import './popup.css';
 
 // Add Component

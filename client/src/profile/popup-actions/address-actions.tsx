@@ -1,9 +1,9 @@
 import React, { FC, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getJwtToken } from '../utils/util';
-import './submenus.css';
+import { getJwtToken } from '../../utils/util';
+import '../submenus.css';
 import './popup.css';
-import './address-book.css';
+import '../address-book.css';
 
 // Add Component
 

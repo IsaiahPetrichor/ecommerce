@@ -2,7 +2,7 @@ import { FC, useState, useEffect, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import UserContext from '../utils/user-context';
 import { displayCard, capitalize, getJwtToken } from '../utils/util';
-import { AddCard, DeleteCard, EditCard } from './card-actions';
+import { AddCard, DeleteCard, EditCard } from './popup-actions/card-actions';
 import './submenus.css';
 import './payments.css';
 
