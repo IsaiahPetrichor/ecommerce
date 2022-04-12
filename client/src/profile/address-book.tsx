@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getJwtToken } from '../utils/util';
-import { AddAddress } from './address-actions';
+import { AddAddress, DeleteAddress, EditAddress } from './address-actions';
 import './submenus.css';
 import './address-book.css';
 
@@ -20,7 +20,21 @@ interface Address {
 
 const AddressBook: FC = () => {
 	const [addresses, setAddresses] = useState<Address[]>([]);
+	const [selectedAddress, setSelectedAddress] = useState({
+		id: '',
+		address_name: '',
+		first_name: '',
+		last_name: '',
+		line_1: '',
+		line_2: '',
+		city: '',
+		state: '',
+		postal: '',
+		is_default: false,
+	});
 	const [addAddress, setAddAddress] = useState(false);
+	const [editAddress, setEditAddress] = useState(false);
+	const [deleteAddress, setDeleteAddress] = useState(false);
 
 	const navigate = useNavigate();
 
@@ -40,7 +54,7 @@ const AddressBook: FC = () => {
 			.then((json) => {
 				setAddresses(json);
 			});
-	}, [jwtToken, addAddress]);
+	}, [jwtToken, addAddress, deleteAddress, editAddress]);
 
 	return (
 		<main className="sub-user">
@@ -53,7 +67,15 @@ const AddressBook: FC = () => {
 			<div className="address-list">
 				{addresses.map((address) => (
 					<div className="address" key={address.id}>
-						<h3>{address.address_name}</h3>
+						<h3>
+							{address.address_name}
+							{address.is_default && (
+								<span>
+									{' '}
+									- <span className="default-address">Default</span>
+								</span>
+							)}
+						</h3>
 						<p className="address-names">
 							{address.first_name} {address.last_name}
 						</p>
@@ -63,8 +85,42 @@ const AddressBook: FC = () => {
 							{address.city}, {address.state} {address.postal}
 						</p>
 						<div className="address-buttons">
-							<button>Edit</button>
-							<button>Remove</button>
+							<button
+								onClick={() => {
+									setEditAddress(true);
+									setSelectedAddress({
+										id: address.id,
+										address_name: address.address_name,
+										first_name: address.first_name,
+										last_name: address.last_name,
+										line_1: address.line_1,
+										line_2: address.line_2,
+										city: address.city,
+										state: address.state,
+										postal: address.postal,
+										is_default: address.is_default,
+									});
+								}}>
+								Edit
+							</button>
+							<button
+								onClick={() => {
+									setDeleteAddress(true);
+									setSelectedAddress({
+										id: address.id,
+										address_name: address.address_name,
+										first_name: address.first_name,
+										last_name: address.last_name,
+										line_1: address.line_1,
+										line_2: address.line_2,
+										city: address.city,
+										state: address.state,
+										postal: address.postal,
+										is_default: address.is_default,
+									});
+								}}>
+								Remove
+							</button>
 						</div>
 					</div>
 				))}
@@ -77,6 +133,20 @@ const AddressBook: FC = () => {
 				</button>
 			</div>
 			{addAddress && <AddAddress props={{ setAddAddress }} />}
+			{editAddress && (
+				<EditAddress
+					props={{ setEditAddress, selectedAddress, setSelectedAddress }}
+				/>
+			)}
+			{deleteAddress && (
+				<DeleteAddress
+					props={{
+						setDeleteAddress,
+						selectedAddress: selectedAddress.id,
+						setSelectedAddress,
+					}}
+				/>
+			)}
 		</main>
 	);
 };

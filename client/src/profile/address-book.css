@@ -52,6 +52,7 @@
 	background-color: transparent;
 	text-transform: uppercase;
 }
+
 .address-buttons button:hover {
 	transition: 100ms;
 	background-color: #00000022;
@@ -98,4 +99,10 @@
 
 .is-default-input {
 	cursor: pointer;
+}
+
+.default-address {
+	border-radius: 2px;
+	padding: 2px;
+	background-color: #0066ff55;
 }

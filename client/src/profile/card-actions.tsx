@@ -195,20 +195,22 @@ export const DeleteCard: FC<DeleteProps> = ({ props }) => {
 			<div className="popup delete-card-popup">
 				<p className="warning">Are you sure you want to delete this card?</p>
 				{error && <p className="error">Error: {error}</p>}
-				<button onClick={handleDelete}>Yes</button>
-				<button
-					onClick={() => {
-						props.setDeleteCard(false);
-						props.setSelectedCard({
-							id: '',
-							card_name: '',
-							card_number: '',
-							type: '',
-							expires: '',
-						});
-					}}>
-					No
-				</button>
+				<div className="buttons">
+					<button onClick={handleDelete}>Yes</button>
+					<button
+						onClick={() => {
+							props.setDeleteCard(false);
+							props.setSelectedCard({
+								id: '',
+								card_name: '',
+								card_number: '',
+								type: '',
+								expires: '',
+							});
+						}}>
+						No
+					</button>
+				</div>
 			</div>
 		</div>
 	);
