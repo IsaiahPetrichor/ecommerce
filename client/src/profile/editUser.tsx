@@ -43,7 +43,7 @@ const EditUser: FC = () => {
 		}
 
 		getUserData();
-	}, [jwtToken]);
+	}, [jwtToken, editing]);
 
 	const handlePassSubmit = (e: React.SyntheticEvent) => {
 		e.preventDefault();
@@ -65,7 +65,7 @@ const EditUser: FC = () => {
 			credentials: 'include',
 		};
 
-		fetch('/api/users/', options)
+		fetch('/api/users', options)
 			.then((response) => {
 				if ([401, 403].includes(response.status)) {
 					return setError('Wrong Password!');
@@ -86,6 +86,26 @@ const EditUser: FC = () => {
 	const handleEditSubmit = (e: React.SyntheticEvent) => {
 		e.preventDefault();
 		if (error) return;
+
+		fetch('/api/users', {
+			method: 'PUT',
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${jwtToken}`,
+			},
+			body: JSON.stringify({
+				first_name: firstName,
+				last_name: lastName,
+				email,
+			}),
+		})
+			.then((res) => res.json())
+			.then((json) => {
+				setEditing(false);
+				setPassword('');
+			})
+			.catch((err) => console.log(err.message));
 	};
 
 	return (

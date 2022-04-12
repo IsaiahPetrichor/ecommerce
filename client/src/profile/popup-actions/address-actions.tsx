@@ -1,9 +1,9 @@
 import React, { FC, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getJwtToken } from '../../utils/util';
+import '../address-book.css';
 import '../submenus.css';
 import './popup.css';
-import '../address-book.css';
 
 // Add Component
 
@@ -187,7 +187,7 @@ export const AddAddress: FC<AddProps> = ({ props }) => {
 						}}
 						required
 					/>
-					<div className="address-details">
+					<div id="address-details">
 						<label className="address-name">
 							Save As:
 							<input
@@ -400,7 +400,7 @@ export const EditAddress: FC<EditProps> = ({ props }) => {
 						}}
 						required
 					/>
-					<div className="address-details">
+					<div id="address-details">
 						<label className="address-name">
 							Save As:
 							<input
