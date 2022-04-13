@@ -5,15 +5,16 @@ header {
 	padding: 5px 10px;
 	font-family: 'Roboto', Helvetica, sans-serif;
 	font-weight: 300;
-	box-shadow: 1px 1px 3px rgb(172, 172, 172);
+	box-shadow: 0px 2px 5px #000000;
 	background-color: #2b2b2b;
+	mix-blend-mode: multiply;
 }
 
 h1 {
 	text-transform: uppercase;
 	font-weight: 300;
 	font-size: 2rem;
-	color: rgb(197, 209, 221);
+	color: rgb(199, 163, 133);
 }
 
 header a {
@@ -24,7 +25,7 @@ header a {
 }
 
 header a:hover {
-	color: #006bb3;
+	color: #9e6e30;
 	background-color: #00000022;
 	border-radius: 4px;
 }

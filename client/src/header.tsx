@@ -27,7 +27,7 @@ const Header: FC = () => {
 
 	return (
 		<header>
-			<h1>Ecommmerce Website</h1>
+			<h1>Petrichor Coffee</h1>
 			<nav>
 				<Link to="/">Home</Link>
 				<Link to="/products">Products</Link>
