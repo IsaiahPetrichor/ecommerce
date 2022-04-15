@@ -2,37 +2,55 @@ import pool from '../database/pool.js';
 import { v4 as uuidv4 } from 'uuid';
 import format from 'pg-format';
 import { Router } from 'express';
+import isAdmin from '../util/adminAuth.js';
 const product = Router();
 
 // get all products
-product.get('/', async (req, res, next) => {
-	const products = await pool.query('SELECT * FROM product');
-	res.send(products.rows);
-});
+product.get('/', async (req, res) => {
+	try {
+		const products = await pool.query('SELECT id, name FROM product');
+		const categories = await pool.query('SELECT * FROM product_category');
 
-// get a single product by uuid
-product.get('/:id', async (req, res, next) => {
-	const { id } = req.params;
-	const product = await pool.query('SELECT * FROM product WHERE id = $1', [id]);
-	if (product.rows[0]) {
-		res.send(product.rows[0]);
-	} else {
-		res.status(404).send();
+		res.json({ products: products.rows, categories: categories.rows });
+	} catch (err) {
+		res.sendStatus(500);
 	}
 });
 
-product.post('/', async (req, res, next) => {
-	const { name, description, sku, category_id, price } = req.body;
-	const newProduct = await pool.query(
-		'INSERT INTO product VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
-		[uuidv4(), name, description, sku, category_id, price, req.date]
-	);
-	res.status(201).json(newProduct.rows[0]);
+// get a single product by uuid
+product.get('/:id', (req, res) => {
+	const { id } = req.params;
+
+	pool.query('SELECT * FROM product WHERE id = $1', [id], (err, result) => {
+		if (err) return res.sendStatus(500);
+		if (result.rows[0]) return res.json(result.rows[0]);
+		res.sendStatus(404);
+	});
 });
 
-product.put('/:id', async (req, res, next) => {
+// add new product
+product.post('/', (req, res) => {
+	const { name, description, sku, category_id, price } = req.body;
+
+	if (!isAdmin) return;
+
+	pool.query(
+		'INSERT INTO product VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
+		[uuidv4(), name, description, sku, category_id, price, req.date],
+		(err, result) => {
+			if (err) return res.sendStatus(500);
+			res.status(201).json(result.rows[0]);
+		}
+	);
+});
+
+// update product
+product.put('/:id', async (req, res) => {
 	const { id } = req.params;
 	const body = req.body;
+
+	if (!isAdmin) return;
+
 	// for loop to only send updates for the filled parameters
 	for (let key in body) {
 		if (body[key] !== '') {
@@ -41,13 +59,19 @@ product.put('/:id', async (req, res, next) => {
 			await pool.query(sql, [body[key], id]);
 		}
 	}
-	res.status(201).send('Product updated');
+	res.status(201).json('Product updated');
 });
 
-product.delete('/:id', async (req, res, next) => {
+// delete product
+product.delete('/:id', (req, res) => {
 	const { id } = req.params;
-	pool.query('DELETE FROM product WHERE id = $1', [id]);
-	res.sendStatus(204);
+
+	if (!isAdmin) return;
+
+	pool.query('DELETE FROM product WHERE id = $1', [id], (err, result) => {
+		if (err) return res.sendStatus(500);
+		res.sendStatus(204);
+	});
 });
 
 export default product;
