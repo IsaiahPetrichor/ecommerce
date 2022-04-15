@@ -3,13 +3,14 @@
 ## Front-End Stack
 
     - React
+    - React Router
     - TypeScript
 
 ## Back-End Stack
 
-    - Node
-    - Express
-    - Bcrypt
     - PostgreSQL
+    - Express
+    - Node
+    - Bcrypt
     - JSON Web Tokens
     - Swagger Open API

@@ -1,7 +1,3 @@
-main {
-	margin-top: 45px;
-}
-
 /* Hero Styles */
 
 .hero {
@@ -17,13 +13,16 @@ main {
 }
 
 .greeting {
-	width: 100%;
+	width: 40%;
 	text-align: center;
-	font-size: 2rem;
+	font-size: 2.3rem;
 	font-weight: 500;
 	padding: 20px;
 	color: #ccc;
-	background-color: #00000088;
+	font-family: 'Roboto';
+	background-color: #00000044;
+	backdrop-filter: blur(4px);
+	border-radius: 10px;
 }
 
 /* About Styles */
