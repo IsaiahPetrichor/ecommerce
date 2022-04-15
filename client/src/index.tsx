@@ -5,6 +5,7 @@ import './index.css';
 import App from './App';
 import Cart from './order/cart';
 import Products from './products/products';
+import Product from './products/Product';
 import Profile from './profile/profile';
 import Login from './auth/login';
 import Signup from './auth/signup';
@@ -29,6 +30,7 @@ ReactDOM.render(
 					<Route path="profile/orders" element={<Orders />} />
 					<Route path="profile/payments" element={<Payments />} />
 					<Route path="profile/addresses" element={<AddressBook />} />
+					<Route path="products/:productId" element={<Product />} />
 					<Route
 						path="*"
 						element={

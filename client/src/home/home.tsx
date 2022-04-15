@@ -18,11 +18,12 @@ const Home: FC = () => {
 			</div>
 			<section className="about">
 				<h2>About Us</h2>
+				<hr />
 				<p>
 					Our company was created in the Pacific Northwest in 2022. We work with
 					independent fair-trade farmers in Africa and South America to grow the
-					highest quality beans, roasted to perfection, and delivered to your
-					door.
+					highest quality beans, roast them to perfection, and deliver them
+					right to your door.
 				</p>
 			</section>
 		</main>

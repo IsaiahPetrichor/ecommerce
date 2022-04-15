@@ -2,6 +2,7 @@
 
 .sub-user {
 	margin: 20px;
+	color: #eee;
 }
 
 .sub-user a {
@@ -15,7 +16,7 @@
 	border-radius: 4px;
 	text-align: center;
 	font-size: 28px;
-	color: black;
+	color: #eee;
 }
 
 .back-arrow i:hover {

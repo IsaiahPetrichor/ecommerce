@@ -67,8 +67,8 @@ const DeleteAddress: FC<DeleteProps> = ({ props }) => {
 
 	return (
 		<div className="background">
-			<div className="popup delete-card-popup">
-				<p className="warning">Are you sure you want to delete this card?</p>
+			<div className="popup delete-address-popup">
+				<p className="warning">Are you sure you want to delete this address?</p>
 				{error && <p className="error">Error: {error}</p>}
 				<div className="buttons">
 					<button onClick={handleDelete}>Yes</button>

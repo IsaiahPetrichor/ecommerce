@@ -1,3 +1,6 @@
+main {
+	margin-bottom: 50px;
+}
 /* Hero Styles */
 
 .hero {
@@ -14,11 +17,12 @@
 
 .greeting {
 	width: 40%;
+	min-width: 600px;
 	text-align: center;
 	font-size: 2.3rem;
 	font-weight: 500;
 	padding: 20px;
-	color: #ccc;
+	color: #ddd;
 	font-family: 'Roboto';
 	background-color: #00000044;
 	backdrop-filter: blur(4px);
@@ -29,6 +33,10 @@
 
 .about {
 	padding: 20px;
-	color: rgb(204, 142, 92);
-	background-color: #555;
+	color: #ddd;
+}
+
+.about hr {
+	border: 1px solid rgba(243, 173, 107, 0.6);
+	margin: 5px 0;
 }

@@ -83,8 +83,8 @@ const EditAddress: FC<EditProps> = ({ props }) => {
 
 	return (
 		<div className="background">
-			<div className="popup edit-card-popup">
-				<h2>Edit Card</h2>
+			<div className="popup edit-address-popup">
+				<h2>Edit Address</h2>
 				<hr />
 				{error && <p className="error">Error: {error}</p>}
 				<form onSubmit={handleSubmit}>
@@ -202,7 +202,8 @@ const EditAddress: FC<EditProps> = ({ props }) => {
 								checked={isDefault}
 								onChange={handleChange}
 							/>
-							default?
+							<span className="checkmark"></span>
+							Default
 						</label>
 					</div>
 					<div className="buttons">

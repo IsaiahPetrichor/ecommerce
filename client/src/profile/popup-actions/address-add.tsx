@@ -209,7 +209,8 @@ const AddAddress: FC<AddProps> = ({ props }) => {
 								checked={isDefault}
 								onChange={handleChange}
 							/>
-							default?
+							<span className="checkmark"></span>
+							Default
 						</label>
 					</div>
 					<div className="buttons">

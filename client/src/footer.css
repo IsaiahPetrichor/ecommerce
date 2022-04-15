@@ -2,18 +2,19 @@ footer {
 	display: flex;
 	justify-content: space-between;
 	align-content: center;
-	position: relative;
+	position: fixed;
 	bottom: 0;
+	height: fit-content;
 	width: 100%;
 	padding: 15px;
 	background-color: #2b2b2b;
-	color: white;
+	color: #ccc;
 }
 
 footer a {
-	color: white;
+	color: rgb(243, 173, 107);
 	text-decoration: none;
-	padding: 2px;
+	padding: 5px;
 	border-radius: 2px;
 }
 

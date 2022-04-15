@@ -5,10 +5,10 @@
 	width: 80%;
 	max-width: 1200px;
 	justify-content: center;
-	border: 1px solid #999;
+	border: 1px solid #666;
 	border-radius: 20px;
 	padding: 10px;
-	box-shadow: 0px 1px 5px #999;
+	box-shadow: 0px 1px 5px #666;
 }
 
 .user-details h2 {
@@ -26,19 +26,22 @@
 .user-details hr {
 	width: 90%;
 	margin: 15px 50px;
-	border: 1px solid #bbb;
-	box-shadow: 0px 1px 5px #999;
+	border: 1px solid #777;
+	box-shadow: 0px 1px 5px #666;
 }
 
 .user-details button {
-	border: 1px solid #999;
+	color: #eee;
+	background-color: transparent;
+	border: 1px solid #666;
 	border-radius: 3px;
 	padding: 2px 10px;
 	cursor: pointer;
 }
 
 .user-details button:hover {
-	background-color: rgba(152, 188, 219, 0.747);
+	transition: 100ms;
+	color: rgb(255, 185, 93);
 }
 
 .pass-button {

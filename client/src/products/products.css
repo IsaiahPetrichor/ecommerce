@@ -1,0 +1,47 @@
+/* Global Styles */
+.products {
+	display: flex;
+}
+
+/* Filter menu */
+.filters {
+	width: 20%;
+}
+
+/* Product list */
+.products-list {
+	width: 80%;
+	display: grid;
+	grid-template-columns: repeat(3, 300px);
+	grid-gap: 20px;
+	justify-content: center;
+	margin: 10px auto;
+	padding: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #eee;
+}
+
+/* Products */
+.product {
+	color: #eee;
+	text-decoration: none;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+.product:hover {
+	background-color: #eeeeee20;
+}
+
+.product h2 {
+	text-align: center;
+}
+
+.product-img {
+	height: 200px;
+	width: 200px;
+	margin: 2px auto;
+	background-position: center;
+	background-size: contain;
+	border-radius: 2px;
+}

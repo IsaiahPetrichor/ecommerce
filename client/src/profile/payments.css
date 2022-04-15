@@ -17,9 +17,9 @@
 	width: 300px;
 	height: 135px;
 	padding: 10px;
-	border: 1px solid #999;
+	border: 1px solid #666;
 	border-radius: 2px;
-	background-color: #f9f9f9;
+	background-color: #555;
 }
 
 .payment-option h3 {
@@ -45,6 +45,7 @@
 }
 
 .card-buttons button {
+	color: #eee;
 	margin-left: 5px;
 	padding: 5px 10px;
 	cursor: pointer;
@@ -56,17 +57,17 @@
 .card-buttons button:hover {
 	transition: 100ms;
 	background-color: #00000022;
-	color: #07f;
+	color: rgb(255, 185, 93);
 }
 
 .add-card {
 	width: 300px;
 	height: 135px;
-	background-color: #f9f9f9;
-	border: 1px solid #999;
+	background-color: #555;
+	border: 1px solid #666;
 	border-radius: 2px;
 	font-size: 1.3rem;
-	color: #222;
+	color: #eee;
 }
 
 .add-card-plus {
@@ -76,5 +77,5 @@
 
 .add-card:hover {
 	cursor: pointer;
-	background-color: rgba(152, 188, 219, 0.747);
+	background-color: rgba(255, 185, 93, 0.3);
 }
