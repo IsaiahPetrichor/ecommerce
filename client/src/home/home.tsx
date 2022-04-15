@@ -19,9 +19,10 @@ const Home: FC = () => {
 			<section className="about">
 				<h2>About Us</h2>
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum
-					veniam vitae placeat officia unde molestias fugiat repudiandae ea quod
-					neque sit recusandae tempora quam, nisi autem iure soluta ullam ipsum?
+					Our company was created in the Pacific Northwest in 2022. We work with
+					independent fair-trade farmers in Africa and South America to grow the
+					highest quality beans, roasted to perfection, and delivered to your
+					door.
 				</p>
 			</section>
 		</main>
