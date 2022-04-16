@@ -5,23 +5,26 @@ import { Router } from 'express';
 const category = Router();
 
 // get all categories
-category.get('/', async (req, res, next) => {
-	const categories = await pool.query('SELECT * FROM product_category');
-	res.send(categories.rows);
+category.get('/', (req, res) => {
+	pool.query('SELECT * FROM product_category', (err, result) => {
+		if (err) return res.sendStatus(500);
+		res.send(result.rows);
+	});
 });
 
 // get a single category by uuid
-category.get('/:id', async (req, res, next) => {
+category.get('/:id', (req, res) => {
 	const { id } = req.params;
-	const category = await pool.query(
+
+	pool.query(
 		'SELECT * FROM product_category WHERE id = $1',
-		[id]
+		[id],
+		(err, result) => {
+			if (err) return res.sendStatus(500);
+			if (result.rows[0]) return res.send(result.rows[0]);
+			res.sendStatus(404);
+		}
 	);
-	if (category.rows[0]) {
-		res.send(category.rows[0]);
-	} else {
-		res.status(404).send();
-	}
 });
 
 category.post('/', async (req, res, next) => {

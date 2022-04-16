@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Filters from './filters';
 import './products.css';
 
 interface Product {
@@ -31,13 +32,13 @@ const Products: FC = () => {
 
 	return (
 		<main className="products">
-			<div className="filters"></div>
+			<Filters />
 			<div className="products-list">
 				{products.map((product) => {
 					return (
-						<Link to={product.id} className="product" id={product.id}>
+						<Link to={product.id} className="list-product" key={product.id}>
 							<div
-								className="product-img"
+								className="list-product-img"
 								style={{
 									backgroundImage: `url('/assets/${product.id}.jpeg')`,
 								}}></div>

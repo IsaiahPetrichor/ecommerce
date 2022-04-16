@@ -22,22 +22,22 @@
 }
 
 /* Products */
-.product {
+.list-product {
 	color: #eee;
 	text-decoration: none;
 	padding: 5px;
 	border-radius: 5px;
 }
 
-.product:hover {
+.list-product:hover {
 	background-color: #eeeeee20;
 }
 
-.product h2 {
+.list-product h2 {
 	text-align: center;
 }
 
-.product-img {
+.list-product-img {
 	height: 200px;
 	width: 200px;
 	margin: 2px auto;

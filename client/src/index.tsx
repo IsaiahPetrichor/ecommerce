@@ -5,7 +5,7 @@ import './index.css';
 import App from './App';
 import Cart from './order/cart';
 import Products from './products/products';
-import Product from './products/Product';
+import Product from './products/product';
 import Profile from './profile/profile';
 import Login from './auth/login';
 import Signup from './auth/signup';

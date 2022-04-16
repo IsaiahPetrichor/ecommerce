@@ -1,0 +1,37 @@
+.flex {
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+}
+
+.product {
+	color: #eee;
+	padding: 20px;
+}
+
+.product h2,
+.product h3 {
+	font-family: 'Roboto', Arial, Helvetica, sans-serif;
+}
+
+.product hr {
+	margin: 10px 0;
+}
+
+.product .img {
+	height: 500px;
+	width: 500px;
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+/* Pricing section */
+
+.pricing {
+	width: 30%;
+}
+
+#quantity {
+	width: 40px;
+}
