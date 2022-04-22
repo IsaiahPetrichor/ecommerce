@@ -32,7 +32,7 @@ const Products: FC = () => {
 
 	return (
 		<main className="products">
-			<Filters />
+			<Filters props={categories} />
 			<div className="products-list">
 				{products.map((product) => {
 					return (

@@ -1,7 +1,6 @@
-.flex {
+.product-flex {
 	display: flex;
 	flex-wrap: nowrap;
-	justify-content: space-between;
 }
 
 .product {
@@ -30,6 +29,8 @@
 
 .pricing {
 	width: 30%;
+	justify-self: flex-end;
+	text-align: center;
 }
 
 #quantity {

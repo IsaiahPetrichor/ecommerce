@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Pricing from './pricing';
 import './product.css';
 
@@ -48,9 +48,12 @@ const Product: FC = () => {
 	}, [params.productId]);
 	return (
 		<main className="product">
+			<Link to={'/products'} className="back-arrow">
+				<i className="bx bx-arrow-back"></i>
+			</Link>
 			<h2>{product.name}</h2>
 			<hr />
-			<div className="flex">
+			<div className="product-flex">
 				<div className="product-info">
 					<div
 						className="img"
