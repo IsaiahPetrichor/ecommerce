@@ -41,7 +41,7 @@ const Login: FC = () => {
 				} else {
 					setError('');
 					setJwtToken(data.jwt_token);
-					context.updateUser(data.user_id, data.first_name);
+					context.updateUser(data.user_id, data.first_name, data.admin);
 					navigate('/');
 				}
 			})

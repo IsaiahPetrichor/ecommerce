@@ -13,7 +13,7 @@ export default function Profile() {
 
 	const signOut = () => {
 		setJwtToken('');
-		context.updateUser('', '');
+		context.updateUser('', '', false);
 		navigate('/');
 	};
 

@@ -7,6 +7,7 @@ import Cart from './order/cart';
 import Products from './products/products';
 import Product from './products/product';
 import Profile from './profile/profile';
+import Admin from './admin/admin';
 import Login from './auth/login';
 import Signup from './auth/signup';
 import Home from './home/home';
@@ -24,6 +25,7 @@ ReactDOM.render(
 					<Route path="products" element={<Products />} />
 					<Route path="cart" element={<Cart />} />
 					<Route path="profile" element={<Profile />} />
+					<Route path="admin" element={<Admin />} />
 					<Route path="login" element={<Login />} />
 					<Route path="sign-up" element={<Signup />} />
 					<Route path="profile/edit-user" element={<EditUser />} />

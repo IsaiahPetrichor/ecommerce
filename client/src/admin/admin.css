@@ -1,0 +1,21 @@
+.admin-page {
+	color: #eee;
+}
+
+.post-product label {
+	width: 100%;
+	margin-bottom: 5px;
+}
+
+.post-product select,
+.post-product input {
+	position: relative;
+	float: right;
+	margin-left: 5px;
+	width: 75%;
+}
+
+.buttons {
+	width: 100%;
+	text-align: center;
+}

@@ -32,7 +32,7 @@ const comparePassword = async (pass, hash) => {
 user.get('/', auth, (req, res, next) => {
 	const { user_id } = req.user;
 	pool.query(
-		'SELECT first_name, last_name, email FROM users WHERE id = $1',
+		'SELECT first_name, last_name, email, admin FROM users WHERE id = $1',
 		[user_id],
 		(err, result) => {
 			if (err) {

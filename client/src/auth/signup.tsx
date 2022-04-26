@@ -61,10 +61,10 @@ const Signup: FC = () => {
 			.then((data) => {
 				if (typeof data === 'string') {
 					setError(data);
-					context.updateUser('', '');
+					context.updateUser('', '', false);
 				} else {
 					setError('');
-					context.updateUser(data.user_id, data.first_name);
+					context.updateUser(data.user_id, data.first_name, data.admin);
 					setJwtToken(data.jwt_token);
 					navigate('/');
 				}

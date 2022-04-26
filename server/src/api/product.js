@@ -1,5 +1,5 @@
 import pool from '../database/pool.js';
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4, parse } from 'uuid';
 import format from 'pg-format';
 import { Router } from 'express';
 import isAdmin from '../util/adminAuth.js';
@@ -13,7 +13,7 @@ product.get('/', async (req, res) => {
 
 		res.json({ products: products.rows, categories: categories.rows });
 	} catch (err) {
-		res.sendStatus(500);
+		res.status(500).json({ msg: 'Database Error...' });
 	}
 });
 
@@ -36,9 +36,9 @@ product.post('/', (req, res) => {
 
 	pool.query(
 		'INSERT INTO product VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
-		[uuidv4(), name, description, sku, category_id, price, req.date],
+		[uuidv4(), name, description, sku, parse(category_id), price, req.date],
 		(err, result) => {
-			if (err) return res.sendStatus(500);
+			if (err) return res.status(500).json(err);
 			res.status(201).json(result.rows[0]);
 		}
 	);

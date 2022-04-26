@@ -20,7 +20,7 @@ const Header: FC = () => {
 					return response.json();
 				})
 				.then((data) => {
-					context.updateUser(data.user_id, data.first_name);
+					context.updateUser(data.user_id, data.first_name, data.admin);
 				});
 		}
 	}, [jwtToken, context]);
@@ -32,6 +32,7 @@ const Header: FC = () => {
 				<Link to="/">Home</Link>
 				<Link to="/products">Products</Link>
 				<Link to="/cart">Cart</Link>
+				{context.admin && <Link to="/admin">Admin</Link>}
 				{jwtToken !== '' ? (
 					<Link to="/profile">{context.first_name}</Link>
 				) : (
