@@ -64,7 +64,7 @@ const NewProduct: FC<props> = ({ props }) => {
 
 	return (
 		<div className="background">
-			<div className="popup post-product">
+			<div className="popup admin-popup">
 				<h2>Add Product</h2>
 				<hr />
 				<form onSubmit={handleSubmit}>
@@ -102,7 +102,9 @@ const NewProduct: FC<props> = ({ props }) => {
 							required>
 							<option value="">--Choose Category--</option>
 							{categories.map((category) => (
-								<option value={category.id}>{category.name}</option>
+								<option key={category.id} value={category.id}>
+									{category.name}
+								</option>
 							))}
 						</select>
 					</label>

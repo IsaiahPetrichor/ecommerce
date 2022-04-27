@@ -30,14 +30,28 @@ const Admin: FC = () => {
 		<main className="admin-page">
 			{auth ? (
 				<>
-					<button onClick={() => setNewProduct(!newProduct)}>
-						Add Product
-					</button>
-					<button onClick={() => setEditProduct(!editProduct)}>
-						Edit Product
-					</button>
-					{newProduct && <NewProduct props={{ setNewProduct }} />}
-					{editProduct && <EditProduct props={{ setEditProduct }} />}
+					<div className="product-admin">
+						<button onClick={() => setNewProduct(!newProduct)}>
+							Add Product
+						</button>
+						<button onClick={() => setEditProduct(!editProduct)}>
+							Edit Product
+						</button>
+						<hr />
+						{newProduct && <NewProduct props={{ setNewProduct }} />}
+						{editProduct && <EditProduct props={{ setEditProduct }} />}
+					</div>
+					<div className="user-admin">
+						<button>Edit User</button>
+						<button>Delete User</button>
+						<hr />
+					</div>
+					<div className="category-admin">
+						<button>Add Category</button>
+						<button>Edit Category</button>
+						<button>Delete Category</button>
+						<hr />
+					</div>
 				</>
 			) : (
 				<h2 className="error">Error: you do not have access to this page!</h2>
