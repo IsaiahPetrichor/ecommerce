@@ -2,12 +2,26 @@ import React, { FC, useEffect, useState } from 'react';
 import { getJwtToken } from '../utils/util';
 import NewProduct from './new-product';
 import EditProduct from './edit-product';
+import EditUser from './edit-user';
+import DeleteUser from './delete-user';
+import NewCategory from './new-category';
+import EditCategory from './edit-category';
+import DeleteCategory from './delete-category';
+import DeleteProduct from './delete-product';
 
 const Admin: FC = () => {
 	const [auth, setAuth] = useState(false);
 
 	const [newProduct, setNewProduct] = useState(false);
 	const [editProduct, setEditProduct] = useState(false);
+	const [deleteProduct, setDeleteProduct] = useState(false);
+
+	const [editUser, setEditUser] = useState(false);
+	const [deleteUser, setDeleteUser] = useState(false);
+
+	const [newCategory, setNewCategory] = useState(false);
+	const [editCategory, setEditCategory] = useState(false);
+	const [deleteCategory, setDeleteCategory] = useState(false);
 
 	const jwtToken = getJwtToken();
 
@@ -37,20 +51,37 @@ const Admin: FC = () => {
 						<button onClick={() => setEditProduct(!editProduct)}>
 							Edit Product
 						</button>
+						<button onClick={() => setDeleteProduct(!deleteProduct)}>
+							Delete Product
+						</button>
 						<hr />
 						{newProduct && <NewProduct props={{ setNewProduct }} />}
 						{editProduct && <EditProduct props={{ setEditProduct }} />}
+						{deleteProduct && <DeleteProduct props={{ setDeleteProduct }} />}
 					</div>
 					<div className="user-admin">
-						<button>Edit User</button>
-						<button>Delete User</button>
+						<button onClick={() => setEditUser(!editUser)}>Edit User</button>
+						<button onClick={() => setDeleteUser(!deleteUser)}>
+							Delete User
+						</button>
 						<hr />
+						{editUser && <EditUser props={{ setEditUser }} />}
+						{deleteUser && <DeleteUser props={{ setDeleteUser }} />}
 					</div>
 					<div className="category-admin">
-						<button>Add Category</button>
-						<button>Edit Category</button>
-						<button>Delete Category</button>
+						<button onClick={() => setNewCategory(!newCategory)}>
+							Add Category
+						</button>
+						<button onClick={() => setEditCategory(!editCategory)}>
+							Edit Category
+						</button>
+						<button onClick={() => setDeleteCategory(!deleteCategory)}>
+							Delete Category
+						</button>
 						<hr />
+						{newCategory && <NewCategory props={{ setNewCategory }} />}
+						{editCategory && <EditCategory props={{ setEditCategory }} />}
+						{deleteCategory && <DeleteCategory props={{ setDeleteCategory }} />}
 					</div>
 				</>
 			) : (

@@ -58,7 +58,9 @@ const NewProduct: FC<props> = ({ props }) => {
 			},
 			body: body,
 		}).then((res) => {
-			if (res.status !== 201) console.log('Error...');
+			if (res.status !== 201) return console.log('Error...');
+			console.log('Added...');
+			props.setNewProduct(false);
 		});
 	};
 

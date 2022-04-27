@@ -8,7 +8,7 @@ const product = Router();
 // get all products
 product.get('/', async (req, res) => {
 	try {
-		const products = await pool.query('SELECT id, name FROM product');
+		const products = await pool.query('SELECT * FROM product');
 		const categories = await pool.query('SELECT * FROM product_category');
 
 		res.json({ products: products.rows, categories: categories.rows });
