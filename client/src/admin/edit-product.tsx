@@ -46,10 +46,9 @@ const EditProduct: FC<props> = ({ props }) => {
 	}, []);
 
 	const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-		const product = products.find(id === e.currentTarget.value);
-		setSelectedProduct();
-
-		setName();
+		const product = products.find(e.currentTarget.value);
+		setSelectedProduct(product);
+		setName(selectedProduct.name);
 	};
 
 	const handleSubmit = (e: React.SyntheticEvent) => {
