@@ -28,6 +28,11 @@
 	background-color: #ffb42844;
 }
 
+.admin-page hr {
+	border: 1px solid #bbb;
+	box-shadow: 0px 2px 3px #00000040;
+}
+
 .admin-popup select,
 .admin-popup input {
 	position: relative;
