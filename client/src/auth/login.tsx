@@ -56,24 +56,28 @@ const Login: FC = () => {
 			<hr />
 			{error && <p className="error">{error}</p>}
 			<form onSubmit={handleSubmit}>
-				<label htmlFor="email">Email: </label>
-				<input
-					type="email"
-					name="email"
-					value={email}
-					onChange={(e) => setEmail(e.currentTarget.value)}
-					placeholder="email"
-					required
-				/>
-				<label htmlFor="password">Password: </label>
-				<input
-					type="password"
-					name="password"
-					value={password}
-					onChange={(e) => setPassword(e.currentTarget.value)}
-					placeholder="password"
-					required
-				/>
+				<label>
+					Email:
+					<input
+						type="email"
+						name="email"
+						value={email}
+						onChange={(e) => setEmail(e.currentTarget.value)}
+						placeholder="email"
+						required
+					/>
+				</label>
+				<label>
+					Password:
+					<input
+						type="password"
+						name="password"
+						value={password}
+						onChange={(e) => setPassword(e.currentTarget.value)}
+						placeholder="password"
+						required
+					/>
+				</label>
 				<button type="submit">Submit</button>
 			</form>
 			<p className="login-register">
