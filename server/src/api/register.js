@@ -38,8 +38,8 @@ register.post('/', registerValidator, (req, res, next) => {
 					res.status(400).json('Bad request...');
 				} else {
 					const jwt_token = jwtGenerator({
-						name: response.rows[0].first_name,
-						user_id: response.rows[0].id,
+						name: result.rows[0].first_name,
+						user_id: result.rows[0].id,
 					});
 					const first_name = result.rows[0].first_name;
 
