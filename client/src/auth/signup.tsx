@@ -80,53 +80,63 @@ const Signup: FC = () => {
 			<hr />
 			{error && <p className="error">{error}</p>}
 			<form onSubmit={handleSubmit}>
-				<label htmlFor="email">Email: </label>
-				<input
-					type="email"
-					name="email"
-					value={email}
-					onChange={(e) => setEmail(e.currentTarget.value)}
-					placeholder="email"
-					required
-				/>
-				<label htmlFor="first">First Name: </label>
-				<input
-					type="firstname"
-					name="firstname"
-					value={first}
-					onChange={(e) => setFirst(e.currentTarget.value)}
-					placeholder="first name"
-					required
-				/>
-				<label htmlFor="last">Last Name: </label>
-				<input
-					type="lastname"
-					name="lastname"
-					value={last}
-					onChange={(e) => setLast(e.currentTarget.value)}
-					placeholder="last name"
-					required
-				/>
-				<label htmlFor="password">Password: </label>
-				<input
-					type="password"
-					name="password"
-					value={password}
-					onChange={(e) => {
-						setPassword(e.currentTarget.value);
-					}}
-					placeholder="password"
-					required
-				/>
-				<label htmlFor="verifyPass">Re-enter Password: </label>
-				<input
-					type="password"
-					name="password"
-					value={verifyPass}
-					onChange={(e) => setVerifyPass(e.currentTarget.value)}
-					placeholder="password"
-					required
-				/>
+				<label>
+					Email:
+					<input
+						type="email"
+						name="email"
+						value={email}
+						onChange={(e) => setEmail(e.currentTarget.value)}
+						placeholder="email"
+						required
+					/>
+				</label>
+				<label>
+					First Name:
+					<input
+						type="firstname"
+						name="firstname"
+						value={first}
+						onChange={(e) => setFirst(e.currentTarget.value)}
+						placeholder="first name"
+						required
+					/>
+				</label>
+				<label>
+					Last Name:
+					<input
+						type="lastname"
+						name="lastname"
+						value={last}
+						onChange={(e) => setLast(e.currentTarget.value)}
+						placeholder="last name"
+						required
+					/>
+				</label>
+				<label>
+					Password:
+					<input
+						type="password"
+						name="password"
+						value={password}
+						onChange={(e) => {
+							setPassword(e.currentTarget.value);
+						}}
+						placeholder="password"
+						required
+					/>
+				</label>
+				<label>
+					Re-enter Password:
+					<input
+						type="password"
+						name="password"
+						value={verifyPass}
+						onChange={(e) => setVerifyPass(e.currentTarget.value)}
+						placeholder="password"
+						required
+					/>
+				</label>
 				<button type="submit">Submit</button>
 			</form>
 			<p className="register-login">

@@ -2,6 +2,7 @@ import pool from '../database/pool.js';
 import format from 'pg-format';
 import bcrypt from 'bcrypt';
 import auth from '../util/auth.js';
+import isAdmin from '../util/adminAuth.js';
 import { Router } from 'express';
 const user = Router();
 const saltRounds = 10;
@@ -14,19 +15,6 @@ const comparePassword = async (pass, hash) => {
 	}
 	return false;
 };
-
-// get all users (admin only)
-/* user.get('/', (req, res, next) => {
-	pool.query('SELECT * FROM users', (err, result) => {
-		if (err) {
-			res.status(500).send('Database Error!');
-			console.log(err.message);
-			next();
-		} else {
-			res.send(result.rows);
-		}
-	});
-}); */
 
 // get a single user by uuid (if user, only some of their own data)
 user.get('/', auth, (req, res, next) => {
@@ -65,6 +53,24 @@ user.get('/email/:email', (req, res, next) => {
 				res.json({ exists: true });
 			} else {
 				res.json({ exists: false });
+			}
+		}
+	);
+});
+
+// get all users (admin only)
+user.get('/all', (req, res, next) => {
+	if (!isAdmin) return;
+
+	pool.query(
+		'SELECT id, first_name, last_name, email, admin FROM users',
+		(err, result) => {
+			if (err) {
+				res.status(500).send('Database Error!');
+				console.log(err.message);
+				next();
+			} else {
+				res.send(result.rows);
 			}
 		}
 	);
@@ -119,10 +125,25 @@ user.put('/', auth, async (req, res, next) => {
 	}
 });
 
-// delete user (admin / user for own account)
+// delete user (user for own account)
 user.delete('/', auth, async (req, res, next) => {
 	const { user_id } = req.user;
 	pool.query('DELETE FROM users WHERE id = $1', [user_id], (err, result) => {
+		if (err) {
+			console.log(err.message);
+		} else {
+			res.sendStatus(204);
+		}
+	});
+});
+
+// delete user (admin only)
+user.delete('/admin/:id', (req, res) => {
+	const { id } = req.params;
+
+	if (!isAdmin) return;
+
+	pool.query('DELETE FROM users WHERE id = $1', [id], (err, result) => {
 		if (err) {
 			console.log(err.message);
 		} else {

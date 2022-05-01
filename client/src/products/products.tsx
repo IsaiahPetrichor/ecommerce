@@ -40,7 +40,7 @@ const Products: FC = () => {
 							<div
 								className="list-product-img"
 								style={{
-									backgroundImage: `url('/assets/${product.id}.jpeg')`,
+									backgroundImage: `url('/assets/${product.id}.png')`,
 								}}></div>
 							<h2>{product.name}</h2>
 						</Link>

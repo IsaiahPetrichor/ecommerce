@@ -1,11 +1,12 @@
 .login {
 	margin: 100px auto 20px auto;
 	padding: 25px;
-	background-color: #c7c7c7;
+	background-color: #555;
 	border-radius: 5px;
-	box-shadow: 0px 2px 6px rgb(129, 129, 129);
+	box-shadow: 0px 2px 6px rgb(49, 49, 49);
 	max-width: 600px;
 	justify-self: center;
+	color: #eee;
 }
 
 .login h2 {
@@ -26,9 +27,20 @@
 	padding-top: 20px;
 }
 
-.login input,
+.login input {
+	position: relative;
+	float: right;
+	margin-bottom: 5px;
+	padding: 3px;
+	font-size: 1rem;
+	border-radius: 3px;
+	border: 1px solid #777;
+	background-color: #3a3a3a;
+	color: #eee;
+}
+
 .login label {
-	width: 200px;
+	width: 300px;
 	margin: 2px auto;
 	font-size: 1rem;
 }
@@ -38,20 +50,19 @@
 	margin: 10px auto;
 	padding: 5px 10px;
 	font-size: 1.25rem;
-	background-color: #5a9bd8;
+	background-color: transparent;
+	color: #eee;
 	border-radius: 3px;
-	border: 1px solid grey;
+	border: 1px solid rgba(255, 244, 224, 0.76);
 }
 
 .login button:hover {
-	background-color: #c7e4ff;
-	color: #444;
+	background-color: #ffb42844;
 	cursor: pointer;
-	border: 1px solid rgb(206, 206, 206);
 }
 
 .login button:active {
-	background-color: #617d97;
+	background-color: #ffb42844;
 	color: #1d2022;
 }
 
@@ -61,11 +72,11 @@
 }
 
 .login-register a {
-	color: #202a33;
+	color: #eee;
 	text-decoration: none;
 	font-size: 1.1rem;
 }
 
 .login-register a:hover {
-	color: #617d97;
+	color: #be8651;
 }

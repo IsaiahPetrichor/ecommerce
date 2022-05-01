@@ -1,6 +1,7 @@
 import pool from '../database/pool.js';
 import { v4 as uuidv4 } from 'uuid';
 import format from 'pg-format';
+import isAdmin from '../util/adminAuth.js';
 import { Router } from 'express';
 const category = Router();
 
@@ -29,6 +30,9 @@ category.get('/:id', (req, res) => {
 
 category.post('/', async (req, res, next) => {
 	const { name, description } = req.body;
+
+	if (!isAdmin) return;
+
 	const newcategory = await pool.query(
 		'INSERT INTO product_category VALUES ($1, $2, $3) RETURNING *',
 		[uuidv4(), name, description]
@@ -39,6 +43,9 @@ category.post('/', async (req, res, next) => {
 category.put('/:id', async (req, res, next) => {
 	const { id } = req.params;
 	const body = req.body;
+
+	if (!isAdmin) return;
+
 	// for loop to only send updates for the filled parameters
 	for (let key in body) {
 		if (body[key] !== '') {
@@ -55,6 +62,9 @@ category.put('/:id', async (req, res, next) => {
 
 category.delete('/:id', async (req, res, next) => {
 	const { id } = req.params;
+
+	if (!isAdmin) return;
+
 	pool.query('DELETE FROM product_category WHERE id = $1', [id]);
 	res.sendStatus(204);
 });
