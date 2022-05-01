@@ -43,12 +43,9 @@ app.use('/api/categories', categoryRouter);
 import inventoryRouter from './api/product_inventory.js';
 app.use('/api/inventory', inventoryRouter);
 
-// Cart Routes
+// Cart Route
 import cartRouter from './api/cart.js';
 app.use('/api/cart', cartRouter);
-
-import cartItems from './api/cart_items.js';
-app.use('/api/cart/items', cartItems);
 
 // Order Routes
 import orderRouter from './api/order.js';

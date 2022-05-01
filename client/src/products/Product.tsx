@@ -39,13 +39,14 @@ const Product: FC = () => {
 			.then((res) => res.json())
 			.then((json) => {
 				setProduct(json);
-				setImg(`${json.id}.jpeg`);
+				setImg(`${json.id}.png`);
 				fetch(`/api/categories/${json.category_id}`)
 					.then((res) => res.json())
 					.then((json) => setCategory(json));
 			})
 			.catch((err) => console.log(err));
 	}, [params.productId]);
+
 	return (
 		<main className="product">
 			<Link to={'/products'} className="back-arrow">

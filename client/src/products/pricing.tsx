@@ -1,4 +1,5 @@
 import { FC, useState } from 'react';
+import { getJwtToken } from '../utils/util';
 import './product.css';
 
 type Product = {
@@ -19,8 +20,21 @@ const Pricing: FC<ProductProps> = (prop) => {
 	const [quantity, setQuantity] = useState(1);
 	const product = prop.product;
 
+	const jwtToken = getJwtToken();
+
 	const handleAdd = () => {
-		return;
+		fetch('/api/cart', {
+			method: 'POST',
+			headers: {
+				Accept: 'application/json',
+				'content-type': 'application/json',
+				Authorization: `Bearer ${jwtToken}`,
+			},
+			body: JSON.stringify({
+				product_id: product.id,
+				quantity,
+			}),
+		});
 	};
 
 	return (

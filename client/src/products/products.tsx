@@ -6,6 +6,7 @@ import './products.css';
 interface Product {
 	id: string;
 	name: string;
+	price: number;
 }
 
 interface Category {
@@ -43,6 +44,10 @@ const Products: FC = () => {
 									backgroundImage: `url('/assets/${product.id}.png')`,
 								}}></div>
 							<h2>{product.name}</h2>
+							<h3>
+								{'$'}
+								{product.price}
+							</h3>
 						</Link>
 					);
 				})}
