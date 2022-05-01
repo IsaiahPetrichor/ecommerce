@@ -23,6 +23,24 @@
 	background-position: center;
 	background-size: contain;
 	background-repeat: no-repeat;
+	border-radius: 5px;
+}
+
+.product .sku {
+	font-size: 0.8rem;
+	margin-bottom: 10px;
+}
+
+.description-hr {
+	border: none;
+	color: transparent;
+	height: 1px;
+	background: linear-gradient(
+		90deg,
+		transparent 0%,
+		#eee 40%,
+		transparent 100%
+	);
 }
 
 /* Pricing section */

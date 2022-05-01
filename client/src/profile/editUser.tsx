@@ -110,7 +110,7 @@ const EditUser: FC = () => {
 
 	return (
 		<main className="sub-user">
-			<Link to="/profile" className="back-arrow">
+			<Link to="/profile" id="back-arrow">
 				<i className="bx bx-arrow-back"></i>
 			</Link>
 			<div className="user-details">

@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Pricing from './pricing';
 import './product.css';
 
@@ -49,9 +49,9 @@ const Product: FC = () => {
 
 	return (
 		<main className="product">
-			<Link to={'/products'} className="back-arrow">
+			<button onClick={() => window.history.back()} id="back-arrow">
 				<i className="bx bx-arrow-back"></i>
-			</Link>
+			</button>
 			<h2>{product.name}</h2>
 			<hr />
 			<div className="product-flex">
@@ -61,8 +61,9 @@ const Product: FC = () => {
 						style={{
 							backgroundImage: `url('/assets/${img}')`,
 						}}></div>
-					<p className="category">{category?.name}</p>
-					<p>{product.sku}</p>
+					<p className="sku">{product.sku}</p>
+					<p className="category">Category: {category?.name}</p>
+					<hr className="description-hr" />
 					<p className="description">{product.description}</p>
 				</div>
 				<Pricing product={product} />

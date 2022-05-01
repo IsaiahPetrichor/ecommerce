@@ -63,10 +63,10 @@ const Payments: FC = () => {
 
 	return (
 		<main className="sub-user">
-			<Link to="/profile" className="back-arrow">
+			<Link to="/profile" id="back-arrow">
 				<i className="bx bx-arrow-back"></i>
 			</Link>
-			<h2 className="payments-title">Payment Options</h2>
+			<h2 className="title">Payment Options</h2>
 			<p>Add payment options or edit existing ones.</p>
 			<hr />
 			{payments.length === 0 && <p>No payment options on file.</p>}

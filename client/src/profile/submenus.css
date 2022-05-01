@@ -9,7 +9,22 @@
 	padding: 12px 0px;
 }
 
-.back-arrow i {
+.sub-user hr {
+	margin: 5px auto;
+}
+
+.sub-user .title {
+	text-transform: uppercase;
+	font-weight: 400;
+	font-size: 1.8rem;
+}
+
+#back-arrow {
+	background-color: transparent;
+	border: none;
+}
+
+#back-arrow i {
 	height: 50px;
 	width: 50px;
 	padding-top: 10px;
@@ -19,7 +34,7 @@
 	color: #eee;
 }
 
-.back-arrow i:hover {
+#back-arrow i:hover {
 	background-color: #00000022;
 }
 

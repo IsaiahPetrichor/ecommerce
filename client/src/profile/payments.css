@@ -1,9 +1,3 @@
-.payments-title {
-	text-transform: uppercase;
-	font-weight: 400;
-	font-size: 1.8rem;
-}
-
 .payments-list {
 	display: grid;
 	grid-template-columns: repeat(3, 300px);

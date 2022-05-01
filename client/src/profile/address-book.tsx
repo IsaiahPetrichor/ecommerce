@@ -60,10 +60,10 @@ const AddressBook: FC = () => {
 
 	return (
 		<main className="sub-user">
-			<Link to="/profile" className="back-arrow">
+			<Link to="/profile" id="back-arrow">
 				<i className="bx bx-arrow-back"></i>
 			</Link>
-			<h2 className="address-title">Addresses on File</h2>
+			<h2 className="title">Addresses on File</h2>
 			<hr />
 			{addresses.length < 1 && <p>No addresses on file</p>}
 			<div className="address-list">

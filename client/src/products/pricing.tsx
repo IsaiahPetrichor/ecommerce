@@ -1,6 +1,7 @@
 import { FC, useState } from 'react';
 import { getJwtToken } from '../utils/util';
 import './product.css';
+import './pricing.css';
 
 type Product = {
 	id: string;
@@ -39,6 +40,7 @@ const Pricing: FC<ProductProps> = (prop) => {
 
 	return (
 		<div className="pricing">
+			<hr className="left-hr" />
 			<h3>
 				Price: {'$'}
 				{product.price}

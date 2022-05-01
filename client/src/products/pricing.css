@@ -1,0 +1,40 @@
+.pricing .left-hr {
+	border: none;
+	position: relative;
+	float: left;
+	height: calc(100vh - 259px);
+	width: 1px;
+	background: linear-gradient(transparent -10%, #eee 50%, transparent 110%);
+}
+
+.pricing h3 {
+	margin-top: 20px;
+	font-size: 1.4rem;
+}
+
+.pricing p {
+	font-size: 1.2rem;
+}
+
+.pricing input {
+	background-color: #555;
+	color: #eee;
+	border: 1px solid #999;
+	border-radius: 3px;
+	margin: 5px auto;
+	font-size: 1rem;
+}
+
+.pricing button {
+	background-color: transparent;
+	color: #eee;
+	border: 1px solid #eee;
+	border-radius: 3px;
+	padding: 5px 10px;
+}
+
+.pricing button:hover {
+	color: rgb(255, 185, 93);
+	background-color: #00000022;
+	cursor: pointer;
+}

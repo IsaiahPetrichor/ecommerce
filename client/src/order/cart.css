@@ -6,3 +6,39 @@
 .cart h2 {
 	font-family: 'Roboto', Arial, Helvetica, sans-serif;
 }
+
+.cart a {
+	color: #eee;
+	text-decoration: none;
+}
+
+.cart-item {
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: space-between;
+	margin: 10px auto;
+	padding: 5px;
+	border: 1px solid #999999;
+	border-radius: 3px;
+}
+
+.cart .price {
+	margin-top: 5px;
+}
+
+.cart .remove-button {
+	background-color: transparent;
+	color: #eee;
+	border: 1px solid #eee;
+	border-radius: 3px;
+	margin-top: 5px;
+	padding: 5px 10px;
+	font-size: 1rem;
+}
+
+.cart .remove-button:hover {
+	color: rgb(255, 185, 93);
+	background-color: #00000022;
+	cursor: pointer;
+}
