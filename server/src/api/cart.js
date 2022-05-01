@@ -32,4 +32,19 @@ cart.post('/', auth, (req, res) => {
 	);
 });
 
+// delete item from cart
+cart.delete('/:id', auth, (req, res) => {
+	const { user_id } = req.user;
+	const { id } = req.params;
+
+	pool.query(
+		'DELETE FROM cart WHERE user_id = $1 AND product_id = $2',
+		[user_id, id],
+		(err, result) => {
+			if (err) return res.sendStatus(500);
+			res.sendStatus(204);
+		}
+	);
+});
+
 export default cart;
