@@ -16,7 +16,10 @@ const Filters: FC<CategoryProp> = (props) => {
 		<div className="filters">
 			<hr className="right-hr" />
 			<div className="filter-menu">
-				<button>Clear</button>
+				<div className="filter-header">
+					<h2 className="filter-title">Filters</h2>
+					<button>Clear</button>
+				</div>
 				<hr />
 			</div>
 		</div>

@@ -1,3 +1,12 @@
+.pricing {
+	width: 30%;
+	text-align: center;
+}
+
+#quantity {
+	width: 40px;
+}
+
 .pricing .left-hr {
 	border: none;
 	position: relative;

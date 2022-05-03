@@ -1,11 +1,17 @@
 .product-flex {
 	display: flex;
 	flex-wrap: nowrap;
+	justify-content: space-between;
 }
 
 .product {
 	color: #eee;
 	padding: 20px;
+}
+
+.product h2 {
+	text-transform: uppercase;
+	font-weight: 500;
 }
 
 .product h2,
@@ -41,16 +47,4 @@
 		#eee 40%,
 		transparent 100%
 	);
-}
-
-/* Pricing section */
-
-.pricing {
-	width: 30%;
-	justify-self: flex-end;
-	text-align: center;
-}
-
-#quantity {
-	width: 40px;
 }
