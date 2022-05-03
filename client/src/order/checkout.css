@@ -1,0 +1,32 @@
+.checkout {
+	padding: 20px;
+	color: #eee;
+}
+
+.checkout .title {
+	font-family: 'Roboto', Arial, Helvetica, sans-serif;
+	font-weight: 400;
+	text-transform: uppercase;
+}
+
+.sidenote {
+	font-family: 'Roboto', Arial, Helvetica, sans-serif;
+	font-weight: 400;
+	font-size: 1rem;
+	color: #c42;
+}
+
+.invoice h3 {
+	margin-top: 20px;
+	font-family: 'Roboto', Arial, Helvetica, sans-serif;
+	font-weight: 500;
+	font-size: 1.3rem;
+}
+
+.checkout-total {
+	margin: 10px auto;
+	font-family: 'Roboto', Arial, Helvetica, sans-serif;
+	font-weight: 500;
+	font-size: 1.1rem;
+	text-transform: uppercase;
+}

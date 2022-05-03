@@ -25,3 +25,8 @@ footer a:hover {
 footer p {
 	font-family: Arial, Helvetica, sans-serif;
 }
+
+.dev-note {
+	color: #aaa;
+	font-size: 0.9rem;
+}

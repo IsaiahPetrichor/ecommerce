@@ -88,7 +88,15 @@ const Cart: FC = () => {
 	};
 
 	const handleCheckout = () => {
-		if (cart.length > 0) navigate('/checkout');
+		// double check to make sure cart is populated
+		if (cart.length > 0) {
+			// set session storage to hold cart info to make checkout
+			// implementaion simpler & prevent unwanted changes after
+			// checkout button is pressed
+			sessionStorage.setItem('checkout-cart', JSON.stringify({ cart, total }));
+			// send user to the checkout page
+			navigate('/checkout');
+		}
 	};
 
 	return (
@@ -104,6 +112,7 @@ const Cart: FC = () => {
 			{cart.length > 0 && products.length > 0 && (
 				<div className="cart-flex">
 					<div className="cart-items">
+						{/* Double map has a time complexity of O(2^n), refactor to increase efficiency */}
 						{cart.map((item) => (
 							<div key={item.product_id}>
 								{products.map((product) => {
@@ -135,7 +144,7 @@ const Cart: FC = () => {
 							</div>
 						))}
 					</div>
-					<div className="checkout">
+					<div className="cart-checkout">
 						<h3>Checkout</h3>
 						<hr className="checkout-hr" />
 						<p>Total: &#x24;{total}</p>

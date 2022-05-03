@@ -74,13 +74,13 @@
 
 /* Checkout Styles */
 
-.checkout {
+.cart-checkout {
 	padding: 10px;
 	margin-right: 20px;
 	min-width: 175px;
 }
 
-.checkout h3 {
+.cart-checkout h3 {
 	font-family: 'Roboto', Arial, Helvetica, sans-serif;
 	font-weight: 400;
 	font-size: 1.3rem;
@@ -99,13 +99,14 @@
 		transparent 110%
 	);
 }
-.checkout p {
+
+.cart-checkout p {
 	font-family: 'Roboto', Arial, Helvetica, sans-serif;
 	font-weight: 300;
 	font-size: 1.3rem;
 }
 
-.checkout button {
+.cart-checkout button {
 	width: 100%;
 	margin-top: 10px;
 	padding: 5px;
@@ -117,14 +118,14 @@
 	color: rgb(255, 194, 80);
 }
 
-.checkout button:hover {
+.cart-checkout button:hover {
 	cursor: pointer;
 	color: #444;
 	border: 1px solid #444;
 	background-color: rgb(255, 194, 80);
 }
 
-.checkout button i {
+.cart-checkout button i {
 	vertical-align: -1px;
 	margin-left: 5px;
 }
