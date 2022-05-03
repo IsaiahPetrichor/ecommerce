@@ -3,6 +3,11 @@
 	padding: 20px;
 }
 
+.cart-flex {
+	display: flex;
+	justify-content: space-between;
+}
+
 .cart h2 {
 	font-family: 'Roboto', Arial, Helvetica, sans-serif;
 }
@@ -21,6 +26,10 @@
 	padding: 5px;
 	border: 1px solid #999999;
 	border-radius: 3px;
+}
+
+.cart-item-content {
+	margin-right: 15px;
 }
 
 .cart .price {

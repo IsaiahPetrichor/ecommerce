@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getJwtToken } from '../utils/util';
 import './cart.css';
@@ -60,6 +60,8 @@ const Cart: FC = () => {
 		});
 	};
 
+	const handleCheckout = () => {};
+
 	return (
 		<main className="cart">
 			<h2>Shopping Cart ({cart.length})</h2>
@@ -70,37 +72,44 @@ const Cart: FC = () => {
 				</div>
 			)}
 			{cart.length > 0 && (
-				<>
-					{cart.map((item) => (
-						<>
-							{products.map((product) => {
-								if (product.id === item.product_id) {
-									return (
-										<div key={product.id} className="cart-item">
-											<div>
-												<Link to={`/products/${item.product_id}`}>
-													<h3>{product.name}</h3>
-												</Link>
-												<p>{product.sku}</p>
-												<p className="price">{product.price}</p>
+				<div className="cart-flex">
+					<div className="cart-items">
+						{cart.map((item) => (
+							<div key={item.product_id}>
+								{products.map((product) => {
+									if (product.id === item.product_id) {
+										return (
+											<div key={product.id} className="cart-item">
+												<div className="cart-item-content">
+													<Link to={`/products/${item.product_id}`}>
+														<h3>{product.name}</h3>
+													</Link>
+													<p>{product.sku}</p>
+													<p className="price">{product.price}</p>
+												</div>
+												<div>
+													<p className="quantity">Quantity: {item.quantity}</p>
+													<button
+														className="remove-button"
+														onClick={() => {
+															handleRemove(product.id);
+														}}>
+														Remove
+													</button>
+												</div>
 											</div>
-											<div>
-												<p className="quantity">Quantity: {item.quantity}</p>
-												<button
-													className="remove-button"
-													onClick={() => {
-														handleRemove(product.id);
-													}}>
-													Remove
-												</button>
-											</div>
-										</div>
-									);
-								} else return <></>;
-							})}
-						</>
-					))}
-				</>
+										);
+									} else return <></>;
+								})}
+							</div>
+						))}
+					</div>
+					<div className="checkout">
+						<h3>Checkout</h3>
+						<p>Total: </p>
+						<button onClick={handleCheckout}>Checkout</button>
+					</div>
+				</div>
 			)}
 		</main>
 	);
