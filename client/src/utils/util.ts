@@ -52,11 +52,45 @@ export const verifyCard = (cardNumber: string) => {
 };
 
 export const getJwtToken = () => {
-	const token = sessionStorage.getItem('jwtToken');
+	const token = sessionStorage.getItem('petrichor-jwtToken');
 	if (token === null) return '';
 	return token;
 };
 
 export const setJwtToken = (token: string) => {
-	sessionStorage.setItem('jwtToken', token);
+	sessionStorage.setItem('petrichor-jwtToken', token);
+};
+
+interface CartItem {
+	product_id: string;
+	quantity: number;
+}
+
+export const sessionCart = {
+	addItem: (itemID: string, quantity: number) => {
+		const cart = JSON.parse(sessionStorage.getItem('petrichor-cart') || '[]');
+
+		let existingItem = cart.find(
+			(item: CartItem) => item.product_id === itemID
+		);
+
+		if (existingItem) {
+			existingItem.quantity += quantity;
+		} else {
+			cart.push({ product_id: itemID, quantity });
+		}
+
+		const jsonCart = JSON.stringify(cart);
+		sessionStorage.setItem('petrichor-cart', jsonCart);
+	},
+	removeItem: (itemID: string) => {
+		const cart = JSON.parse(sessionStorage.getItem('petrichor-cart') || '[]');
+
+		const filteredCart = cart.filter(
+			(item: CartItem) => item.product_id !== itemID
+		);
+
+		const jsonCart = JSON.stringify(filteredCart);
+		sessionStorage.setItem('petrichor-cart', jsonCart);
+	},
 };

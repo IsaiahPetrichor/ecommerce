@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import { getJwtToken } from '../utils/util';
+import { getJwtToken, sessionCart } from '../utils/util';
 import './product.css';
 import './pricing.css';
 
@@ -21,21 +21,28 @@ const Pricing: FC<ProductProps> = (prop) => {
 	const [quantity, setQuantity] = useState(1);
 	const product = prop.product;
 
+	// Check for JWT in session storage
 	const jwtToken = getJwtToken();
 
 	const handleAdd = () => {
-		fetch('/api/cart', {
-			method: 'POST',
-			headers: {
-				Accept: 'application/json',
-				'content-type': 'application/json',
-				Authorization: `Bearer ${jwtToken}`,
-			},
-			body: JSON.stringify({
-				product_id: product.id,
-				quantity,
-			}),
-		});
+		if (jwtToken) {
+			// if logged in, add to cart database
+			fetch('/api/cart', {
+				method: 'POST',
+				headers: {
+					Accept: 'application/json',
+					'content-type': 'application/json',
+					Authorization: `Bearer ${jwtToken}`,
+				},
+				body: JSON.stringify({
+					product_id: product.id,
+					quantity,
+				}),
+			});
+		} else {
+			// guest session storage cart
+			sessionCart.addItem(product.id, quantity);
+		}
 	};
 
 	return (
