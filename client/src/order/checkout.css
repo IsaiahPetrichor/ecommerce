@@ -1,6 +1,8 @@
 .checkout {
 	padding: 20px;
 	color: #eee;
+	max-width: 1000px;
+	margin: auto;
 }
 
 .checkout .title {
