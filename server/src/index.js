@@ -52,7 +52,7 @@ import orderRouter from './api/order.js';
 app.use('/api/orders', orderRouter);
 
 import orderItems from './api/order_items.js';
-app.use('/api/orders/items', orderItems);
+app.use('/api/order_items', orderItems);
 
 // Server initialize
 app.listen(PORT, () => {

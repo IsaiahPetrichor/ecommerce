@@ -42,10 +42,20 @@ userPayment.get('/:id', async (req, res, next) => {
 // add a new payment
 userPayment.post('/', auth, (req, res, next) => {
 	const { user_id } = req.user;
-	const { type, provider, card_number, expiration, card_name } = req.body;
+	const { type, provider, card_number, expiration, full_name } = req.body;
+	const card_name = req.body.card_name ? req.body.card_name : 'Unnamed';
 	pool.query(
-		'INSERT INTO user_payment VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
-		[uuidv4(), user_id, type, provider, card_number, expiration, card_name],
+		'INSERT INTO user_payment VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *',
+		[
+			uuidv4(),
+			user_id,
+			type,
+			provider,
+			card_number,
+			expiration,
+			card_name,
+			full_name,
+		],
 		(err, response) => {
 			if (err) {
 				res.status(500).json('Server Error...');

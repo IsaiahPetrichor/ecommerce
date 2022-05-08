@@ -1,4 +1,6 @@
 import auth from '../util/auth.js';
+import { time } from '../util/time.js';
+import { v4 as uuidv4 } from 'uuid';
 import { Router } from 'express';
 import pool from '../database/pool.js';
 const order = Router();
@@ -35,6 +37,25 @@ order.get('/:id', auth, async (req, res) => {
 		);
 
 		res.json({ details, items });
+	} catch (err) {
+		res.sendStatus(500);
+	}
+});
+
+// post new order
+order.post('/', [auth, time], async (req, res) => {
+	const { user_id } = req.user;
+	const { payment_id, total, address_id } = req.body;
+
+	try {
+		pool.query(
+			'INSERT INTO order_details VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
+			[uuidv4(), user_id, payment_id, 'pending', total, address_id, req.date],
+			(err, result) => {
+				if (err) return res.sendStatus(500);
+				return res.status(201).json(result.rows);
+			}
+		);
 	} catch (err) {
 		res.sendStatus(500);
 	}
