@@ -6,6 +6,7 @@ import './popup.css';
 interface Card {
 	id: string;
 	card_name: string;
+	full_name: string;
 	card_number: string;
 	type: string;
 	expires: string;
@@ -25,6 +26,7 @@ const EditCard: FC<EditProps> = ({ props }) => {
 	const [error, setError] = useState('');
 
 	const [cardName, setCardName] = useState(props.selectedCard.card_name);
+	const [fullName, setFullName] = useState(props.selectedCard.full_name);
 	const [cardNumber, setCardNumber] = useState(props.selectedCard.card_number);
 	const [type, setType] = useState(props.selectedCard.type);
 	const [expiration, setExpiration] = useState(props.selectedCard.expires);
@@ -90,6 +92,17 @@ const EditCard: FC<EditProps> = ({ props }) => {
 						}}
 						required
 					/>
+					<label htmlFor="full-name">Name On Card: </label>
+					<input
+						id="full-name"
+						type="text"
+						value={fullName}
+						onChange={(e) => {
+							setFullName(e.currentTarget.value);
+							setError('');
+						}}
+						required
+					/>
 					<label htmlFor="card-number">Card Number: </label>
 					<input
 						id="card-number"
@@ -135,6 +148,7 @@ const EditCard: FC<EditProps> = ({ props }) => {
 								props.setSelectedCard({
 									id: '',
 									card_name: '',
+									full_name: '',
 									card_number: '',
 									type: '',
 									expires: '',

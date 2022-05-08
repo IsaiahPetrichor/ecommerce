@@ -16,6 +16,7 @@ import Orders from './profile/orders';
 import Payments from './profile/payments';
 import AddressBook from './profile/address-book';
 import Checkout from './order/checkout';
+import Thanks from './order/thanks';
 
 ReactDOM.render(
 	<React.StrictMode>
@@ -26,6 +27,7 @@ ReactDOM.render(
 					<Route path="products" element={<Products />} />
 					<Route path="cart" element={<Cart />} />
 					<Route path="checkout" element={<Checkout />} />
+					<Route path="thanks" element={<Thanks />} />
 					<Route path="profile" element={<Profile />} />
 					<Route path="admin" element={<Admin />} />
 					<Route path="login" element={<Login />} />

@@ -19,6 +19,7 @@ interface ProductProps {
 
 const Pricing: FC<ProductProps> = (prop) => {
 	const [quantity, setQuantity] = useState(1);
+	const [notice, setNotice] = useState('');
 	const product = prop.product;
 
 	// Check for JWT in session storage
@@ -38,6 +39,8 @@ const Pricing: FC<ProductProps> = (prop) => {
 					product_id: product.id,
 					quantity,
 				}),
+			}).then((res) => {
+				if (res.status === 201) return setNotice('Item Added to Cart!');
 			});
 		} else {
 			// guest session storage cart
@@ -53,6 +56,7 @@ const Pricing: FC<ProductProps> = (prop) => {
 				{product.price}
 			</h3>
 			{quantity < 1 && <p className="error">Quantity must be greater than 0</p>}
+			{notice && <p className="notice">{notice}</p>}
 			<p>
 				Quantity:{' '}
 				<input
@@ -62,7 +66,10 @@ const Pricing: FC<ProductProps> = (prop) => {
 					type="number"
 					min={1}
 					value={quantity}
-					onChange={(e) => setQuantity(Number(e.target.value))}
+					onChange={(e) => {
+						setNotice('');
+						setQuantity(Number(e.target.value));
+					}}
 				/>
 			</p>
 			<button className="add-cart" onClick={handleAdd}>

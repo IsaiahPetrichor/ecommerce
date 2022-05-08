@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from 'react';
-import { getJwtToken } from '../utils/util';
+import { useNavigate } from 'react-router-dom';
+import { getJwtToken, sessionCart } from '../utils/util';
 import './checkout.css';
 
 interface CartItem {
@@ -24,21 +25,34 @@ interface Address {
 interface Payment {
 	id: string;
 	user_id: string;
+	card_name: string;
+	full_name: string;
+	card_number: number;
 	type: string;
 	provider: string;
-	card_number: number;
 	expires: string;
-	card_name: string;
 }
 
 const Checkout: FC = () => {
-	const cart = JSON.parse(sessionStorage.getItem('checkout-cart') || '[]');
+	const navigate = useNavigate();
+
+	const stringCart = sessionStorage.getItem('checkout-cart');
+
+	let cart: any;
+
+	if (stringCart) {
+		cart = JSON.parse(stringCart);
+	}
+
+	if (!cart) navigate('/cart');
 
 	// logged in address options
 	const [addresses, setAddresses] = useState<Address[]>([]);
+	const [selectedAddress, setSelectedAddress] = useState('');
 
 	// logged in payment options
 	const [payments, setPayments] = useState<Payment[]>([]);
+	const [selectedPayment, setSelectedPayment] = useState('');
 
 	// state to hold form entry errors
 	const [error, setError] = useState('');
@@ -90,6 +104,8 @@ const Checkout: FC = () => {
 	}, [jwtToken]);
 
 	const handleAddressChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+		setSelectedAddress(e.currentTarget.value);
+
 		const currentAddress = addresses.find(
 			(address) => address.id === e.currentTarget.value
 		);
@@ -114,13 +130,14 @@ const Checkout: FC = () => {
 	};
 
 	const handlePaymentChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+		setSelectedPayment(e.currentTarget.value);
+
 		const currentPayment = payments.find(
 			(payment) => payment.id === e.currentTarget.value
 		);
 
 		if (currentPayment) {
-			// need to add 'name on card' to card system
-			setCardName('');
+			setCardName(currentPayment.full_name);
 			setCardNumber(currentPayment.card_number.toString());
 			setType(currentPayment.type);
 			setExpiration(currentPayment.expires);
@@ -134,7 +151,73 @@ const Checkout: FC = () => {
 	};
 
 	const handleCheckoutSubmit = () => {
-		if (error) return;
+		let checkoutError = '';
+
+		[first, last, line1, city, state, postal].forEach((input) => {
+			if (!input) {
+				return (checkoutError = 'Address inputs cannot be empty!');
+			}
+		});
+		if (checkoutError) return setError(checkoutError);
+
+		[cardName, cardNumber, type, expiration, cvv].forEach((input) => {
+			if (!input) {
+				return (checkoutError = 'Payment inputs cannot be empty!');
+			}
+		});
+		if (checkoutError) return setError(checkoutError);
+
+		fetch('/api/orders', {
+			method: 'POST',
+			headers: {
+				Accept: 'application/json',
+				'content-type': 'application/json',
+				Authorization: `Bearer ${jwtToken}`,
+			},
+			body: JSON.stringify({
+				payment_id: selectedPayment,
+				total: cart.total,
+				address_id: selectedAddress,
+			}),
+		})
+			.then((res) => {
+				if (res.status === 201) {
+					return res.json();
+				}
+
+				setError('Order could not be processed!');
+			})
+			.then((json) => {
+				fetch('/api/order_items', {
+					method: 'POST',
+					headers: {
+						Accept: 'application/json',
+						'content-type': 'application/json',
+						Authorization: `Bearer ${jwtToken}`,
+					},
+					body: JSON.stringify({
+						order: json,
+						products: cart.cart,
+					}),
+				}).then((res) => {
+					if (res.status === 201) {
+						fetch('/api/cart', {
+							method: 'DELETE',
+							headers: {
+								Accept: 'application/json',
+								'content-type': 'application/json',
+								Authorization: `Bearer ${jwtToken}`,
+							},
+						});
+						sessionCart.clearCarts();
+						return navigate('/thanks');
+					}
+					setError('Order could not be processed!');
+				});
+			})
+			.catch((err) => {
+				console.log(err);
+			});
 	};
 
 	return (
@@ -156,6 +239,7 @@ const Checkout: FC = () => {
 				))}
 				<p className="checkout-total">Total: &#x24;{cart.total}</p>
 			</div>
+			{error && <p className="error">Error: {error}</p>}
 			<div className="checkout-address">
 				<h3>Shipping Address</h3>
 				<hr />
@@ -167,7 +251,9 @@ const Checkout: FC = () => {
 								<select onChange={handleAddressChange}>
 									<option value={''}>-- Select an Address --</option>
 									{addresses.map((address) => (
-										<option value={address.id}>{address.address_name}</option>
+										<option value={address.id} key={address.id}>
+											{address.address_name}
+										</option>
 									))}
 								</select>
 							</label>
@@ -283,7 +369,9 @@ const Checkout: FC = () => {
 								<select onChange={handlePaymentChange}>
 									<option value={''}>-- Select a Payment Method --</option>
 									{payments.map((payment) => (
-										<option value={payment.id}>{payment.card_name}</option>
+										<option value={payment.id} key={payment.id}>
+											{payment.card_name}
+										</option>
 									))}
 								</select>
 							</label>

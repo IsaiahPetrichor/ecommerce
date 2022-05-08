@@ -16,6 +16,7 @@ interface Payment {
 	card_number: number;
 	expires: string;
 	card_name: string;
+	full_name: string;
 }
 
 const Payments: FC = () => {
@@ -26,6 +27,7 @@ const Payments: FC = () => {
 	const [selectedCard, setSelectedCard] = useState({
 		id: '',
 		card_name: '',
+		full_name: '',
 		card_number: '',
 		type: '',
 		expires: '',
@@ -86,6 +88,7 @@ const Payments: FC = () => {
 									setSelectedCard({
 										id: payment.id,
 										card_name: payment.card_name,
+										full_name: payment.full_name,
 										card_number: payment.card_number.toString(),
 										type: payment.type,
 										expires: payment.expires,
@@ -100,6 +103,7 @@ const Payments: FC = () => {
 									setSelectedCard({
 										id: payment.id,
 										card_name: payment.card_name,
+										full_name: payment.full_name,
 										card_number: payment.card_number.toString(),
 										type: payment.type,
 										expires: payment.expires,

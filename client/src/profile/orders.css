@@ -1,0 +1,16 @@
+.order-list {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.order-item {
+	padding: 5px;
+	border: 1px solid #aaa;
+	border-radius: 5px;
+	width: fit-content;
+}
+
+.order-item h3 {
+	font-size: 1.3rem;
+	font-weight: 400;
+}

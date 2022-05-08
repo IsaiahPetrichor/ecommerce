@@ -19,6 +19,7 @@ const AddCard: FC<AddProps> = ({ props }) => {
 	const [error, setError] = useState('');
 
 	const [cardName, setCardName] = useState('');
+	const [fullName, setFullName] = useState('');
 	const [cardNumber, setCardNumber] = useState('');
 	const [type, setType] = useState('');
 	const [expiration, setExpiration] = useState('');
@@ -43,6 +44,7 @@ const AddCard: FC<AddProps> = ({ props }) => {
 			},
 			body: JSON.stringify({
 				card_name: cardName,
+				full_name: fullName,
 				card_number: cardNumber,
 				type: type,
 				provider: 'visa',
@@ -67,6 +69,7 @@ const AddCard: FC<AddProps> = ({ props }) => {
 	const handleCancel = () => {
 		setError('');
 		setCardName('');
+		setFullName('');
 		setCardNumber('');
 		setType('');
 		setExpiration('');
@@ -98,6 +101,17 @@ const AddCard: FC<AddProps> = ({ props }) => {
 						value={cardNumber}
 						onChange={(e) => {
 							setCardNumber(e.currentTarget.value);
+							setError('');
+						}}
+						required
+					/>
+					<label htmlFor="full-name">Name On Card: </label>
+					<input
+						id="full-name"
+						type="text"
+						value={fullName}
+						onChange={(e) => {
+							setFullName(e.currentTarget.value);
 							setError('');
 						}}
 						required

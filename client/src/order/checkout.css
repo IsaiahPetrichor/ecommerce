@@ -32,3 +32,48 @@
 	font-size: 1.1rem;
 	text-transform: uppercase;
 }
+
+.checkout-payment h3,
+.checkout-address h3 {
+	font-weight: 400;
+	text-transform: uppercase;
+	margin-top: 20px;
+}
+
+.checkout label {
+	width: 100%;
+	font-size: 1.2rem;
+}
+
+.checkout input,
+.checkout select {
+	float: right;
+	width: 200px;
+	font-size: 1rem;
+	margin: 2px;
+	padding: 2px;
+	border: 1px solid #aaa;
+	border-radius: 3px;
+	background-color: #666;
+	color: #eee;
+}
+
+.payment-form,
+.address-form {
+	display: flex;
+	flex-wrap: wrap;
+	width: 60%;
+	max-width: 450px;
+	margin: 10px;
+}
+
+.checkout button {
+	width: 150px;
+	margin: 20px 40%;
+	padding: 5px 20px;
+	font-size: 1.2rem;
+	background-color: rgb(160, 122, 52);
+	color: #eee;
+	border: 1px solid #aaa;
+	border-radius: 3px;
+}

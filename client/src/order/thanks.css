@@ -1,0 +1,10 @@
+.order-thanks {
+	color: #eee;
+	padding: 50px;
+}
+
+.order-thanks h2 {
+	text-align: center;
+	text-transform: uppercase;
+	font-weight: 400;
+}

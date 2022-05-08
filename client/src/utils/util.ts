@@ -93,4 +93,8 @@ export const sessionCart = {
 		const jsonCart = JSON.stringify(filteredCart);
 		sessionStorage.setItem('petrichor-cart', jsonCart);
 	},
+	clearCarts: () => {
+		sessionStorage.removeItem('petrichor-cart');
+		sessionStorage.removeItem('checkout-cart');
+	},
 };

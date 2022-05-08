@@ -47,3 +47,13 @@
 	background-color: #00000022;
 	cursor: pointer;
 }
+
+.notice {
+	position: absolute;
+	top: 100px;
+	right: 100px;
+	padding: 5px;
+	border: 1px solid #aaa;
+	border-radius: 3px;
+	background-color: rgba(173, 83, 26, 0.8);
+}

@@ -6,6 +6,7 @@ import './popup.css';
 interface Card {
 	id: string;
 	card_name: string;
+	full_name: string;
 	card_number: string;
 	type: string;
 	expires: string;
@@ -45,6 +46,7 @@ const DeleteCard: FC<DeleteProps> = ({ props }) => {
 				props.setSelectedCard({
 					id: '',
 					card_name: '',
+					full_name: '',
 					card_number: '',
 					type: '',
 					expires: '',
@@ -67,6 +69,7 @@ const DeleteCard: FC<DeleteProps> = ({ props }) => {
 							props.setSelectedCard({
 								id: '',
 								card_name: '',
+								full_name: '',
 								card_number: '',
 								type: '',
 								expires: '',
