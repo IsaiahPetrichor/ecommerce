@@ -28,6 +28,7 @@
 .filters hr {
 	margin: 5px 0;
 	height: 1px;
+	width: 100%;
 	border: none;
 	background-color: #eee;
 }
@@ -55,8 +56,14 @@
 	background-color: #ffb42844;
 }
 
-.filter-menu {
+#filter-menu {
+	display: flex;
+	flex-wrap: wrap;
 	padding: 20px 5px;
+}
+
+#filter-menu label {
+	width: 100%;
 }
 
 /* Product list */
