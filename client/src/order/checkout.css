@@ -1,8 +1,9 @@
 .checkout {
+	margin: auto;
+	margin-bottom: 30px;
 	padding: 20px;
 	color: #eee;
 	max-width: 1000px;
-	margin: auto;
 }
 
 .checkout .title {
@@ -76,4 +77,9 @@
 	color: #eee;
 	border: 1px solid #aaa;
 	border-radius: 3px;
+}
+
+.checkout button:hover {
+	background-color: #00000055;
+	cursor: pointer;
 }

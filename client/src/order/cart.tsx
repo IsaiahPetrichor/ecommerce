@@ -62,7 +62,7 @@ const Cart: FC = () => {
 
 	const updateTotal = (price: number, quantity: number) => {
 		const currentTotal = total + price * quantity;
-		total = currentTotal;
+		total = Number(currentTotal.toFixed(2));
 	};
 
 	const handleRemove = (product_id: string) => {
@@ -88,6 +88,7 @@ const Cart: FC = () => {
 	};
 
 	const handleCheckout = () => {
+		if (!jwtToken) return navigate('/login');
 		// double check to make sure cart is populated
 		if (cart.length > 0) {
 			// set session storage to hold cart info to make checkout

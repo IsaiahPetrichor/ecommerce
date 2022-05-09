@@ -45,6 +45,7 @@ const Pricing: FC<ProductProps> = (prop) => {
 		} else {
 			// guest session storage cart
 			sessionCart.addItem(product.id, quantity);
+			setNotice('Item Added to Cart!');
 		}
 	};
 

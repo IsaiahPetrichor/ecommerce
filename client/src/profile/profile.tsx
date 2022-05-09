@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import UserContext from '../utils/user-context';
 import './profile.css';
-import { getJwtToken, setJwtToken } from '../utils/util';
+import { getJwtToken } from '../utils/util';
 
 export default function Profile() {
 	const context = useContext(UserContext);
@@ -12,7 +12,9 @@ export default function Profile() {
 	if (!jwtToken) navigate('/login');
 
 	const signOut = () => {
-		setJwtToken('');
+		sessionStorage.removeItem('petrichor-jwtToken');
+		sessionStorage.removeItem('petrichor-cart');
+		sessionStorage.removeItem('checkout-cart');
 		context.updateUser('', '', false);
 		navigate('/');
 	};

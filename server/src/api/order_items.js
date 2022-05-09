@@ -12,29 +12,24 @@ orderItems.post('/', auth, (req, res) => {
 	const { order, products } = req.body;
 	const order_id = order[0].id;
 
-	let error = '';
-
-	console.log(order_id);
+	let query = '';
 
 	products.forEach((product) => {
-		if (error !== '') return;
-		pool.query(
-			'INSERT INTO order_item VALUES ($1, $2, $3) RETURNING *',
-			[order_id, product.product_id, product.quantity],
-			(err, result) => {
-				if (err) {
-					error = err.message;
-				} else {
-					console.log(result.rows);
-				}
-			}
-		);
+		query += `('${order_id}', '${product.product_id}', ${product.quantity}), `;
 	});
 
-	console.log(error);
+	const finalQuery = `INSERT INTO order_item(order_id, product_id, quantity) VALUES ${query.slice(
+		0,
+		-2
+	)}`;
 
-	if (!error) return res.sendStatus(201);
-	res.sendStatus(500);
+	pool.query(finalQuery, [], (err, result) => {
+		if (err) {
+			console.log(err.message);
+			return res.sendStatus(500);
+		}
+		res.sendStatus(201);
+	});
 });
 
 export default orderItems;

@@ -43,7 +43,7 @@ const Orders: FC = () => {
 			{orders.length > 0 && (
 				<div className="orders-list">
 					{orders.map((order) => (
-						<div className="order-item">
+						<div className="order-item" key={order.id}>
 							<h3>Order ID: {order.id}</h3>
 							<hr />
 							<p>Total: {order.total}</p>

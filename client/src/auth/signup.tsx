@@ -4,6 +4,11 @@ import UserContext from '../utils/user-context';
 import { getJwtToken, setJwtToken } from '../utils/util';
 import './signup.css';
 
+interface Product {
+	product_id: string;
+	quantity: number;
+}
+
 const Signup: FC = () => {
 	const [email, setEmail] = useState('');
 	const [first, setFirst] = useState('');
@@ -67,6 +72,29 @@ const Signup: FC = () => {
 					context.updateUser(data.user_id, data.first_name, data.admin);
 					setJwtToken(data.jwt_token);
 					navigate('/');
+
+					const jwtToken = getJwtToken();
+					let cart;
+
+					if (sessionStorage.getItem('petrichor-cart'))
+						cart = sessionStorage.getItem('petrichor-cart');
+
+					if (cart) {
+						JSON.parse(cart).forEach((product: Product) =>
+							fetch('/api/cart', {
+								method: 'POST',
+								headers: {
+									Accept: 'application/json',
+									'content-type': 'application/json',
+									Authorization: `Bearer ${jwtToken}`,
+								},
+								body: JSON.stringify({
+									product_id: product.product_id,
+									quantity: product.quantity,
+								}),
+							})
+						);
+					}
 				}
 			})
 			.catch((err) => {

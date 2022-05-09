@@ -4,6 +4,7 @@
 }
 
 .order-item {
+	margin: 10px auto;
 	padding: 5px;
 	border: 1px solid #aaa;
 	border-radius: 5px;
