@@ -8,12 +8,14 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const app = express();
-const PORT = process.env.port || 5000;
+const PORT = process.env.PORT || 3000;
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use(time);
 app.use(bodyParser.json());
 app.use(cors());
+
+app.use(express.static('/client/build'));
 
 // Registration Route
 import registerRouter from './api/register.js';

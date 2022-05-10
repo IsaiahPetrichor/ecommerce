@@ -22,10 +22,13 @@
 		"pg": "^8.7.3",
 		"pg-format": "^1.0.4",
 		"swagger-ui-express": "^4.3.0",
-		"uuid": "^8.3.2"
+		"uuid": "^8.3.2",
+		"dotenv": "^16.0.0"
 	},
 	"devDependencies": {
-		"dotenv": "^16.0.0",
 		"nodemon": "^2.0.15"
+	},
+	"engines": {
+		"node": "v16.11.0"
 	}
 }

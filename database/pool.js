@@ -2,12 +2,10 @@ import pg from 'pg';
 const { Pool } = pg;
 import 'dotenv/config';
 
+const connectionString = `${process.env.DATABASE_URL}?sslmode=require`;
+
 const pool = new Pool({
-	user: process.env.PGUSER,
-	host: process.env.PGHOST,
-	database: process.env.PGDATABASE,
-	password: process.env.PGPASSWORD,
-	port: process.env.PGPORT,
+	connectionString,
 });
 
 pool.on('error', (err, client) => {

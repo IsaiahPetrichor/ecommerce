@@ -35,7 +35,6 @@ login.post('/', loginValidator, (req, res) => {
 			});
 			const first_name = response.rows[0].first_name;
 
-			res.cookie('token', token, { httpOnly: true, sameSite: false });
 			return res.json({
 				first_name,
 				jwt_token: token,

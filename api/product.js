@@ -13,7 +13,8 @@ product.get('/', async (req, res) => {
 
 		res.json({ products: products.rows, categories: categories.rows });
 	} catch (err) {
-		res.status(500).json({ msg: 'Database Error...' });
+		console.log(err.message);
+		res.status(500).json('Database Error...');
 	}
 });
 
