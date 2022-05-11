@@ -42,13 +42,21 @@ register.post('/', registerValidator, (req, res, next) => {
 					console.log(err.message);
 					return res.status(400).json('Bad request...');
 				} else {
+					const user_id = result.rows[0].id;
+					const first_name = result.rows[0].first_name;
+					const admin = result.rows[0].admin;
+
 					const jwt_token = jwtGenerator({
 						name: result.rows[0].first_name,
 						user_id: result.rows[0].id,
 					});
-					const first_name = result.rows[0].first_name;
 
-					return res.status(201).json({ first_name, jwt_token });
+					return res.status(201).json({
+						user_id,
+						first_name,
+						admin,
+						jwt_token,
+					});
 				}
 			}
 		);
