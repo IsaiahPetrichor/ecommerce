@@ -2,11 +2,9 @@ import { FC, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './header.css';
 import UserContext from './utils/user-context';
-import { getJwtToken } from './utils/util';
 
 const Header: FC = () => {
 	const context = useContext(UserContext);
-	const jwtToken = getJwtToken();
 
 	return (
 		<header>
@@ -16,7 +14,7 @@ const Header: FC = () => {
 				<Link to="/products">Products</Link>
 				<Link to="/cart">Cart</Link>
 				{context.admin && <Link to="/admin">Admin</Link>}
-				{jwtToken ? (
+				{context.user_id ? (
 					<Link to="/profile">{context.first_name}</Link>
 				) : (
 					<Link to="/login">Login</Link>
