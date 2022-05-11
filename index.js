@@ -60,11 +60,6 @@ app.use('/api/orders', orderRouter);
 import orderItems from './api/order_items.js';
 app.use('/api/order_items', orderItems);
 
-// 404 page
-app.use('*', (req, res) => {
-	res.redirect('/404');
-});
-
 // Server initialize
 app.listen(PORT, () => {
 	console.log(`Server running on port ${PORT}...`);
