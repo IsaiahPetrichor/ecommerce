@@ -20,7 +20,7 @@ userAddress.get('/', auth, (req, res) => {
 });
 
 // post new address
-userAddress.post('/', auth, wipeDefaults, (req, res) => {
+userAddress.post('/', auth, async (req, res) => {
 	const { user_id } = req.user;
 	const {
 		address_name,
@@ -34,7 +34,7 @@ userAddress.post('/', auth, wipeDefaults, (req, res) => {
 		is_default,
 	} = req.body;
 
-	wipeDefaults(req);
+	await wipeDefaults(req);
 
 	pool.query(
 		'INSERT INTO user_address VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *',

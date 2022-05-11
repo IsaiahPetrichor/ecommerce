@@ -71,7 +71,6 @@ const Login: FC = () => {
 							})
 						);
 					}
-					console.log(data);
 					navigate('/');
 				}
 			})
