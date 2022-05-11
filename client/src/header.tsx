@@ -1,10 +1,27 @@
-import { FC, useContext } from 'react';
+import { FC, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './header.css';
 import UserContext from './utils/user-context';
+import { getJwtToken } from './utils/util';
 
 const Header: FC = () => {
 	const context = useContext(UserContext);
+
+	const jwtToken = getJwtToken();
+
+	useEffect(() => {
+		fetch('/api/users', {
+			headers: {
+				Accept: 'application/json',
+				'content-type': 'application/json',
+				Authorization: `Bearer ${jwtToken}`,
+			},
+		})
+			.then((res) => res.json())
+			.then((json) =>
+				context.updateUser(json.user_id, json.first_name, json.admin)
+			);
+	}, [jwtToken, context]);
 
 	return (
 		<header>
