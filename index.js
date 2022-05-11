@@ -14,18 +14,15 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+if (process.env.NODE_ENV === 'production') {
+	// serve static content
+	app.use(express.static(decodeURI(path.join(__dirname, '/client/build'))));
+}
+
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use(time);
 app.use(bodyParser.json());
 app.use(cors());
-
-if (process.env.NODE_ENV === 'production') {
-	// serve static content
-	app.use(express.static(decodeURI(path.join(__dirname, '/client/build'))));
-	app.get('*', (req, res) => {
-		res.sendFile(decodeURI(path.join(__dirname, '/client/build/index.html')));
-	});
-}
 
 // Registration Route
 import registerRouter from './api/register.js';
@@ -65,6 +62,13 @@ app.use('/api/orders', orderRouter);
 
 import orderItems from './api/order_items.js';
 app.use('/api/order_items', orderItems);
+
+if (process.env.NODE_ENV === 'production') {
+	// catchall
+	app.get('*', (req, res) => {
+		res.sendFile(decodeURI(path.join(__dirname, '/client/build/index.html')));
+	});
+}
 
 // Server initialize
 app.listen(PORT, () => {
