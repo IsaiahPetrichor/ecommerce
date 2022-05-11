@@ -18,7 +18,9 @@ app.use(cors());
 if (process.env.NODE_ENV === 'production') {
 	// serve static content
 	app.use(express.static('/client/build'));
-	// build react client
+	app.get('*', (req, res) => {
+		res.sendFile('/client/build/index.hmtl');
+	});
 }
 
 // Registration Route
