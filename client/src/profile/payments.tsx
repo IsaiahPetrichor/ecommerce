@@ -58,7 +58,11 @@ const Payments: FC = () => {
 					console.log(err.message);
 				});
 
-			setPayments(userPayments);
+			if (userPayments) {
+				setPayments(userPayments);
+			} else {
+				setPayments([]);
+			}
 		}
 		getUserPayments();
 	}, [context, addCard, deleteCard, editCard, jwtToken]);

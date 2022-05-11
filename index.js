@@ -4,8 +4,12 @@ import { time } from './util/time.js';
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from './swagger.js';
 import cors from 'cors';
+import path, { dirname } from 'path';
+import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
 dotenv.config();
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -17,9 +21,9 @@ app.use(cors());
 
 if (process.env.NODE_ENV === 'production') {
 	// serve static content
-	app.use(express.static('/client/build'));
+	app.use(express.static(decodeURI(path.join(__dirname, '/client/build'))));
 	app.get('*', (req, res) => {
-		res.sendFile('/client/build/index.html');
+		res.sendFile(decodeURI(path.join(__dirname, '/client/build/index.html')));
 	});
 }
 
