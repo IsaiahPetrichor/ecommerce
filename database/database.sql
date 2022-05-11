@@ -2,11 +2,11 @@ CREATE TABLE users(
 	id uuid PRIMARY KEY,
   first_name varchar(32) NOT NULL,
   last_name varchar(32) NOT NULL,
-  email varchar(60) NOT NULL,
+  email varchar(60) UNIQUE NOT NULL,
   password varchar(150) NOT NULL,
   phone varchar(10),
-  created_on timestamp,
-  UNIQUE(email)
+  created_on timestamp NOT NULL,
+  admin boolean DEFAULT false NOT NULL
 );
 
 CREATE TABLE user_address(
@@ -70,15 +70,8 @@ CREATE TABLE order_item (
   quantity integer NOT NULL
 );
 
-CREATE TABLE cart_session (
-  id uuid PRIMARY KEY,
+CREATE TABLE cart (
   user_id uuid REFERENCES users(id) NOT NULL,
-  total decimal NOT NULL
-);
-
-CREATE TABLE cart_item (
-  id uuid PRIMARY KEY,
-  cart_session_id uuid REFERENCES cart_session(id) NOT NULL,
   product_id uuid REFERENCES product(id) NOT NULL,
   quantity integer NOT NULL
 );
