@@ -17,6 +17,7 @@ import Payments from './profile/payments';
 import AddressBook from './profile/address-book';
 import Checkout from './order/checkout';
 import Thanks from './order/thanks';
+import NotFound from './404';
 
 ReactDOM.render(
 	<React.StrictMode>
@@ -37,14 +38,7 @@ ReactDOM.render(
 					<Route path="profile/payments" element={<Payments />} />
 					<Route path="profile/addresses" element={<AddressBook />} />
 					<Route path="products/:productId" element={<Product />} />
-					<Route
-						path="*"
-						element={
-							<main style={{ padding: '1rem' }}>
-								<h2>404: This page doesn't exist</h2>
-							</main>
-						}
-					/>
+					<Route path="*" element={<NotFound />} />
 				</Route>
 			</Routes>
 		</BrowserRouter>
