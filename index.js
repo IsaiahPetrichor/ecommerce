@@ -19,7 +19,7 @@ if (process.env.NODE_ENV === 'production') {
 	// serve static content
 	app.use(express.static('/client/build'));
 	app.get('*', (req, res) => {
-		res.sendFile('/client/build/index.hmtl');
+		res.sendFile('/client/build/index.html');
 	});
 }
 
