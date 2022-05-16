@@ -29,14 +29,34 @@ const Header: FC = () => {
 		<header>
 			<h1>Petrichor Coffee</h1>
 			<nav>
-				<Link to="/">Home</Link>
-				<Link to="/products">Products</Link>
-				<Link to="/cart">Cart</Link>
-				{context.admin && <Link to="/admin">Admin</Link>}
+				<Link to="/">
+					<i className="bx bxs-home-alt-2"></i>
+					<span>Home</span>
+				</Link>
+				<Link to="/products">
+					<i className="bx bxs-shopping-bag-alt"></i>
+					<span>Products</span>
+				</Link>
+				<Link to="/cart">
+					<i className="bx bxs-cart"></i>
+					<span>Cart</span>
+				</Link>
+				{context.admin && (
+					<Link to="/admin">
+						<i className="bx bxs-cog"></i>
+						<span>Admin</span>
+					</Link>
+				)}
 				{jwtToken !== '' ? (
-					<Link to="/profile">{context.first_name}</Link>
+					<Link to="/profile">
+						<i className="bx bxs-user-circle"></i>
+						<span>{context.first_name}</span>
+					</Link>
 				) : (
-					<Link to="/login">Login</Link>
+					<Link to="/login">
+						<i className="bx bxs-log-in-circle"></i>
+						<span>Login</span>
+					</Link>
 				)}
 			</nav>
 		</header>

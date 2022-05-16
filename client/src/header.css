@@ -2,33 +2,55 @@ header {
 	display: flex;
 	justify-content: space-between;
 	position: sticky;
+	top: 0;
 	z-index: 5;
-	width: 100%;
+	max-width: 100%;
 	align-items: center;
-	padding: 5px 10px;
+	padding: 5px 2px;
 	font-family: 'Roboto', Helvetica, sans-serif;
 	font-weight: 300;
 	box-shadow: 0px 0px 5px 2px #000000;
 	background-color: #2b2b2b;
-	top: 0;
+	overflow: hidden;
 }
 
 h1 {
 	text-transform: uppercase;
 	font-weight: 300;
-	font-size: 2rem;
+	font-size: 1.5rem;
+	width: min-content;
 	color: rgb(243, 173, 107);
+}
+
+a span {
+	display: none;
 }
 
 header a {
 	color: #eee;
 	text-decoration: none;
-	font-size: 1.4rem;
-	padding: 5px 12px;
+	font-size: 1.5rem;
+	padding: 8px 10.5px;
 }
 
 header a:hover {
 	color: rgb(243, 173, 107);
 	background-color: #00000022;
 	border-radius: 4px;
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
 }

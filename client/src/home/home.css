@@ -1,5 +1,5 @@
 main {
-	margin-bottom: 50px;
+	overflow: scroll;
 }
 /* Hero Styles */
 
@@ -8,7 +8,7 @@ main {
 	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
-	min-height: 800px;
+	min-height: calc(100vh - 29px);
 	background-image: url('../resources/hero.jpg');
 	background-position: bottom;
 	background-repeat: no-repeat;
@@ -16,10 +16,9 @@ main {
 }
 
 .greeting {
-	width: 40%;
-	min-width: 600px;
+	width: 80%;
 	text-align: center;
-	font-size: 2.3rem;
+	font-size: 2rem;
 	font-weight: 500;
 	padding: 20px;
 	color: #ddd;
