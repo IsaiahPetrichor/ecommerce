@@ -1,16 +1,15 @@
 .payments-list {
-	display: grid;
-	grid-template-columns: repeat(3, 300px);
-	grid-auto-flow: row;
-	grid-gap: 5px;
+	display: flex;
+	flex-wrap: wrap;
 	width: fit-content;
 	margin: 20px auto;
 }
 
 .payment-option {
-	width: 300px;
+	width: 95%;
 	height: 135px;
-	padding: 10px;
+	padding: 5px;
+	margin-bottom: 10px;
 	border: 1px solid #666;
 	border-radius: 2px;
 	background-color: #555;
@@ -55,7 +54,7 @@
 }
 
 .add-card {
-	width: 300px;
+	width: 95%;
 	height: 135px;
 	background-color: #555;
 	border: 1px solid #666;

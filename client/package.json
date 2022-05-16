@@ -44,5 +44,5 @@
 	"devDependencies": {
 		"cypress": "^9.5.3"
 	},
-	"proxy": "http://localhost:3000/"
+	"proxy": "http://localhost:5000/"
 }

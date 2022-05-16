@@ -5,17 +5,16 @@
 }
 
 .address-list {
-	display: grid;
-	grid-template-columns: repeat(3, 300px);
-	grid-auto-flow: row;
-	grid-gap: 5px;
+	display: flex;
+	flex-wrap: wrap;
 	width: fit-content;
 	margin: 20px auto;
 }
 
 .address {
-	width: 300px;
+	width: 95%;
 	height: 160px;
+	margin-bottom: 5px;
 	padding: 10px;
 	border: 1px solid #666;
 	border-radius: 2px;
@@ -61,6 +60,7 @@
 }
 
 .add-address {
+	width: 95%;
 	height: 160px;
 	font-size: 1.2rem;
 	cursor: pointer;
@@ -76,39 +76,35 @@
 
 .default-address {
 	border-radius: 4px;
-	padding: 2px 5px;
 	background-color: rgba(255, 185, 93, 0.3);
 }
 
 #address-details {
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: space-around;
 	align-items: center;
-	padding: 10px;
+	padding: 2px 5px;
 	border: 1px solid #999;
 	border-radius: 3px;
-	width: 100%;
 }
 
 #address-details label {
 	margin: 0;
 	display: flex;
-	justify-content: center;
-	align-items: center;
+	flex-wrap: wrap;
 }
 
 #address-details input {
 	margin: 0;
-	width: fit-content;
-	margin: auto 5px;
+	margin-bottom: 3px;
 }
 
 #address-details .address-name {
-	width: max-content;
+	width: fit-content;
 }
 
 #address-details .is-default-input {
-	width: min-content;
 	cursor: pointer;
 }
 
