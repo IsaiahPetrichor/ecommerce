@@ -9,9 +9,9 @@ export const registerValidator = (req, res, next) => {
 		return res.json('Missing Credentials');
 	} else if (!validEmail(email)) {
 		return res.json('Invalid Email');
+	} else {
+		next();
 	}
-
-	next();
 };
 
 export const loginValidator = (req, res, next) => {

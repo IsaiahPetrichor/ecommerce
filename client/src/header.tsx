@@ -6,23 +6,21 @@ import { getJwtToken } from './utils/util';
 
 const Header: FC = () => {
 	const context = useContext(UserContext);
+
 	const jwtToken = getJwtToken();
 
 	useEffect(() => {
-		if (jwtToken !== '') {
-			fetch('/api/users/', {
-				headers: {
-					Authorization: `Bearer ${jwtToken}`,
-				},
-				credentials: 'include',
-			})
-				.then((response) => {
-					return response.json();
-				})
-				.then((data) => {
-					context.updateUser(data.user_id, data.first_name, data.admin);
-				});
-		}
+		fetch('/api/users', {
+			headers: {
+				Accept: 'application/json',
+				'content-type': 'application/json',
+				Authorization: `Bearer ${jwtToken}`,
+			},
+		})
+			.then((res) => res.json())
+			.then((json) =>
+				context.updateUser(json.user_id, json.first_name, json.admin)
+			);
 	}, [jwtToken, context]);
 
 	return (
@@ -47,7 +45,7 @@ const Header: FC = () => {
 						<span>Admin</span>
 					</Link>
 				)}
-				{jwtToken !== '' ? (
+				{context.user_id ? (
 					<Link to="/profile">
 						<i className="bx bxs-user-circle"></i>
 						<span>{context.first_name}</span>

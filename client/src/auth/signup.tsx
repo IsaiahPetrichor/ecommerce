@@ -20,11 +20,11 @@ const Signup: FC = () => {
 
 	const jwtToken = getJwtToken();
 
-	const context = useContext(UserContext);
 	let navigate = useNavigate();
+	const context = useContext(UserContext);
 
 	useEffect(() => {
-		if (jwtToken !== '') {
+		if (jwtToken) {
 			navigate('/');
 		}
 
@@ -58,7 +58,6 @@ const Signup: FC = () => {
 				last_name: last,
 				password: password,
 			}),
-			credentials: 'include',
 		};
 
 		fetch(url, options)
@@ -66,12 +65,10 @@ const Signup: FC = () => {
 			.then((data) => {
 				if (typeof data === 'string') {
 					setError(data);
-					context.updateUser('', '', false);
 				} else {
 					setError('');
-					context.updateUser(data.user_id, data.first_name, data.admin);
 					setJwtToken(data.jwt_token);
-					navigate('/');
+					context.updateUser(data.user_id, data.first_name, data.admin);
 
 					const jwtToken = getJwtToken();
 					let cart;
@@ -95,6 +92,7 @@ const Signup: FC = () => {
 							})
 						);
 					}
+					navigate('/');
 				}
 			})
 			.catch((err) => {

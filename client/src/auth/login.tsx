@@ -17,9 +17,11 @@ const Login: FC = () => {
 	let navigate = useNavigate();
 	const context = useContext(UserContext);
 
+	let jwtToken = getJwtToken();
+
 	useEffect(() => {
-		if (getJwtToken() !== '') navigate('/');
-	}, [navigate]);
+		if (jwtToken) navigate('/');
+	}, [jwtToken, navigate]);
 
 	const handleSubmit = (e: React.SyntheticEvent) => {
 		e.preventDefault();
@@ -35,7 +37,6 @@ const Login: FC = () => {
 				email: email,
 				password: password,
 			}),
-			credentials: 'include',
 		};
 
 		fetch(url, options)
@@ -47,7 +48,6 @@ const Login: FC = () => {
 					setError('');
 					setJwtToken(data.jwt_token);
 					context.updateUser(data.user_id, data.first_name, data.admin);
-					navigate('/');
 
 					const jwtToken = getJwtToken();
 					let cart;
@@ -71,6 +71,7 @@ const Login: FC = () => {
 							})
 						);
 					}
+					navigate('/');
 				}
 			})
 			.catch((err) => {

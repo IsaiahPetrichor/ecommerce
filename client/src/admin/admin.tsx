@@ -29,6 +29,8 @@ const Admin: FC = () => {
 		fetch('/api/users', {
 			method: 'GET',
 			headers: {
+				Accept: 'application/json',
+				'content-type': 'application/json',
 				Authorization: `Bearer ${jwtToken}`,
 			},
 		})

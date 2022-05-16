@@ -6,7 +6,9 @@
 	"type": "module",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"start": "nodemon index.js"
+		"local": "nodemon index.js",
+		"start": "node index.js",
+		"heroku-postbuild": "cd client && npm install && npm run build"
 	},
 	"author": "Isaiah Petrichor",
 	"license": "ISC",

@@ -1,8 +1,9 @@
 export default {
 	openapi: '3.0.1',
 	info: {
-		title: 'Sample E-Commerce Application API',
-		description: 'Alpha version of an e-commerce server',
+		title: 'Petrichor Coffee API',
+		description:
+			'Fictional coffee shop server providing authorization, products, and checkout',
 		version: '1.0.0',
 		contact: {
 			name: 'Isaiah Petrichor',
