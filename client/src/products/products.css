@@ -8,7 +8,7 @@
 /* Filters */
 .filters {
 	height: 100%;
-	width: 40%;
+	width: 30%;
 	max-width: 350px;
 	color: #eee;
 	box-shadow: 0px 0px 1px 0px #000;
@@ -16,13 +16,13 @@
 
 .filter-header {
 	display: flex;
+	flex-wrap: wrap;
 }
 
 .filter-title {
 	font-size: 1.4rem;
 	font-weight: 400;
 	text-transform: uppercase;
-	margin: 0px 15px 0px 5px;
 }
 
 .filters hr {
@@ -64,14 +64,24 @@
 
 #filter-menu label {
 	width: 100%;
+	margin-bottom: 10px;
+}
+
+#filter-menu input {
+	position: relative;
+	float: right;
+	top: 5px;
+}
+
+#filter-menu p {
+	text-decoration: underline;
 }
 
 /* Product list */
 .products-list {
-	width: 80%;
-	display: grid;
-	grid-template-columns: repeat(auto-fill, 350px);
-	grid-gap: 20px;
+	width: 70%;
+	display: flex;
+	flex-wrap: wrap;
 	justify-content: center;
 	margin: 20px auto 50px auto;
 	font-family: Arial, Helvetica, sans-serif;
@@ -82,9 +92,11 @@
 .list-product {
 	color: #eee;
 	text-decoration: none;
+	margin: 5px;
 	padding: 5px;
 	border-radius: 5px;
 	max-height: 310px;
+	max-width: 190px;
 }
 
 .list-product:hover {
@@ -105,11 +117,35 @@
 }
 
 .list-product-img {
-	height: 200px;
-	width: 200px;
+	height: 180px;
+	width: 180px;
 	margin: 2px auto;
 	background-position: center;
 	background-size: contain;
 	border-radius: 2px;
 	box-shadow: 0px 0px 10px #222;
+}
+
+/* Large phones */
+@media only screen and (min-width: 400px) {
+}
+
+/* Tablets */
+@media only screen and (min-width: 768px) {
+	#filter-menu label {
+		font-size: 1rem;
+	}
+
+	.filter-header {
+		width: 100%;
+		justify-content: space-between;
+	}
+}
+
+/* Small Laptops & Small Screen Desktops */
+@media only screen and (min-width: 992px) {
+}
+
+/* Modern Computer Screens */
+@media only screen and (min-width: 1200px) {
 }

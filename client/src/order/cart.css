@@ -5,6 +5,7 @@
 
 .cart-flex {
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: space-between;
 }
 
@@ -40,20 +41,28 @@
 }
 
 .cart-item-content {
-	margin-right: 15px;
+	margin-right: 10px;
+}
+
+.cart-item-content h3 {
+	font-size: 1.2rem;
 }
 
 .cart .sku {
 	font-family: 'Roboto', Arial, Helvetica, sans-serif;
 	font-weight: 300;
-	font-size: 0.9rem;
+	font-size: 0.8rem;
 }
 
 .cart .price {
 	margin-top: 10px;
 	font-family: 'Roboto', Arial, Helvetica, sans-serif;
 	font-weight: 500;
-	font-size: 1.2rem;
+	font-size: 1rem;
+}
+
+.cart .quantity {
+	font-size: 0.8rem;
 }
 
 .cart .remove-button {
@@ -62,8 +71,8 @@
 	border: 1px solid #eee;
 	border-radius: 3px;
 	margin-top: 5px;
-	padding: 5px 10px;
-	font-size: 1rem;
+	padding: 2px 5px;
+	font-size: 0.9rem;
 }
 
 .cart .remove-button:hover {
@@ -76,14 +85,12 @@
 
 .cart-checkout {
 	padding: 10px;
-	margin-right: 20px;
-	min-width: 175px;
 }
 
 .cart-checkout h3 {
 	font-family: 'Roboto', Arial, Helvetica, sans-serif;
 	font-weight: 400;
-	font-size: 1.3rem;
+	font-size: 1.2rem;
 	text-transform: uppercase;
 }
 
@@ -103,7 +110,7 @@
 .cart-checkout p {
 	font-family: 'Roboto', Arial, Helvetica, sans-serif;
 	font-weight: 300;
-	font-size: 1.3rem;
+	font-size: 1rem;
 }
 
 .cart-checkout button {
@@ -113,7 +120,7 @@
 	border: 1px solid rgb(255, 194, 80);
 	border-radius: 3px;
 	font-family: 'Roboto', Arial, Helvetica, sans-serif;
-	font-size: 1rem;
+	font-size: 0.9rem;
 	background-color: transparent;
 	color: rgb(255, 194, 80);
 }

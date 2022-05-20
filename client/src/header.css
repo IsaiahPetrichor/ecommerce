@@ -18,8 +18,13 @@ h1 {
 	text-transform: uppercase;
 	font-weight: 300;
 	font-size: 1.5rem;
-	width: min-content;
+	width: fit-content;
 	color: rgb(243, 173, 107);
+}
+
+nav {
+	display: flex;
+	flex-wrap: nowrap;
 }
 
 a span {
@@ -33,24 +38,26 @@ header a {
 	padding: 8px 10.5px;
 }
 
+header a:active,
 header a:hover {
 	color: rgb(243, 173, 107);
 	background-color: #00000022;
 	border-radius: 4px;
 }
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-}
-
-/* Medium devices (landscape tablets, 768px and up) */
+/* Tablets */
 @media only screen and (min-width: 768px) {
+	a span {
+		display: inline;
+		vertical-align: 1px;
+		margin-left: 5px;
+	}
 }
 
-/* Large devices (laptops/desktops, 992px and up) */
+/* Small Laptops & Small Screen Desktops */
 @media only screen and (min-width: 992px) {
 }
 
-/* Extra large devices (large laptops and desktops, 1200px and up) */
+/* Modern Computer Screens */
 @media only screen and (min-width: 1200px) {
 }

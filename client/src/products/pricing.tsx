@@ -58,7 +58,7 @@ const Pricing: FC<ProductProps> = (prop) => {
 			</h3>
 			{quantity < 1 && <p className="error">Quantity must be greater than 0</p>}
 			{notice && <p className="notice">{notice}</p>}
-			<p>
+			<label>
 				Quantity:{' '}
 				<input
 					aria-label="Quantity Input"
@@ -72,7 +72,7 @@ const Pricing: FC<ProductProps> = (prop) => {
 						setQuantity(Number(e.target.value));
 					}}
 				/>
-			</p>
+			</label>
 			<button className="add-cart" onClick={handleAdd}>
 				Add to Cart
 			</button>

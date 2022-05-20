@@ -10,17 +10,19 @@ const Header: FC = () => {
 	const jwtToken = getJwtToken();
 
 	useEffect(() => {
-		fetch('/api/users', {
-			headers: {
-				Accept: 'application/json',
-				'content-type': 'application/json',
-				Authorization: `Bearer ${jwtToken}`,
-			},
-		})
-			.then((res) => res.json())
-			.then((json) =>
-				context.updateUser(json.user_id, json.first_name, json.admin)
-			);
+		if (jwtToken) {
+			fetch('/api/users', {
+				headers: {
+					Accept: 'application/json',
+					'content-type': 'application/json',
+					Authorization: `Bearer ${jwtToken}`,
+				},
+			})
+				.then((res) => res.json())
+				.then((json) =>
+					context.updateUser(json.user_id, json.first_name, json.admin)
+				);
+		}
 	}, [jwtToken, context]);
 
 	return (

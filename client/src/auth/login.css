@@ -80,3 +80,32 @@
 .login-register a:hover {
 	color: #be8651;
 }
+
+/* Large phones */
+@media only screen and (min-width: 400px) {
+	.login {
+		width: 80%;
+		margin: auto;
+	}
+}
+
+/* Tablets */
+@media only screen and (min-width: 768px) {
+	.login form {
+		width: 80%;
+		margin: auto;
+	}
+
+	.login input {
+		width: 60%;
+		float: right;
+	}
+}
+
+/* Small Laptops & Small Screen Desktops */
+@media only screen and (min-width: 992px) {
+}
+
+/* Modern Computer Screens */
+@media only screen and (min-width: 1200px) {
+}

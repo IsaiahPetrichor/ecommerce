@@ -31,6 +31,7 @@ main {
 /* About Styles */
 
 .about {
+	margin-bottom: 10px;
 	padding: 20px;
 	color: #ddd;
 }
@@ -38,4 +39,23 @@ main {
 .about hr {
 	border: 1px solid rgba(243, 173, 107, 0.6);
 	margin: 5px 0;
+}
+
+/* Large phones */
+@media only screen and (min-width: 400px) {
+	.about {
+		margin-bottom: 25px;
+	}
+}
+
+/* Tablets */
+@media only screen and (min-width: 768px) {
+}
+
+/* Small Laptops & Small Screen Desktops */
+@media only screen and (min-width: 992px) {
+}
+
+/* Modern Computer Screens */
+@media only screen and (min-width: 1200px) {
 }

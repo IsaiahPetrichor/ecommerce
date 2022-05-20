@@ -3,10 +3,6 @@
 	text-align: center;
 }
 
-#quantity {
-	width: 40px;
-}
-
 .pricing .left-hr {
 	border: none;
 	position: relative;
@@ -18,11 +14,14 @@
 
 .pricing h3 {
 	margin-top: 20px;
-	font-size: 1.4rem;
+	font-family: 'Roboto', Arial, Helvetica, sans-serif;
+	font-weight: 500;
+	font-size: 1rem;
 }
 
-.pricing p {
-	font-size: 1.2rem;
+.pricing label {
+	max-height: 40px;
+	font-size: 1rem;
 }
 
 .pricing input {
@@ -32,6 +31,7 @@
 	border-radius: 3px;
 	margin: 5px auto;
 	font-size: 1rem;
+	width: 90%;
 }
 
 .pricing button {
@@ -40,6 +40,7 @@
 	border: 1px solid #eee;
 	border-radius: 3px;
 	padding: 5px 10px;
+	width: 90%;
 }
 
 .pricing button:hover {
@@ -56,4 +57,23 @@
 	border: 1px solid #aaa;
 	border-radius: 3px;
 	background-color: rgba(173, 83, 26, 0.8);
+}
+
+/* Tablets */
+@media only screen and (min-width: 768px) {
+	.pricing h3 {
+		font-size: 1.2rem;
+	}
+
+	#quantity {
+		width: 50px;
+	}
+}
+
+/* Small Laptops & Small Screen Desktops */
+@media only screen and (min-width: 992px) {
+}
+
+/* Modern Computer Screens */
+@media only screen and (min-width: 1200px) {
 }

@@ -1,6 +1,6 @@
 .register {
-	margin: 20px auto;
-	padding: 10px;
+	margin: auto 5px;
+	padding: 5px;
 	background-color: #555;
 	border-radius: 5px;
 	box-shadow: 0px 2px 6px rgb(49, 49, 49);
@@ -43,7 +43,7 @@
 	float: right;
 	margin-bottom: 5px;
 	padding: 3px;
-	font-size: 1rem;
+	font-size: 0.9rem;
 	border-radius: 3px;
 	border: 1px solid #777;
 	background-color: #3a3a3a;
@@ -51,7 +51,7 @@
 }
 
 .register label {
-	width: 350px;
+	width: 100%;
 	margin: 2px auto;
 	font-size: 1rem;
 }
@@ -90,4 +90,32 @@
 
 .register-login a:hover {
 	color: #be8651;
+}
+
+/* Large phones */
+@media only screen and (min-width: 400px) {
+	.register {
+		width: 80%;
+		margin: auto;
+	}
+}
+
+/* Tablets */
+@media only screen and (min-width: 768px) {
+	.register form {
+		width: 80%;
+		margin: auto;
+	}
+
+	.register input {
+		width: 60%;
+	}
+}
+
+/* Small Laptops & Small Screen Desktops */
+@media only screen and (min-width: 992px) {
+}
+
+/* Modern Computer Screens */
+@media only screen and (min-width: 1200px) {
 }
