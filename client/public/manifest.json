@@ -1,7 +1,13 @@
 {
-	"short_name": "eCommerce",
-	"name": "eCommerce PERN application",
-	"icons": [],
+	"short_name": "Petrichor Coffee",
+	"name": "Petrichor Coffee Professionals - eCommerce Store",
+	"icons": [
+		{
+			"src": "favicon.ico",
+			"sizes": "32x32",
+			"type": "image/x-icon"
+		}
+	],
 	"start_url": ".",
 	"display": "standalone",
 	"theme_color": "#000000",
