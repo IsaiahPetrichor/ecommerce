@@ -447,7 +447,9 @@ const Checkout: FC = () => {
 					)}
 				</form>
 			</div>
-			<button onClick={handleCheckoutSubmit}>Checkout</button>
+			<div className="checkout-button">
+				<button onClick={handleCheckoutSubmit}>Checkout</button>
+			</div>
 		</main>
 	);
 };

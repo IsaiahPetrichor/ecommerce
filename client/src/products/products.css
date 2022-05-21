@@ -9,7 +9,7 @@
 .filters {
 	height: 100%;
 	width: 30%;
-	max-width: 350px;
+	max-width: 225px;
 	color: #eee;
 	box-shadow: 0px 0px 1px 0px #000;
 }
@@ -126,10 +126,6 @@
 	box-shadow: 0px 0px 10px #222;
 }
 
-/* Large phones */
-@media only screen and (min-width: 400px) {
-}
-
 /* Tablets */
 @media only screen and (min-width: 768px) {
 	#filter-menu label {
@@ -140,12 +136,4 @@
 		width: 100%;
 		justify-content: space-between;
 	}
-}
-
-/* Small Laptops & Small Screen Desktops */
-@media only screen and (min-width: 992px) {
-}
-
-/* Modern Computer Screens */
-@media only screen and (min-width: 1200px) {
 }

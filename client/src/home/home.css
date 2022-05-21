@@ -1,5 +1,5 @@
 main {
-	overflow: scroll;
+	overflow: hidden;
 }
 /* Hero Styles */
 
@@ -46,16 +46,4 @@ main {
 	.about {
 		margin-bottom: 25px;
 	}
-}
-
-/* Tablets */
-@media only screen and (min-width: 768px) {
-}
-
-/* Small Laptops & Small Screen Desktops */
-@media only screen and (min-width: 992px) {
-}
-
-/* Modern Computer Screens */
-@media only screen and (min-width: 1200px) {
 }

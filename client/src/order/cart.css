@@ -136,3 +136,38 @@
 	vertical-align: -1px;
 	margin-left: 5px;
 }
+
+/* Large Phones */
+@media only screen and (min-width: 400px) {
+	.cart-items {
+		width: 60%;
+	}
+}
+
+/* Small Laptops & Small Screen Desktops */
+@media only screen and (min-width: 992px) {
+	.cart-item-content h3 {
+		font-size: 1.4rem;
+	}
+
+	.cart-item-content .price {
+		font-size: 1.2rem;
+	}
+
+	.cart .quantity {
+		font-size: 1.2rem;
+	}
+
+	.cart .remove-button {
+		font-size: 1.1rem;
+		padding: 3px 12px;
+	}
+
+	.cart-checkout h3 {
+		font-size: 1.5rem;
+	}
+
+	.cart-checkout p {
+		font-size: 1.2rem;
+	}
+}

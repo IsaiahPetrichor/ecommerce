@@ -3,7 +3,7 @@
 	flex-wrap: wrap;
 	margin: 20px auto;
 	width: 100%;
-	max-width: 1200px;
+	max-width: 600px;
 	justify-content: center;
 	border: 1px solid #666;
 	border-radius: 20px;
@@ -18,8 +18,12 @@
 }
 
 .user-details p {
-	width: 100%;
+	width: 90%;
 	padding: 10px 0px;
+}
+
+.user-details p strong {
+	margin-right: 10px;
 }
 
 .user-details hr {

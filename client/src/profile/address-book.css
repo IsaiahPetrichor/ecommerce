@@ -7,18 +7,27 @@
 .address-list {
 	display: flex;
 	flex-wrap: wrap;
-	width: fit-content;
+	justify-content: center;
+	width: 100%;
 	margin: 20px auto;
 }
 
-.address {
-	width: 95%;
+.address,
+.add-address {
+	width: 100%;
+	max-width: 300px;
 	height: 160px;
-	margin-bottom: 5px;
 	padding: 10px;
+	margin: 5px;
 	border: 1px solid #666;
 	border-radius: 2px;
 	background-color: #555;
+}
+
+.add-address {
+	cursor: pointer;
+	font-size: 1.2rem;
+	color: #eee;
 }
 
 .address h3 {
@@ -59,22 +68,12 @@
 	color: rgb(255, 185, 93);
 }
 
-.add-address {
-	width: 95%;
-	height: 160px;
-	font-size: 1.2rem;
-	cursor: pointer;
-	border: 1px solid #666;
-	border-radius: 2px;
-	background-color: #555;
-	color: #eee;
-}
-
 .add-address:hover {
 	background-color: rgba(255, 185, 93, 0.3);
 }
 
 .default-address {
+	padding: 2px;
 	border-radius: 4px;
 	background-color: rgba(255, 185, 93, 0.3);
 }
@@ -84,6 +83,7 @@
 	flex-wrap: wrap;
 	justify-content: space-around;
 	align-items: center;
+	width: 100%;
 	padding: 2px 5px;
 	border: 1px solid #999;
 	border-radius: 3px;
@@ -106,6 +106,7 @@
 
 #address-details .is-default-input {
 	cursor: pointer;
+	width: fit-content;
 }
 
 #address-details input.is-default-input {
@@ -151,4 +152,17 @@
 	border: solid #eee;
 	border-width: 0 3px 3px 0;
 	transform: rotate(45deg);
+}
+
+/* Tablets */
+@media only screen and (min-width: 768px) {
+	#address-details .address-name {
+		flex-wrap: nowrap;
+		width: 300px;
+	}
+
+	#address-details .address-name input {
+		width: 200px;
+		margin-left: 5px;
+	}
 }

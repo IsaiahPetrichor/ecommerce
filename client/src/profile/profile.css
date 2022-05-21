@@ -19,7 +19,7 @@
 	width: 100%;
 	margin: 15px 0px;
 	font-family: 'Roboto', sans-serif;
-	font-size: 2rem;
+	font-size: 1.8rem;
 	font-weight: 400;
 	text-transform: uppercase;
 }
@@ -30,7 +30,7 @@
 }
 
 .profile a {
-	width: fit-content;
+	width: 100%;
 	text-decoration: none;
 	border-radius: 5px;
 	padding: 20px;

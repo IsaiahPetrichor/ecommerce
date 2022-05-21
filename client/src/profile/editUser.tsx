@@ -133,12 +133,10 @@ const EditUser: FC = () => {
 				<p>
 					<strong>Password: </strong>
 					************
-					<button
-						className="pass-button"
-						onClick={() => setChangePassword(true)}>
-						Change Password
-					</button>
 				</p>
+				<button className="pass-button" onClick={() => setChangePassword(true)}>
+					Change Password
+				</button>
 				<hr />
 				<button className="edit-button" onClick={() => setEditing(true)}>
 					Edit Profile

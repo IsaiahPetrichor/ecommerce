@@ -53,18 +53,26 @@
 	);
 }
 
-/* Tablets */
-@media only screen and (min-width: 768px) {
+/* Large Phones */
+@media only screen and (min-width: 400px) {
 	.product .img {
-		height: 280px;
-		width: 280px;
+		height: 240px;
+		width: 240px;
 	}
 }
 
-/* Small Laptops & Small Screen Desktops */
-@media only screen and (min-width: 992px) {
+/* Tablets */
+@media only screen and (min-width: 768px) {
+	.product .img {
+		height: 400px;
+		width: 400px;
+	}
 }
 
 /* Modern Computer Screens */
 @media only screen and (min-width: 1200px) {
+	.product .img {
+		height: 600px;
+		width: 600px;
+	}
 }
