@@ -29,7 +29,7 @@ const Product: FC = () => {
 		sku: '',
 		created_on: '',
 	});
-	const [img, setImg] = useState('loading.png');
+	const [img, setImg] = useState('loading.avif');
 	const [category, setCategory] = useState<Category_type>();
 
 	let params = useParams();
@@ -39,7 +39,7 @@ const Product: FC = () => {
 			.then((res) => res.json())
 			.then((json) => {
 				setProduct(json);
-				setImg(`${json.id}.png`);
+				setImg(`${json.id}.avif`);
 				fetch(`/api/categories/${json.category_id}`)
 					.then((res) => res.json())
 					.then((json) => setCategory(json));
