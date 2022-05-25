@@ -1,4 +1,9 @@
-# E-Commerce PERN Application
+# Petrichor Coffee Professionals
+
+## Summary
+
+    Petrichor coffee is a fictional eCommerce website providing a fully featured e-store experience.
+    Bringing everything from an encrypted database using JSON Web Tokens for authentication, to a central products database offering persistant carts, and user profiles with fully editable data.
 
 ## Front-End Stack
 
