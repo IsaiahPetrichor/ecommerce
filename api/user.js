@@ -16,7 +16,7 @@ const comparePassword = async (pass, hash) => {
 	return false;
 };
 
-// get a single user by uuid (if user, only some of their own data)
+// get a single user by uuid
 user.get('/', auth, (req, res, next) => {
 	const { user_id } = req.user;
 	pool.query(
@@ -24,14 +24,14 @@ user.get('/', auth, (req, res, next) => {
 		[user_id],
 		(err, result) => {
 			if (err) {
-				res.status(500).send('Database Error!');
+				res.status(500).json('Server Error');
 				console.log(err.message);
 				next();
 			}
 			if (result.rows[0]) {
-				res.send({ user_id, ...result.rows[0] });
+				res.json({ user_id, ...result.rows[0] });
 			} else {
-				res.status(404).send();
+				res.sendStatus(404);
 			}
 		}
 	);
@@ -45,7 +45,7 @@ user.get('/email/:email', (req, res, next) => {
 		[email],
 		(err, result) => {
 			if (err) {
-				res.status(500).send('Server Error...');
+				res.status(500).json('Server Error');
 				console.log(err.message);
 				next();
 			}
@@ -66,11 +66,11 @@ user.get('/all', (req, res, next) => {
 		'SELECT id, first_name, last_name, email, admin FROM users',
 		(err, result) => {
 			if (err) {
-				res.status(500).send('Database Error!');
+				res.status(500).json('Server Error');
 				console.log(err.message);
 				next();
 			} else {
-				res.send(result.rows);
+				res.json(result.rows);
 			}
 		}
 	);
@@ -113,7 +113,7 @@ user.put('/', auth, async (req, res, next) => {
 					pool.query(sql, [body[key], user_id], (err, result) => {
 						if (err) {
 							console.log(err.message);
-							return res.status(500).send('Database Error');
+							return res.status(500).json('Server Error');
 						}
 					});
 				}
@@ -131,6 +131,7 @@ user.delete('/', auth, async (req, res, next) => {
 	pool.query('DELETE FROM users WHERE id = $1', [user_id], (err, result) => {
 		if (err) {
 			console.log(err.message);
+			return res.sendStatus(500);
 		} else {
 			res.sendStatus(204);
 		}

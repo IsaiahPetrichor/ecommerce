@@ -15,23 +15,22 @@ register.post('/', registerValidator, (req, res, next) => {
 		[email],
 		(err, result) => {
 			if (err) {
-				res.sendStatus(500);
+				res.status(500).json('Server Error');
 				next();
 			} else if (result.rows.length > 0) {
-				res.status(401).json('Email already in use!');
+				res.status(400).json('Email already in use!');
 				next();
 			}
 		}
 	);
 
 	if (password.length < 5) {
-		res.status(400).json('Password too short!');
-		next();
+		return res.status(400).json('Password too short!');
 	}
 
 	bcrypt.hash(password, saltRounds, (err, hash) => {
 		if (err) {
-			res.sendStatus(500);
+			res.status(500).json('Server Error');
 			next();
 		}
 		pool.query(
@@ -40,7 +39,7 @@ register.post('/', registerValidator, (req, res, next) => {
 			(err, result) => {
 				if (err) {
 					console.log(err.message);
-					return res.status(400).json('Bad request...');
+					return res.status(500).json('Server Error');
 				} else {
 					const user_id = result.rows[0].id;
 					const first_name = result.rows[0].first_name;
