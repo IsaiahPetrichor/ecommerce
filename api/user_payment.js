@@ -13,7 +13,7 @@ userPayment.get('/', auth, (req, res, next) => {
 		[user_id],
 		(err, result) => {
 			if (err) {
-				res.status(500).json('Database Error!');
+				res.status(500).json('Server Error');
 				console.log(err.message);
 				next();
 			} else {
@@ -58,7 +58,7 @@ userPayment.post('/', auth, (req, res, next) => {
 		],
 		(err, response) => {
 			if (err) {
-				res.status(500).json('Server Error...');
+				res.status(500).json('Server Error');
 			} else {
 				res.status(201).json(response.rows[0]);
 			}
@@ -75,7 +75,7 @@ userPayment.put('/:id', auth, (req, res, next) => {
 		[id, type, card_number, expiration, card_name],
 		(err, response) => {
 			if (err) {
-				res.status(500).json('Server Error...');
+				res.status(500).json('Server Error');
 			} else {
 				res.status(201).json(response.rows[0]);
 			}
@@ -91,7 +91,7 @@ userPayment.delete('/:id', auth, (req, res, next) => {
 		[id],
 		(err, response) => {
 			if (err) {
-				res.status(500).json('Server Error...');
+				res.status(500).json('Server Error');
 			} else {
 				res.status(200).json('Card Deleted.');
 			}

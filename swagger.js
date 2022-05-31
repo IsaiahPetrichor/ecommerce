@@ -307,5 +307,164 @@ export default {
 				},
 			},
 		},
+		'/user_payment': {
+			get: {
+				summary: 'Return payment options',
+				description:
+					'Returns payment options from the databse for authenticated user',
+				responses: {
+					200: {
+						description: 'Successful request',
+						content: {
+							'application/json': {
+								example: {
+									id: 'UUID HERE',
+									user_id: 'UUID HERE',
+									type: 'credit',
+									provider: 'visa',
+									card_number: '4015430018065510',
+									expiration: '06/21',
+									card_name: 'My Credit Card',
+									full_name: 'John Doe',
+								},
+							},
+						},
+					},
+					401: {
+						description: 'Authentication failure',
+					},
+					403: {
+						description: 'Invalid auth token',
+					},
+					404: {
+						description: 'Payment not found',
+					},
+					500: {
+						description: 'Server error occured',
+						content: {
+							'application/json': {
+								example: 'Server Error',
+							},
+						},
+					},
+				},
+			},
+			post: {
+				summary: 'Add payment to account',
+				description: 'Adds payment info to database',
+				requestBody: {
+					description: 'Takes payment info',
+					content: {
+						'application/json': {
+							schema: {
+								type: 'object',
+								properties: {
+									type: {
+										description: 'Type of payment card',
+										type: 'string',
+									},
+									provider: {
+										description: 'Card provider',
+										type: 'string',
+									},
+									card_number: {
+										description: 'Number on card',
+										type: 'number',
+									},
+									expiration: {
+										description: 'Expiration date for card',
+										type: 'string',
+									},
+									card_name: {
+										description: 'Users name for card',
+										type: 'string',
+										required: false,
+									},
+									full_name: {
+										description: 'Full legal name on card',
+										type: 'string',
+									},
+								},
+							},
+						},
+					},
+					required: true,
+				},
+				responses: {
+					201: {
+						description: 'Successful request',
+						content: {
+							'application/json': {
+								example: {
+									id: 'UUID HERE',
+									user_id: 'UUID HERE',
+									type: 'credit',
+									provider: 'visa',
+									card_number: '4015430018065510',
+									expiration: '06/21',
+									card_name: 'My Credit Card',
+									full_name: 'John Doe',
+								},
+							},
+						},
+					},
+					401: {
+						description: 'Authentication failure',
+					},
+					403: {
+						description: 'Invalid auth token',
+					},
+					500: {
+						description: 'Server error occured',
+						example: {
+							'application/json': {
+								example: 'Server Error',
+							},
+						},
+					},
+				},
+			},
+			put: {
+				summary: 'Update user payment',
+				description:
+					'Updates the specified card in the database for authorized user',
+				parameter: {
+					name: '/{id}',
+					in: 'path',
+					description: 'Takes UUID of card to be updated',
+					required: true,
+				},
+				requestBody: {
+					description: 'Takes payment info to be updated',
+					content: {
+						'application/json': {
+							schema: {
+								type: 'object',
+								properties: {
+									type: {
+										description: 'Type of payment card',
+										type: 'string',
+									},
+									card_number: {
+										description: 'Number on card',
+										type: 'number',
+									},
+									expiration: {
+										description: 'Expiration date for card',
+										type: 'string',
+									},
+									card_name: {
+										description: 'Users name for card',
+										type: 'string',
+									},
+								},
+							},
+						},
+					},
+					required: true,
+				},
+				responses: {},
+			},
+		},
 	},
 };
