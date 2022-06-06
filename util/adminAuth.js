@@ -2,6 +2,7 @@ import pool from '../database/pool.js';
 
 const isAdmin = (req) => {
 	const { user_id } = req.user;
+
 	pool.query(
 		'SELECT admin FROM users WHERE id = $1',
 		[user_id],

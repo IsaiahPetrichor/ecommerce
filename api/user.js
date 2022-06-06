@@ -19,6 +19,7 @@ const comparePassword = async (pass, hash) => {
 // get a single user by uuid
 user.get('/', auth, (req, res, next) => {
 	const { user_id } = req.user;
+
 	pool.query(
 		'SELECT first_name, last_name, email, admin FROM users WHERE id = $1',
 		[user_id],
@@ -59,8 +60,8 @@ user.get('/email/:email', (req, res, next) => {
 });
 
 // get all users (admin only)
-user.get('/all', (req, res, next) => {
-	if (!isAdmin) return;
+user.get('/all', auth, (req, res, next) => {
+	if (isAdmin(req) === true) return;
 
 	pool.query(
 		'SELECT id, first_name, last_name, email, admin FROM users',
