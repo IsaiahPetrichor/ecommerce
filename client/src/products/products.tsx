@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { getImage } from '../utils/util';
 import './products.css';
 
 interface Product {
@@ -174,7 +175,9 @@ const Products: FC = () => {
 							<div
 								className="list-product-img"
 								style={{
-									backgroundImage: `url('/assets/${product.id}.avif')`,
+									backgroundImage: `url('/assets/${getImage(
+										product.name
+									)}.avif')`,
 								}}></div>
 							<h2>{product.name}</h2>
 							<h3>

@@ -18,6 +18,15 @@ export const capitalize = (str: string) => {
 	return strCap;
 };
 
+export const getImage = (name: string) => {
+	const imageName = name
+		.toLowerCase()
+		.replaceAll(/\(|\)/g, '')
+		.replaceAll(/\W/g, '-');
+
+	return imageName;
+};
+
 export const verifyCard = (cardNumber: string) => {
 	// uses basic luhn algorithm
 

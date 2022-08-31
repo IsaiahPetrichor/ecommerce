@@ -41,11 +41,22 @@
 }
 
 .cart-item-content {
+	display: flex;
+	justify-content: space-between;
 	margin-right: 10px;
 }
 
 .cart-item-content h3 {
 	font-size: 1.2rem;
+}
+
+.cart-img {
+	height: 80px;
+	width: 80px;
+	margin-right: 10px;
+	border-radius: 5px;
+	background-position: center;
+	background-size: cover;
 }
 
 .cart .sku {

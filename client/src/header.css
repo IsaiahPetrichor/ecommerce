@@ -54,6 +54,10 @@ header a:hover {
 
 /* Tablets */
 @media only screen and (min-width: 768px) {
+	h1 {
+		padding-left: 12px;
+	}
+
 	a span {
 		display: inline;
 		vertical-align: 1px;

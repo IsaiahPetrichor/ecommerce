@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { getJwtToken, sessionCart } from '../utils/util';
+import { getImage, getJwtToken, sessionCart } from '../utils/util';
 import './cart.css';
 
 interface Product {
@@ -113,7 +113,6 @@ const Cart: FC = () => {
 			{cart.length > 0 && products.length > 0 && (
 				<div className="cart-flex">
 					<div className="cart-items">
-						{/* Double map has a time complexity of O(2^n), refactor to increase efficiency */}
 						{cart.map((item) => (
 							<div key={item.product_id}>
 								{products.map((product) => {
@@ -122,11 +121,20 @@ const Cart: FC = () => {
 										return (
 											<div key={product.id} className="cart-item">
 												<div className="cart-item-content">
-													<Link to={`/products/${item.product_id}`}>
-														<h3>{product.name}</h3>
-													</Link>
-													<p className="sku">{product.sku}</p>
-													<p className="price">&#x24;{product.price}</p>
+													<div
+														className="cart-img"
+														style={{
+															backgroundImage: `url('/assets/${getImage(
+																product.name
+															)}.avif')`,
+														}}></div>
+													<div>
+														<Link to={`/products/${item.product_id}`}>
+															<h3>{product.name}</h3>
+														</Link>
+														<p className="sku">{product.sku}</p>
+														<p className="price">&#x24;{product.price}</p>
+													</div>
 												</div>
 												<div>
 													<p className="quantity">Quantity: {item.quantity}</p>

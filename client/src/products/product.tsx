@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { getImage } from '../utils/util';
 import Pricing from './pricing';
 import './product.css';
 
@@ -39,7 +40,7 @@ const Product: FC = () => {
 			.then((res) => res.json())
 			.then((json) => {
 				setProduct(json);
-				setImg(`${json.id}.avif`);
+				setImg(`${getImage(json.name)}.avif`);
 				fetch(`/api/categories/${json.category_id}`)
 					.then((res) => res.json())
 					.then((json) => setCategory(json));
