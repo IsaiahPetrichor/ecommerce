@@ -19,7 +19,7 @@ import Checkout from './order/checkout';
 import Thanks from './order/thanks';
 import NotFound from './404';
 
-ReactDOM.render(
+export default ReactDOM.render(
 	<React.StrictMode>
 		<BrowserRouter>
 			<Routes>
