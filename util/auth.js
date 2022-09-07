@@ -10,7 +10,7 @@ export default function (req, res, next) {
 
 	console.log(token);
 
-	jwt.verify(token, process.env.JWTSECRET, (err, user) => {
+	jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
 		if (err) {
 			console.log(err);
 			res.sendStatus(403);
