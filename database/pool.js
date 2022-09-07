@@ -3,11 +3,11 @@ const { Pool } = pg;
 import 'dotenv/config';
 
 const devConfig = {
-	user: process.env.PGUSER,
-	password: process.env.PGPASSWORD,
-	host: process.env.PGHOST,
-	database: process.env.PGDATABASE,
-	port: process.env.PGPORT,
+	user: process.env.PG_USER,
+	password: process.env.PG_PASSWORD,
+	host: process.env.PG_HOST,
+	database: process.env.PG_DATABASE,
+	port: process.env.PG_PORT,
 };
 
 const productionConfig = {
