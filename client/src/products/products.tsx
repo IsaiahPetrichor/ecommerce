@@ -10,20 +10,32 @@ interface Product {
   category_id: string;
 }
 
+interface Category {
+  id: string;
+  name: string;
+  description: string;
+  isChecked: boolean;
+}
+
 const Products: FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
 
+  // price sorting states
   const [lowHigh, setLowHigh] = useState(true);
   const [highLow, setHighLow] = useState(false);
-  const [household, setHousehold] = useState(false);
-  const [beans, setBeans] = useState(false);
-  const [merch, setMerch] = useState(false);
 
   useEffect(() => {
     fetch('/api/products')
       .then((res) => res.json())
       .then((json) => {
+        setCategories(
+          json.categories.map((category: Category) => {
+            category.isChecked = false;
+            return category;
+          })
+        );
         setProducts(
           json.products.sort((a: Product, b: Product) => {
             return a.price - b.price;
@@ -64,69 +76,30 @@ const Products: FC = () => {
     );
   };
 
-  const handleHousehold = () => {
-    if (beans) setBeans(false);
-    if (merch) setMerch(false);
-    if (highLow) handleLowHigh();
-
-    if (household) {
-      setFilteredProducts(products);
-      setHousehold(false);
-    } else {
+  const handleCategory = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.checked) {
+      categories.forEach((category) => {
+        if (category.id === event.target.value) {
+          category.isChecked = true;
+        } else {
+          category.isChecked = false;
+        }
+      });
       setFilteredProducts(
-        products.filter(
-          (product) =>
-            product.category_id === '575e41d4-70a8-47ed-b93e-3973d55401df'
-        )
+        products.filter((product) => product.category_id === event.target.value)
       );
-      setHousehold(true);
-    }
-  };
-
-  const handleBeans = () => {
-    if (household) setHousehold(false);
-    if (merch) setMerch(false);
-    if (highLow) handleLowHigh();
-
-    if (beans) {
-      setFilteredProducts(products);
-      setBeans(false);
     } else {
-      setFilteredProducts(
-        products.filter(
-          (product) =>
-            product.category_id === 'b8826fa6-071f-45c6-ae7c-a733c48457e2'
-        )
-      );
-      setBeans(true);
-    }
-  };
-
-  const handleMerch = () => {
-    if (household) setHousehold(false);
-    if (beans) setBeans(false);
-    if (highLow) handleLowHigh();
-
-    if (merch) {
       setFilteredProducts(products);
-      setMerch(false);
-    } else {
-      setFilteredProducts(
-        products.filter(
-          (product) =>
-            product.category_id === '92522885-9842-40f4-b3cd-bfbdac2c97fe'
-        )
-      );
-      setMerch(true);
+      categories.forEach((category) => (category.isChecked = false));
     }
+
+    return undefined;
   };
 
   const handleClear = () => {
-    setLowHigh(false);
+    setLowHigh(true);
     setHighLow(false);
-    setHousehold(false);
-    setBeans(false);
-    setMerch(false);
+    categories.forEach((category) => (category.isChecked = false));
 
     setFilteredProducts(products);
   };
@@ -143,29 +116,26 @@ const Products: FC = () => {
           <hr />
           <label className="checkbox">
             Sort by price (low to high):
-            <input type="checkbox" checked={lowHigh} onChange={handleLowHigh} />
+            <input type="radio" checked={lowHigh} onChange={handleLowHigh} />
           </label>
           <label className="checkbox">
             Sort by price (high to low):
-            <input type="checkbox" checked={highLow} onChange={handleHighLow} />
+            <input type="radio" checked={highLow} onChange={handleHighLow} />
           </label>
           <p>Filter by Category</p>
-          <label className="checkbox">
-            Appliances:
-            <input
-              type="checkbox"
-              checked={household}
-              onChange={handleHousehold}
-            />
-          </label>
-          <label className="checkbox">
-            Beans:
-            <input type="checkbox" checked={beans} onChange={handleBeans} />
-          </label>
-          <label className="checkbox">
-            Merch:
-            <input type="checkbox" checked={merch} onChange={handleMerch} />
-          </label>
+          {categories.map((category) => {
+            return (
+              <label className="checkbox" key={category.id}>
+                {category.name}
+                <input
+                  type="checkbox"
+                  value={category.id}
+                  checked={category.isChecked}
+                  onChange={handleCategory}
+                />
+              </label>
+            );
+          })}
         </div>
       </div>
       <div className="products-list">
