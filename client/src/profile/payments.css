@@ -1,83 +1,83 @@
 .payments-list {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	width: fit-content;
-	margin: 20px auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: fit-content;
+  margin: 20px auto;
 }
 
 .payment-option,
 .add-card {
-	width: 100%;
-	height: 135px;
-	padding: 5px;
-	margin: 5px;
-	background-color: #555;
-	border: 1px solid #666;
-	border-radius: 2px;
+  width: 100%;
+  height: 135px;
+  padding: 5px;
+  margin: 5px;
+  background-color: #555;
+  border: 1px solid #666;
+  border-radius: 2px;
 }
 
 .add-card {
-	font-size: 1.3rem;
-	color: #eee;
+  font-size: 1.3rem;
+  color: #eee;
 }
 
 .payment-option h3 {
-	font-family: 'Roboto';
-	font-weight: 400;
-	font-size: 1.3rem;
-	text-transform: uppercase;
-	margin-bottom: 5px;
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  margin-bottom: 5px;
 }
 
 .payment-type {
-	font-size: 1.2rem;
+  font-size: 1.2rem;
 }
 
 .card-number {
-	font-size: 1.4rem;
+  font-size: 1.4rem;
 }
 
 .card-buttons {
-	position: relative;
-	float: right;
-	margin-top: 10px;
+  position: relative;
+  float: right;
+  margin-top: 10px;
 }
 
 .card-buttons button {
-	color: #eee;
-	margin-left: 5px;
-	padding: 5px 10px;
-	cursor: pointer;
-	border: 1px solid #999;
-	border-radius: 4px;
-	background-color: transparent;
-	text-transform: uppercase;
+  color: #eee;
+  margin-left: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  border: 1px solid #999;
+  border-radius: 4px;
+  background-color: transparent;
+  text-transform: uppercase;
 }
 .card-buttons button:hover {
-	transition: 100ms;
-	background-color: #00000022;
-	color: rgb(255, 185, 93);
+  transition: 100ms;
+  background-color: #00000022;
+  color: rgb(255, 185, 93);
 }
 
 .add-card-plus {
-	line-height: 20px;
-	font-size: 2rem;
+  line-height: 20px;
+  font-size: 2rem;
 }
 
 .add-card:hover {
-	cursor: pointer;
-	background-color: rgba(255, 185, 93, 0.3);
+  cursor: pointer;
+  background-color: rgba(255, 185, 93, 0.3);
 }
 
 /* Tablets */
 @media only screen and (min-width: 768px) {
-	.payments-list {
-		width: 100%;
-	}
+  .payments-list {
+    width: 100%;
+  }
 
-	.payment-option,
-	.add-card {
-		width: 275px;
-	}
+  .payment-option,
+  .add-card {
+    width: 275px;
+  }
 }

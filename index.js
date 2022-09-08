@@ -15,8 +15,8 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 if (process.env.NODE_ENV === 'production') {
-	// serve static content
-	app.use(express.static(decodeURI(path.join(__dirname, '/client/build'))));
+  // serve static content
+  app.use(express.static(decodeURI(path.join(__dirname, '/client/build'))));
 }
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
@@ -64,15 +64,15 @@ import orderItems from './api/order_items.js';
 app.use('/api/order_items', orderItems);
 
 if (process.env.NODE_ENV === 'production') {
-	// catchall
-	app.get('*', (req, res) => {
-		res.sendFile(decodeURI(path.join(__dirname, '/client/build/index.html')));
-	});
+  // catchall
+  app.get('*', (req, res) => {
+    res.sendFile(decodeURI(path.join(__dirname, '/client/build/index.html')));
+  });
 }
 
 // Server initialize
 app.listen(PORT, () => {
-	console.log(`Server running on port ${PORT}...`);
+  console.log(`Server running on port ${PORT}...`);
 });
 
 export default app;

@@ -1,49 +1,49 @@
 main {
-	overflow: hidden;
+  overflow: hidden;
 }
 /* Hero Styles */
 
 .hero {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-items: center;
-	min-height: calc(100vh - 29px);
-	background-image: url('../resources/hero.avif');
-	background-position: bottom;
-	background-repeat: no-repeat;
-	background-size: cover;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 29px);
+  background-image: url('../resources/hero.avif');
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .greeting {
-	width: 80%;
-	text-align: center;
-	font-size: 2rem;
-	font-weight: 500;
-	padding: 20px;
-	color: #ddd;
-	font-family: 'Roboto';
-	background-color: #00000044;
-	backdrop-filter: blur(4px);
-	border-radius: 10px;
+  width: 80%;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 500;
+  padding: 20px;
+  color: #ddd;
+  font-family: 'Roboto';
+  background-color: #00000044;
+  backdrop-filter: blur(4px);
+  border-radius: 10px;
 }
 
 /* About Styles */
 
 .about {
-	margin-bottom: 10px;
-	padding: 20px;
-	color: #ddd;
+  margin-bottom: 10px;
+  padding: 20px;
+  color: #ddd;
 }
 
 .about hr {
-	border: 1px solid rgba(243, 173, 107, 0.6);
-	margin: 5px 0;
+  border: 1px solid rgba(243, 173, 107, 0.6);
+  margin: 5px 0;
 }
 
 /* Large phones */
 @media only screen and (min-width: 400px) {
-	.about {
-		margin-bottom: 25px;
-	}
+  .about {
+    margin-bottom: 25px;
+  }
 }

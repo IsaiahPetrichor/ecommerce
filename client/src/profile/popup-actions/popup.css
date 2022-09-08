@@ -1,76 +1,76 @@
 .popup {
-	margin-bottom: 50px;
-	background-color: #555;
-	border: 1px solid #666;
-	border-radius: 5px;
-	padding: 10px 20px;
-	width: 100%;
-	max-width: 500px;
+  margin-bottom: 50px;
+  background-color: #555;
+  border: 1px solid #666;
+  border-radius: 5px;
+  padding: 10px 20px;
+  width: 100%;
+  max-width: 500px;
 }
 
 .popup form {
-	display: flex;
-	flex-wrap: wrap;
-	height: fit-content;
-	width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  height: fit-content;
+  width: 100%;
 }
 
 .popup h2 {
-	width: 100%;
-	text-transform: uppercase;
-	font-weight: 500;
-	text-align: center;
+  width: 100%;
+  text-transform: uppercase;
+  font-weight: 500;
+  text-align: center;
 }
 
 .popup hr {
-	width: 100%;
-	margin-bottom: 15px;
+  width: 100%;
+  margin-bottom: 15px;
 }
 
 .popup label {
-	width: 100%;
+  width: 100%;
 }
 .popup input,
 .popup select {
-	width: 100%;
-	margin-bottom: 5px;
-	padding: 3px;
-	border-radius: 3px;
-	border: 1px solid #777;
-	background-color: #3a3a3a;
-	color: #eee;
+  width: 100%;
+  margin-bottom: 5px;
+  padding: 3px;
+  border-radius: 3px;
+  border: 1px solid #777;
+  background-color: #3a3a3a;
+  color: #eee;
 }
 
 .buttons {
-	margin: 2px auto;
+  margin: 2px auto;
 }
 
 .buttons button {
-	cursor: pointer;
-	margin: 5px;
-	padding: 5px 10px;
-	border: 1px solid #666;
-	background-color: transparent;
-	color: #eee;
-	border-radius: 3px;
+  cursor: pointer;
+  margin: 5px;
+  padding: 5px 10px;
+  border: 1px solid #666;
+  background-color: transparent;
+  color: #eee;
+  border-radius: 3px;
 }
 
 .buttons button:hover {
-	color: rgb(255, 185, 93);
-	background-color: #00000022;
+  color: rgb(255, 185, 93);
+  background-color: #00000022;
 }
 
 .background {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	z-index: 10;
-	position: absolute;
-	top: 0;
-	left: 0;
-	margin: 0;
-	padding: 20px;
-	height: 100vh;
-	width: 100vw;
-	backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 20px;
+  height: 100vh;
+  width: 100vw;
+  backdrop-filter: blur(3px);
 }

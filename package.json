@@ -1,41 +1,41 @@
 {
-	"name": "e-commerce",
-	"version": "1.0.0",
-	"description": "Ecommerce PERN application",
-	"main": "index.js",
-	"type": "module",
-	"scripts": {
-		"test": "mocha --reporter spec",
-		"local": "nodemon index.js",
-		"local-staging": "heroku local web",
-		"start": "node index.js",
-		"heroku-postbuild": "cd client && npm install && npm run build"
-	},
-	"author": "Isaiah Petrichor",
-	"license": "ISC",
-	"dependencies": {
-		"bcrypt": "^5.0.1",
-		"body-parser": "^1.19.1",
-		"cookie-parser": "^1.4.6",
-		"cors": "^2.8.5",
-		"dotenv": "^16.0.0",
-		"errorhandler": "^1.5.1",
-		"express": "^4.17.2",
-		"helmet": "^5.0.2",
-		"jsonwebtoken": "^8.5.1",
-		"pg": "^8.7.3",
-		"pg-format": "^1.0.4",
-		"swagger-ui-express": "^4.3.0",
-		"uuid": "^8.3.2"
-	},
-	"devDependencies": {
-		"autoprefixer": "^10.4.7",
-		"chai": "^4.3.6",
-		"chai-http": "^4.3.0",
-		"mocha": "^10.0.0",
-		"nodemon": "^2.0.15"
-	},
-	"engines": {
-		"node": "v17.7.2"
-	}
+  "name": "e-commerce",
+  "version": "1.0.0",
+  "description": "Ecommerce PERN application",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "mocha --reporter spec",
+    "local": "nodemon index.js",
+    "local-staging": "heroku local web",
+    "start": "node index.js",
+    "heroku-postbuild": "cd client && npm install && npm run build"
+  },
+  "author": "Isaiah Petrichor",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.1",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "errorhandler": "^1.5.1",
+    "express": "^4.17.2",
+    "helmet": "^5.0.2",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^8.7.3",
+    "pg-format": "^1.0.4",
+    "swagger-ui-express": "^4.3.0",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.7",
+    "chai": "^4.3.6",
+    "chai-http": "^4.3.0",
+    "mocha": "^10.0.0",
+    "nodemon": "^2.0.15"
+  },
+  "engines": {
+    "node": "v17.7.2"
+  }
 }

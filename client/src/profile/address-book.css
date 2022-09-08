@@ -1,168 +1,168 @@
 .address-title {
-	text-transform: uppercase;
-	font-weight: 400;
-	font-size: 1.8rem;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 1.8rem;
 }
 
 .address-list {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	width: 100%;
-	margin: 20px auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  margin: 20px auto;
 }
 
 .address,
 .add-address {
-	width: 100%;
-	max-width: 300px;
-	height: 160px;
-	padding: 10px;
-	margin: 5px;
-	border: 1px solid #666;
-	border-radius: 2px;
-	background-color: #555;
+  width: 100%;
+  max-width: 300px;
+  height: 160px;
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid #666;
+  border-radius: 2px;
+  background-color: #555;
 }
 
 .add-address {
-	cursor: pointer;
-	font-size: 1.2rem;
-	color: #eee;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #eee;
 }
 
 .address h3 {
-	font-family: 'Roboto';
-	font-weight: 400;
-	text-transform: uppercase;
-	margin-bottom: 10px;
+  font-family: 'Roboto';
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-bottom: 10px;
 }
 
 .address-names {
-	font-weight: 700;
+  font-weight: 700;
 }
 
 .address p {
-	font-size: 16px;
+  font-size: 16px;
 }
 
 .address-buttons {
-	position: relative;
-	float: right;
-	margin-top: 10px;
+  position: relative;
+  float: right;
+  margin-top: 10px;
 }
 
 .address-buttons button {
-	margin-left: 5px;
-	padding: 5px 10px;
-	cursor: pointer;
-	border: 1px solid #666;
-	border-radius: 4px;
-	background-color: transparent;
-	color: #eee;
-	text-transform: uppercase;
+  margin-left: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  border: 1px solid #666;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #eee;
+  text-transform: uppercase;
 }
 
 .address-buttons button:hover {
-	transition: 100ms;
-	background-color: #00000022;
-	color: rgb(255, 185, 93);
+  transition: 100ms;
+  background-color: #00000022;
+  color: rgb(255, 185, 93);
 }
 
 .add-address:hover {
-	background-color: rgba(255, 185, 93, 0.3);
+  background-color: rgba(255, 185, 93, 0.3);
 }
 
 .default-address {
-	padding: 2px;
-	border-radius: 4px;
-	background-color: rgba(255, 185, 93, 0.3);
+  padding: 2px;
+  border-radius: 4px;
+  background-color: rgba(255, 185, 93, 0.3);
 }
 
 #address-details {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-around;
-	align-items: center;
-	width: 100%;
-	padding: 2px 5px;
-	border: 1px solid #999;
-	border-radius: 3px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  padding: 2px 5px;
+  border: 1px solid #999;
+  border-radius: 3px;
 }
 
 #address-details label {
-	margin: 0;
-	display: flex;
-	flex-wrap: wrap;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 #address-details input {
-	margin: 0;
-	margin-bottom: 3px;
+  margin: 0;
+  margin-bottom: 3px;
 }
 
 #address-details .address-name {
-	width: fit-content;
+  width: fit-content;
 }
 
 #address-details .is-default-input {
-	cursor: pointer;
-	width: fit-content;
+  cursor: pointer;
+  width: fit-content;
 }
 
 #address-details input.is-default-input {
-	opacity: 0;
-	height: 0;
-	width: 0;
+  opacity: 0;
+  height: 0;
+  width: 0;
 }
 
 /* custom checkbox */
 .checkmark {
-	top: 0;
-	left: 0;
-	height: 22px;
-	width: 22px;
-	background-color: #3a3a3a;
-	border-radius: 10%;
-	border: 1px solid #777;
-	margin-right: 5px;
+  top: 0;
+  left: 0;
+  height: 22px;
+  width: 22px;
+  background-color: #3a3a3a;
+  border-radius: 10%;
+  border: 1px solid #777;
+  margin-right: 5px;
 }
 
 .is-default-input input:checked ~ .checkmark {
-	background-color: rgba(255, 177, 75, 0.808);
+  background-color: rgba(255, 177, 75, 0.808);
 }
 
 /* checkmark/indicator (hidden when not checked) */
 .checkmark:after {
-	content: '';
-	position: relative;
-	display: none;
+  content: '';
+  position: relative;
+  display: none;
 }
 
 /* Show the checkmark when checked */
 .is-default-input input:checked ~ .checkmark:after {
-	display: block;
+  display: block;
 }
 
 /* checkmark/indicator styles */
 .is-default-input .checkmark:after {
-	left: 6px;
-	top: 3px;
-	width: 5px;
-	height: 8px;
-	border: solid #eee;
-	border-width: 0 3px 3px 0;
-	transform: rotate(45deg);
+  left: 6px;
+  top: 3px;
+  width: 5px;
+  height: 8px;
+  border: solid #eee;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
 }
 
 /* Tablets */
 @media only screen and (min-width: 768px) {
-	#address-details .address-name {
-		flex-wrap: nowrap;
-		width: 300px;
-	}
+  #address-details .address-name {
+    flex-wrap: nowrap;
+    width: 300px;
+  }
 
-	#address-details .address-name input {
-		width: 200px;
-		margin-left: 5px;
-	}
+  #address-details .address-name input {
+    width: 200px;
+    margin-left: 5px;
+  }
 }
