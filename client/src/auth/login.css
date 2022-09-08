@@ -1,103 +1,103 @@
 .login {
-	margin: auto 5px;
-	padding: 5px;
-	background-color: #555;
-	border-radius: 5px;
-	box-shadow: 0px 2px 6px rgb(49, 49, 49);
-	max-width: 600px;
-	justify-self: center;
-	color: #eee;
+  margin: auto 5px;
+  padding: 5px;
+  background-color: #555;
+  border-radius: 5px;
+  box-shadow: 0px 2px 6px rgb(49, 49, 49);
+  max-width: 600px;
+  justify-self: center;
+  color: #eee;
 }
 
 .login h2 {
-	width: 100%;
-	text-align: center;
+  width: 100%;
+  text-align: center;
 }
 
 .login hr {
-	width: 80%;
-	margin: 10px auto;
-	height: min-content;
-	text-align: center;
+  width: 80%;
+  margin: 10px auto;
+  height: min-content;
+  text-align: center;
 }
 
 .login form {
-	display: flex;
-	flex-direction: column;
-	padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
 }
 
 .login input {
-	position: relative;
-	width: 100%;
-	margin-bottom: 5px;
-	padding: 3px;
-	font-size: 1rem;
-	border-radius: 3px;
-	border: 1px solid #777;
-	background-color: #3a3a3a;
-	color: #eee;
+  position: relative;
+  width: 100%;
+  margin-bottom: 5px;
+  padding: 3px;
+  font-size: 1rem;
+  border-radius: 3px;
+  border: 1px solid #777;
+  background-color: #3a3a3a;
+  color: #eee;
 }
 
 .login label {
-	width: 90%;
-	margin: 2px auto;
-	font-size: 1rem;
+  width: 90%;
+  margin: 2px auto;
+  font-size: 1rem;
 }
 
 .login button {
-	width: fit-content;
-	margin: 10px auto;
-	padding: 5px 10px;
-	font-size: 1.25rem;
-	background-color: transparent;
-	color: #eee;
-	border-radius: 3px;
-	border: 1px solid rgba(255, 244, 224, 0.76);
+  width: fit-content;
+  margin: 10px auto;
+  padding: 5px 10px;
+  font-size: 1.25rem;
+  background-color: transparent;
+  color: #eee;
+  border-radius: 3px;
+  border: 1px solid rgba(255, 244, 224, 0.76);
 }
 
 .login button:hover {
-	background-color: #ffb42844;
-	cursor: pointer;
+  background-color: #ffb42844;
+  cursor: pointer;
 }
 
 .login button:active {
-	background-color: #ffb42844;
-	color: #1d2022;
+  background-color: #ffb42844;
+  color: #1d2022;
 }
 
 .login-register {
-	text-align: center;
-	padding: 5px;
+  text-align: center;
+  padding: 5px;
 }
 
 .login-register a {
-	color: #eee;
-	text-decoration: none;
-	font-size: 1.1rem;
+  color: #eee;
+  text-decoration: none;
+  font-size: 1.1rem;
 }
 
 .login-register a:hover {
-	color: #be8651;
+  color: #be8651;
 }
 
 /* Large phones */
 @media only screen and (min-width: 400px) {
-	.login {
-		width: 80%;
-		margin: auto;
-	}
+  .login {
+    width: 80%;
+    margin: auto;
+  }
 }
 
 /* Tablets */
 @media only screen and (min-width: 768px) {
-	.login form {
-		width: 80%;
-		margin: auto;
-	}
+  .login form {
+    width: 80%;
+    margin: auto;
+  }
 
-	.login input {
-		width: 60%;
-		float: right;
-	}
+  .login input {
+    width: 60%;
+    float: right;
+  }
 }

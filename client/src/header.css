@@ -1,73 +1,73 @@
 header {
-	display: flex;
-	justify-content: space-between;
-	position: sticky;
-	top: 0;
-	z-index: 5;
-	max-width: 100%;
-	align-items: center;
-	padding: 5px 2px;
-	font-family: 'Roboto', Helvetica, sans-serif;
-	font-weight: 300;
-	box-shadow: 0px 0px 5px 2px #000000;
-	background-color: #2b2b2b;
-	overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  max-width: 100%;
+  align-items: center;
+  padding: 5px 2px;
+  font-family: 'Roboto', Helvetica, sans-serif;
+  font-weight: 300;
+  box-shadow: 0px 0px 5px 2px #000000;
+  background-color: #2b2b2b;
+  overflow: hidden;
 }
 
 h1 {
-	text-transform: uppercase;
-	font-weight: 300;
-	font-size: 1.2rem;
-	width: fit-content;
-	color: rgb(243, 173, 107);
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: 1.2rem;
+  width: fit-content;
+  color: rgb(243, 173, 107);
 }
 
 nav {
-	display: flex;
-	flex-wrap: nowrap;
+  display: flex;
+  flex-wrap: nowrap;
 }
 
 a span {
-	display: none;
+  display: none;
 }
 
 header a {
-	color: #eee;
-	text-decoration: none;
-	font-size: 1.5rem;
-	padding: 8px 10.5px;
+  color: #eee;
+  text-decoration: none;
+  font-size: 1.5rem;
+  padding: 8px 10.5px;
 }
 
 header a:active,
 header a:hover {
-	color: rgb(243, 173, 107);
-	background-color: #00000022;
-	border-radius: 4px;
+  color: rgb(243, 173, 107);
+  background-color: #00000022;
+  border-radius: 4px;
 }
 
 /* Large Phones */
 @media only screen and (min-width: 400px) {
-	h1 {
-		font-size: 1.5rem;
-	}
+  h1 {
+    font-size: 1.5rem;
+  }
 }
 
 /* Tablets */
 @media only screen and (min-width: 768px) {
-	h1 {
-		padding-left: 12px;
-	}
+  h1 {
+    padding-left: 12px;
+  }
 
-	a span {
-		display: inline;
-		vertical-align: 1px;
-		margin-left: 5px;
-	}
+  a span {
+    display: inline;
+    vertical-align: 1px;
+    margin-left: 5px;
+  }
 }
 
 /* Modern Computer Screens */
 @media only screen and (min-width: 1200px) {
-	h1 {
-		font-size: 1.8rem;
-	}
+  h1 {
+    font-size: 1.8rem;
+  }
 }

@@ -1,44 +1,44 @@
 /* Global User Menu Styles */
 
 .sub-user {
-	margin: 20px;
-	color: #eee;
+  margin: 20px;
+  color: #eee;
 }
 
 .sub-user a {
-	padding: 12px 0px;
+  padding: 12px 0px;
 }
 
 .sub-user hr {
-	margin: 5px auto;
+  margin: 5px auto;
 }
 
 .sub-user .title {
-	text-transform: uppercase;
-	font-weight: 400;
-	font-size: 1.8rem;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 1.8rem;
 }
 
 #back-arrow {
-	background-color: transparent;
-	border: none;
+  background-color: transparent;
+  border: none;
 }
 
 #back-arrow i {
-	height: 50px;
-	width: 50px;
-	padding-top: 10px;
-	border-radius: 4px;
-	text-align: center;
-	font-size: 28px;
-	color: #eee;
+  height: 50px;
+  width: 50px;
+  padding-top: 10px;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 28px;
+  color: #eee;
 }
 
 #back-arrow i:hover {
-	background-color: #00000022;
+  background-color: #00000022;
 }
 
 p {
-	font-size: 18px;
-	font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
 }

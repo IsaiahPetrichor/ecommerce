@@ -1,89 +1,89 @@
 .checkout {
-	margin: 30px auto;
-	padding: 20px;
-	color: #eee;
-	max-width: 700px;
+  margin: 30px auto;
+  padding: 20px;
+  color: #eee;
+  max-width: 700px;
 }
 
 .checkout .title {
-	font-family: 'Roboto', Arial, Helvetica, sans-serif;
-	font-weight: 400;
-	text-transform: uppercase;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
 }
 
 .sidenote {
-	font-family: 'Roboto', Arial, Helvetica, sans-serif;
-	font-weight: 400;
-	font-size: 1rem;
-	color: #c42;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  color: #c42;
 }
 
 .invoice h3 {
-	margin-top: 20px;
-	font-family: 'Roboto', Arial, Helvetica, sans-serif;
-	font-weight: 500;
-	font-size: 1.3rem;
+  margin-top: 20px;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 1.3rem;
 }
 
 .checkout-total {
-	margin: 10px auto;
-	font-family: 'Roboto', Arial, Helvetica, sans-serif;
-	font-weight: 500;
-	font-size: 1.1rem;
-	text-transform: uppercase;
+  margin: 10px auto;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 1.1rem;
+  text-transform: uppercase;
 }
 
 .checkout-payment h3,
 .checkout-address h3 {
-	font-weight: 400;
-	text-transform: uppercase;
-	margin-top: 20px;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-top: 20px;
 }
 
 .checkout label {
-	width: 100%;
-	font-size: 1.2rem;
+  width: 100%;
+  font-size: 1.2rem;
 }
 
 .checkout input,
 .checkout select {
-	float: right;
-	width: 100%;
-	max-width: 400px;
-	font-size: 1rem;
-	margin: 2px;
-	padding: 2px;
-	border: 1px solid #aaa;
-	border-radius: 3px;
-	background-color: #666;
-	color: #eee;
+  float: right;
+  width: 100%;
+  max-width: 400px;
+  font-size: 1rem;
+  margin: 2px;
+  padding: 2px;
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  background-color: #666;
+  color: #eee;
 }
 
 .payment-form,
 .address-form {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	width: 95%;
-	margin: 10px auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 95%;
+  margin: 10px auto;
 }
 
 .checkout-button {
-	display: flex;
+  display: flex;
 }
 
 .checkout button {
-	width: 150px;
-	margin: 20px auto;
-	padding: 5px 20px;
-	font-size: 1.2rem;
-	background-color: rgb(160, 122, 52);
-	color: #eee;
-	border: 1px solid #aaa;
-	border-radius: 3px;
+  width: 150px;
+  margin: 20px auto;
+  padding: 5px 20px;
+  font-size: 1.2rem;
+  background-color: rgb(160, 122, 52);
+  color: #eee;
+  border: 1px solid #aaa;
+  border-radius: 3px;
 }
 
 .checkout button:hover {
-	background-color: #00000055;
-	cursor: pointer;
+  background-color: #00000055;
+  cursor: pointer;
 }

@@ -1,17 +1,17 @@
 .order-list {
-	display: flex;
-	flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .order-item {
-	margin: 10px auto;
-	padding: 5px;
-	border: 1px solid #aaa;
-	border-radius: 5px;
-	width: fit-content;
+  margin: 10px auto;
+  padding: 5px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  width: fit-content;
 }
 
 .order-item h3 {
-	font-size: 1.3rem;
-	font-weight: 400;
+  font-size: 1.3rem;
+  font-weight: 400;
 }

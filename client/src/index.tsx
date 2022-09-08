@@ -20,28 +20,28 @@ import Thanks from './order/thanks';
 import NotFound from './404';
 
 export default ReactDOM.render(
-	<React.StrictMode>
-		<BrowserRouter>
-			<Routes>
-				<Route path="/" element={<App />}>
-					<Route index element={<Home />} />
-					<Route path="products" element={<Products />} />
-					<Route path="cart" element={<Cart />} />
-					<Route path="checkout" element={<Checkout />} />
-					<Route path="thanks" element={<Thanks />} />
-					<Route path="profile" element={<Profile />} />
-					<Route path="admin" element={<Admin />} />
-					<Route path="login" element={<Login />} />
-					<Route path="sign-up" element={<Signup />} />
-					<Route path="profile/edit-user" element={<EditUser />} />
-					<Route path="profile/orders" element={<Orders />} />
-					<Route path="profile/payments" element={<Payments />} />
-					<Route path="profile/addresses" element={<AddressBook />} />
-					<Route path="products/:productId" element={<Product />} />
-					<Route path="*" element={<NotFound />} />
-				</Route>
-			</Routes>
-		</BrowserRouter>
-	</React.StrictMode>,
-	document.getElementById('root')
+  <React.StrictMode>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />}>
+          <Route index element={<Home />} />
+          <Route path="products" element={<Products />} />
+          <Route path="cart" element={<Cart />} />
+          <Route path="checkout" element={<Checkout />} />
+          <Route path="thanks" element={<Thanks />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="admin" element={<Admin />} />
+          <Route path="login" element={<Login />} />
+          <Route path="sign-up" element={<Signup />} />
+          <Route path="profile/edit-user" element={<EditUser />} />
+          <Route path="profile/orders" element={<Orders />} />
+          <Route path="profile/payments" element={<Payments />} />
+          <Route path="profile/addresses" element={<AddressBook />} />
+          <Route path="products/:productId" element={<Product />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  </React.StrictMode>,
+  document.getElementById('root')
 );

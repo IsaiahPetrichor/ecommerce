@@ -1,78 +1,78 @@
 .product-flex {
-	display: flex;
-	flex-wrap: nowrap;
+  display: flex;
+  flex-wrap: nowrap;
 }
 
 .product-info {
-	min-width: 180px;
-	width: 70%;
+  min-width: 180px;
+  width: 70%;
 }
 
 .product {
-	color: #eee;
-	padding: 5px;
+  color: #eee;
+  padding: 5px;
 }
 
 .product h2 {
-	text-transform: uppercase;
-	font-weight: 500;
+  text-transform: uppercase;
+  font-weight: 500;
 }
 
 .product h2,
 .product h3 {
-	font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
 }
 
 .product hr {
-	margin: 10px 0;
+  margin: 10px 0;
 }
 
 .product .img {
-	height: 175px;
-	width: 175px;
-	background-position: center;
-	background-size: contain;
-	background-repeat: no-repeat;
-	border-radius: 5px;
+  height: 175px;
+  width: 175px;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-radius: 5px;
 }
 
 .product .sku {
-	font-size: 0.8rem;
-	margin-bottom: 10px;
+  font-size: 0.8rem;
+  margin-bottom: 10px;
 }
 
 .description-hr {
-	border: none;
-	color: transparent;
-	height: 1px;
-	background: linear-gradient(
-		90deg,
-		transparent 0%,
-		#eee 40%,
-		transparent 100%
-	);
+  border: none;
+  color: transparent;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #eee 40%,
+    transparent 100%
+  );
 }
 
 /* Large Phones */
 @media only screen and (min-width: 400px) {
-	.product .img {
-		height: 240px;
-		width: 240px;
-	}
+  .product .img {
+    height: 240px;
+    width: 240px;
+  }
 }
 
 /* Tablets */
 @media only screen and (min-width: 768px) {
-	.product .img {
-		height: 400px;
-		width: 400px;
-	}
+  .product .img {
+    height: 400px;
+    width: 400px;
+  }
 }
 
 /* Modern Computer Screens */
 @media only screen and (min-width: 1200px) {
-	.product .img {
-		height: 600px;
-		width: 600px;
-	}
+  .product .img {
+    height: 600px;
+    width: 600px;
+  }
 }

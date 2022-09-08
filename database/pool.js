@@ -3,26 +3,26 @@ const { Pool } = pg;
 import 'dotenv/config';
 
 const devConfig = {
-	user: process.env.PG_USER,
-	password: process.env.PG_PASSWORD,
-	host: process.env.PG_HOST,
-	database: process.env.PG_DATABASE,
-	port: process.env.PG_PORT,
+  user: process.env.PG_USER,
+  password: process.env.PG_PASSWORD,
+  host: process.env.PG_HOST,
+  database: process.env.PG_DATABASE,
+  port: process.env.PG_PORT,
 };
 
 const productionConfig = {
-	connectionString: process.env.DATABASE_URL,
-	ssl: {
-		rejectUnauthorized: false,
-	},
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 };
 const pool = new Pool(
-	process.env.NODE_ENV === 'production' ? productionConfig : devConfig
+  process.env.NODE_ENV === 'production' ? productionConfig : devConfig
 );
 
 pool.on('error', (err, client) => {
-	console.error('Unexpected error on idle client', err);
-	process.exit(-1);
+  console.error('Unexpected error on idle client', err);
+  process.exit(-1);
 });
 
 export default pool;
