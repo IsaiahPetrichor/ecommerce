@@ -4,7 +4,8 @@
 
 Petrichor coffee is a fictional eCommerce website providing a fully featured e-store experience. Bringing everything from an encrypted database using JSON Web Tokens for authentication, to a central products database offering persistant carts, and user profiles with fully editable data.
 
-**[View the live deployment on Heroku](https://petrichor-coffee.herokuapp.com/)**
+**[View the live deployment on Render](https://petrichor-coffee.onrender.com/)**
+**[Check out the API Documentation](https://petrichor-coffee.onrender.com/api-docs/)**
 
 ## Front-End Stack
 
@@ -20,3 +21,5 @@ Petrichor coffee is a fictional eCommerce website providing a fully featured e-s
     - Bcrypt
     - JSON Web Tokens
     - Swagger Open API
+
+## Quick Start guide coming soon
