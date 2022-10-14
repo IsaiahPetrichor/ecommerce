@@ -2,8 +2,9 @@
 
 ## Summary
 
-Petrichor coffee is a fictional eCommerce website providing a fully featured e-store experience. Bringing everything from an encrypted database using JSON Web Tokens for authentication, to a central products database offering persistant carts, and user profiles with fully editable data.
+Petrichor coffee is a ecommerce website providing a fully featured e-store experience. Bringing everything from an encrypted database using JSON Web Tokens for authentication, to a central products database offering persistant carts, and user profiles with fully editable data.
 
+This project is deployed on a free plan on Render, it takes a minute or more to spin up a server instance.
 **[View the live deployment on Render](https://petrichor-coffee.onrender.com/)**
 
 **[Check out the API Documentation](https://petrichor-coffee.onrender.com/api-docs/)**
