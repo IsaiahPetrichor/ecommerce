@@ -1,5 +1,5 @@
-import { FC, useState, useEffect, useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { FC, useState, useRef, useEffect, useContext } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import UserContext from '../utils/user-context';
 import { getJwtToken, setJwtToken } from '../utils/util';
 import './signup.css';
@@ -20,12 +20,15 @@ const Signup: FC = () => {
 
   const jwtToken = getJwtToken();
 
+  const { state } = useLocation();
+  const path = useRef(state ? state.from.pathname : '/');
+
   let navigate = useNavigate();
   const context = useContext(UserContext);
 
   useEffect(() => {
     if (jwtToken) {
-      navigate('/');
+      navigate(path.current, { replace: true });
     }
 
     setError('');
@@ -92,7 +95,7 @@ const Signup: FC = () => {
               })
             );
           }
-          navigate('/');
+          navigate(path.current, { replace: true });
         }
       })
       .catch((err) => {
