@@ -1,5 +1,5 @@
 import { FC, useState, useRef, useEffect, useContext } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import UserContext from '../utils/user-context';
 import { getJwtToken, setJwtToken } from '../utils/util';
 import './signup.css';
@@ -169,7 +169,12 @@ const Signup: FC = () => {
         <button type="submit">Submit</button>
       </form>
       <p className="register-login">
-        <Link to="/login">Already have an account? Log in here!</Link>
+        <button
+          type="button"
+          onClick={() => navigate("/login", { state: state ? state : null })}
+        >
+          Already have an account? Log in here!
+        </button>
       </p>
     </main>
   );
