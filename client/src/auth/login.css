@@ -45,7 +45,7 @@
   font-size: 1rem;
 }
 
-.login button {
+.login form button {
   width: fit-content;
   margin: 10px auto;
   padding: 5px 10px;
@@ -56,12 +56,12 @@
   border: 1px solid rgba(255, 244, 224, 0.76);
 }
 
-.login button:hover {
+.login form button:hover {
   background-color: #ffb42844;
   cursor: pointer;
 }
 
-.login button:active {
+.login form button:active {
   background-color: #ffb42844;
   color: #1d2022;
 }
@@ -71,13 +71,16 @@
   padding: 5px;
 }
 
-.login-register a {
+.login-register button {
   color: #eee;
   text-decoration: none;
   font-size: 1.1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
-.login-register a:hover {
+.login-register button:hover {
   color: #be8651;
 }
 

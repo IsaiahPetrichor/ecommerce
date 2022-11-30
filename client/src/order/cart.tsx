@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { getImage, getJwtToken, sessionCart } from '../utils/util';
 import './cart.css';
 
@@ -26,6 +26,7 @@ const Cart: FC = () => {
   // only used to re-render when item is removed from cart
   const [selected, setSelected] = useState('');
 
+  const location = useLocation();
   const navigate = useNavigate();
 
   // get JWT from session storage
@@ -88,7 +89,7 @@ const Cart: FC = () => {
   };
 
   const handleCheckout = () => {
-    if (!jwtToken) return navigate('/login');
+    if (!jwtToken) return navigate('/login', { state: { from: location } });
     // double check to make sure cart is populated
     if (cart.length > 0) {
       // set session storage to hold cart info to make checkout

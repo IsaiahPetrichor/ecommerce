@@ -1,5 +1,5 @@
-import React, { FC, useContext, useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { FC, useContext, useEffect, useRef, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import UserContext from '../utils/user-context';
 import './login.css';
 import { getJwtToken, setJwtToken } from '../utils/util';
@@ -14,13 +14,16 @@ const Login: FC = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
+  const { state } = useLocation();
+  const path = useRef(state ? state.from.pathname : '/');
+
   let navigate = useNavigate();
   const context = useContext(UserContext);
 
   let jwtToken = getJwtToken();
 
   useEffect(() => {
-    if (jwtToken) navigate('/');
+    if (jwtToken) navigate(path.current, { replace: true });
   }, [jwtToken, navigate]);
 
   const handleSubmit = (e: React.SyntheticEvent) => {
@@ -71,7 +74,7 @@ const Login: FC = () => {
               })
             );
           }
-          navigate('/');
+          navigate(path.current, { replace: true });
         }
       })
       .catch((err) => {
@@ -110,7 +113,12 @@ const Login: FC = () => {
         <button type="submit">Submit</button>
       </form>
       <p className="login-register">
-        <Link to="/sign-up">Don't have an account? Sign Up here!</Link>
+        <button
+          type="button"
+          onClick={() => navigate("/sign-up", { state: state ? state : null })}
+        >
+          Don't have an account? Sign Up here!
+        </button>
       </p>
     </main>
   );
